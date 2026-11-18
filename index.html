@@ -120,6 +120,8 @@
   .icono-play{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(255,252,249,.92);display:grid;place-items:center}
   .icono-play::after{content:"";border-left:12px solid var(--cafe);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
   .pieza[hidden]{display:none}
+  .ver-mas{text-align:center;margin-top:24px}
+  .ver-mas .btn[hidden]{display:none}
 
   .marca-ad{position:absolute;padding:.25rem .7rem;border-radius:999px;background:rgba(255,252,249,.9);color:var(--cafe);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
   .pieza.mas{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.6rem;text-align:center;text-decoration:none;background:var(--cafe);color:var(--crema);padding:1.5rem}
@@ -350,6 +352,7 @@
       </div>
       <div class="filtros" role="group" aria-label="Filtrar galería"></div>
       <div class="rejilla" id="rejilla"></div>
+      <div class="ver-mas"><button class="btn btn-secundario" id="ver-mas" hidden>Ver más trabajos</button></div>
     </div>
   </section>
 
@@ -553,14 +556,20 @@ const SERVICIOS = [
 // Mientras "archivo" esté vacío, se muestra un espacio de ejemplo.
 const GALERIA = [
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "lado" },
-  { tipo: "foto", archivo: "imagenes/sombreado-resultado-1.jpg", titulo: "Resultado", tecnica: "Diseño, depilación y sombreado" },
-  { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-1.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-2.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-sesiones.jpg", titulo: "Antes, 1.ª y 2.ª sesión", tecnica: "Rehabilitación folicular" },
-  { tipo: "foto", archivo: "imagenes/sombreado-diseno.jpg", titulo: "Diseño a medida", tecnica: "Diseño, depilación y sombreado" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-5.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-3.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-1.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-1.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/sombreado-resultado-1.jpg", titulo: "Resultado", tecnica: "Diseño, depilación y sombreado" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-6.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-antes-durante-despues.jpg", titulo: "Antes, durante y después", tecnica: "Rehabilitación folicular" },
-  { tipo: "foto", archivo: "imagenes/sombreado-resultado-2.jpg", titulo: "Resultado", tecnica: "Diseño, depilación y sombreado" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-4.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/sombreado-diseno.jpg", titulo: "Diseño a medida", tecnica: "Diseño, depilación y sombreado" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-2.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/sombreado-resultado-2.jpg", titulo: "Resultado", tecnica: "Diseño, depilación y sombreado" },
   // Para agregar más, copia una línea y cambia los datos. Ejemplos:
   // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Diseño y depilación", antesDespues: "lado" },
   // { tipo: "video", archivo: "videos/proceso-1.mp4",  titulo: "Proceso",         tecnica: "Técnica Real Brow" },
@@ -635,14 +644,28 @@ if (categorias.length < 2) filtros.hidden = true;
 filtros.innerHTML = ['Todo', ...categorias].map((c, i) =>
   `<button class="filtro${i ? '' : ' activo'}" data-filtro="${i ? esc(c) : 'todo'}">${esc(c)}</button>`).join('');
 
+// Muestra pocas fotos al inicio y el resto con "Ver más"
+const LIMITE = 8;
+const verMas = document.getElementById('ver-mas');
+let filtroActual = 'todo', mostrarTodo = false;
+function aplicarGaleria() {
+  let n = 0, ocultas = 0;
+  rejilla.querySelectorAll('.pieza[data-i]').forEach(p => {
+    const coincide = filtroActual === 'todo' || p.dataset.tecnica === filtroActual;
+    const dentro = coincide && (mostrarTodo || n < LIMITE);
+    if (coincide) { n++; if (!dentro) ocultas++; }
+    p.hidden = !dentro;
+  });
+  verMas.hidden = ocultas === 0;
+}
 filtros.addEventListener('click', e => {
   const f = e.target.closest('.filtro');
   if (!f) return;
   filtros.querySelectorAll('.filtro').forEach(x => x.classList.toggle('activo', x === f));
-  rejilla.querySelectorAll('.pieza').forEach(p => {
-    p.hidden = f.dataset.filtro !== 'todo' && !!p.dataset.tecnica && p.dataset.tecnica !== f.dataset.filtro;
-  });
+  filtroActual = f.dataset.filtro; mostrarTodo = false; aplicarGaleria();
 });
+verMas.addEventListener('click', () => { mostrarTodo = true; aplicarGaleria(); });
+aplicarGaleria();
 
 // Visor (ver en grande)
 const visor = document.getElementById('visor');
