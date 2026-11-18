@@ -7,23 +7,23 @@
 <meta name="description" content="Real Brow Studio by Jessica Camejo: diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular en Arauca, Colombia. Reserva tu cita por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ============ COLORES Y TIPOGRAFÍAS (puedes cambiarlos aquí) ============ */
-  /* Colores Real Brow: negro, gris cemento y blanco hueso */
+  /* Colores de marca Real Brow (manual de marca) */
   :root{
-    --crema:#F2EEE7;        /* blanco hueso: fondo principal */
-    --arena:#DEDBD5;        /* gris cemento claro: fondos de sección */
-    --nude:#C4C0B9;         /* gris cemento: líneas y bordes */
-    --cafe:#141414;         /* negro: títulos, botones y sección de reservas */
-    --cafe-2:#333333;       /* negro suave: botones al pasar el mouse */
-    --texto:#1A1A1A;
+    --crema:#F4EFE9;        /* blanco hueso: fondo principal */
+    --arena:#D1CDC2;        /* gris cemento: fondos de sección */
+    --nude:#CFC2B2;         /* beige: líneas y bordes */
+    --cafe:#2D2D2D;         /* negro carbón: títulos, botones y reservas */
+    --cafe-2:#4A4A4A;       /* negro carbón suave: botones al pasar el mouse */
+    --texto:#2D2D2D;
     --suave:#5E5B57;        /* gris para textos secundarios */
-    --dorado:#6F6B65;       /* gris cemento oscuro: acentos */
-    --dorado-claro:#BDB8B0; /* gris cemento claro: acentos sobre negro */
-    --blanco:#FAF8F4;       /* blanco hueso claro: tarjetas */
+    --dorado:#4B3626;       /* café de marca: acentos pequeños */
+    --dorado-claro:#CFC2B2; /* beige: acentos sobre fondo oscuro */
+    --blanco:#FAF7F3;       /* blanco hueso claro: tarjetas */
     --radio:18px; --sombra:0 12px 34px rgba(20,20,20,.12);
-    --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, sans-serif; --firma:'Allura', cursive;
+    --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;scroll-padding-top:72px}
@@ -44,10 +44,12 @@
   .btn-secundario:hover{background:var(--cafe);color:var(--blanco)}
 
   /* ============ CABECERA ============ */
-  .cabecera{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
+  .cabecera{position:sticky;top:0;z-index:50;background:rgba(244,239,233,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
+  .logo img{height:50px;width:auto;display:block}
+  .pie-pagina .logo img{height:72px}
   .logo small{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--suave);margin-left:.45rem;vertical-align:middle}
   .menu{display:flex;gap:2rem;list-style:none;align-items:center}
   .menu a{text-decoration:none;font-size:.95rem;color:var(--cafe)}
@@ -169,7 +171,7 @@
   .formacion li::before{content:"";position:absolute;left:0;top:.72em;width:.6rem;height:1px;background:var(--dorado)}
   .subtitulo{font-family:var(--sans);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dorado);font-weight:500;margin-top:2rem}
   .sobre p{color:var(--suave);margin-top:1rem}
-  .firma{font-family:var(--firma);font-size:3rem;line-height:1;color:var(--cafe);margin-top:1.6rem}
+  .firma{display:block;width:240px;height:auto;margin-top:1.8rem}
   .valores{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem;list-style:none}
   .valores li{padding:.45rem 1rem;border:1px solid var(--nude);border-radius:999px;font-size:.88rem;color:var(--cafe)}
   @media (max-width:860px){.sobre .contenedor{grid-template-columns:1fr;gap:40px}.retrato{max-width:400px}}
@@ -216,7 +218,7 @@
   @media (max-width:540px){.formulario{grid-template-columns:1fr;padding:1.5rem}}
 
   /* ============ PIE ============ */
-  .pie-pagina{background:#0A0A0A;color:var(--nude);padding:40px 0 96px;font-size:.9rem}
+  .pie-pagina{background:#232323;color:var(--nude);padding:40px 0 96px;font-size:.9rem}
   .pie-pagina .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
   .pie-pagina .logo{color:var(--blanco);font-size:1.5rem}
   .pie-pagina .logo span{color:var(--dorado-claro)}
@@ -237,7 +239,7 @@
 
 <header class="cabecera">
   <div class="contenedor">
-    <a href="#inicio" class="logo">Real <span>Brow</span><small>Studio</small></a>
+    <a href="#inicio" class="logo"><img src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></a>
     <button class="boton-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
     </button>
@@ -388,7 +390,7 @@
           <li>Diseño según tu fisonomía</li>
           <li>Resultados naturales y armónicos</li>
         </ul>
-        <p class="firma">Jessica Camejo</p>
+        <img class="firma" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318" loading="lazy">
       </div>
     </div>
   </section>
@@ -500,7 +502,7 @@
 
 <footer class="pie-pagina">
   <div class="contenedor">
-    <a href="#inicio" class="logo">Real <span>Brow</span><small>Studio</small></a>
+    <a href="#inicio" class="logo"><img src="imagenes/logo-real-brow-blanco.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></a>
     <nav class="redes" aria-label="Redes sociales">
       <a href="https://instagram.com/realbrow.jesscamejo" target="_blank" rel="noopener">Instagram</a>
       <a href="https://wa.me/573102448076" target="_blank" rel="noopener">WhatsApp</a>
