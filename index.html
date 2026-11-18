@@ -107,6 +107,7 @@
   /* ============ GALERÍA ============ */
   .galeria{background:var(--arena)}
   .filtros{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:32px}
+  .filtros[hidden]{display:none}
   .filtro{padding:.55rem 1.25rem;border-radius:999px;border:1px solid var(--cafe);background:transparent;color:var(--cafe);font:400 .92rem var(--sans);cursor:pointer;transition:.2s}
   .filtro.activo,.filtro:hover{background:var(--cafe);color:var(--blanco)}
   .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:16px}
@@ -118,11 +119,31 @@
   .icono-play{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(255,252,249,.92);display:grid;place-items:center}
   .icono-play::after{content:"";border-left:12px solid var(--cafe);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
   .pieza[hidden]{display:none}
+  .pieza.ancha{aspect-ratio:1179/1023}
+  @media (min-width:600px){.pieza.ancha{grid-column:span 2;aspect-ratio:auto}.pieza.ancha img{position:absolute;inset:0;object-position:50% 40%}}
+  @media (max-width:599px){.pieza.mas{aspect-ratio:auto;padding:2.5rem 1.5rem}}
+  .marca-ad{position:absolute;padding:.25rem .7rem;border-radius:999px;background:rgba(255,252,249,.9);color:var(--cafe);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+  .pieza.mas{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.6rem;text-align:center;text-decoration:none;background:var(--cafe);color:var(--crema);padding:1.5rem}
+  .pieza.mas strong{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--blanco);line-height:1.15}
+  .pieza.mas span{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-claro)}
+  .pieza.mas:hover{background:var(--cafe-2)}
 
   .visor{position:fixed;inset:0;background:rgba(30,22,18,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
   .visor.abierto{display:flex}
   .visor-contenido img,.visor-contenido video{max-height:86vh;max-width:min(900px,100%);width:auto;margin:auto;border-radius:12px}
   .visor-cerrar{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--blanco);font-size:1.7rem;line-height:1;cursor:pointer;color:var(--cafe)}
+
+  /* ============ TÉCNICA DESTACADA ============ */
+  .destacada .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
+  .destacada figure img{width:100%;height:100%;object-fit:cover}
+  .destacada p{color:var(--suave);margin-top:1rem}
+  .claves{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
+  .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
+  .claves strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--cafe);line-height:1.2;margin-bottom:.2rem}
+  .importante{border-left:2px solid var(--dorado);padding-left:1rem;font-size:.95rem}
+  @media (max-width:860px){.destacada .contenedor{grid-template-columns:1fr;gap:40px}.destacada figure{max-width:440px}}
+  @media (max-width:420px){.claves{grid-template-columns:1fr}}
 
   /* ============ SOBRE MÍ ============ */
   .sobre .contenedor{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
@@ -248,6 +269,33 @@
     </div>
   </section>
 
+  <!-- TÉCNICA REAL BROW -->
+  <section class="destacada" id="tecnica-real-brow">
+    <div class="contenedor">
+      <figure class="aparece">
+        <img src="imagenes/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" loading="lazy">
+        <span class="marca-ad" style="top:14px;left:14px">Antes</span>
+        <span class="marca-ad" style="top:calc(50% + 14px);left:14px">Después</span>
+      </figure>
+      <div class="aparece">
+        <span class="etiqueta">Técnica estrella</span>
+        <h2>Técnica Real Brow</h2>
+        <p>Una técnica de embellecimiento de cejas que aplica fibras biocompatibles que simulan el vello natural, creando un efecto de mayor densidad y definición.</p>
+        <p>Está diseñada para rellenar espacios con ausencia de vello y reconstruir visualmente la forma de tus cejas, con un resultado natural y armónico que respeta las facciones de tu rostro.</p>
+        <ul class="claves">
+          <li><strong>Efecto natural</strong>Fibras que simulan el vello</li>
+          <li><strong>No quirúrgico</strong>Procedimiento personalizado</li>
+          <li><strong>4 a 8 meses</strong>Duración aproximada, según cada persona y sus cuidados</li>
+          <li><strong>Con valoración</strong>Para saber si tu ceja es apta y definir el valor</li>
+        </ul>
+        <p class="importante">Su aplicación requiere valoración previa para determinar si la ceja es apta para el procedimiento y establecer el valor según el grado de ausencia de vello.</p>
+        <div class="acciones" style="margin-top:2rem">
+          <button class="btn btn-principal" data-servicio="Técnica Real Brow" id="reservar-real-brow">Reservar valoración</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROCESO -->
   <section id="proceso">
     <div class="contenedor">
@@ -269,7 +317,7 @@
       <div class="intro aparece">
         <span class="etiqueta">Galería</span>
         <h2>Mis trabajos</h2>
-        <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto o video para verlo en grande.</p>
+        <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto para verla en grande.</p>
       </div>
       <div class="filtros" role="group" aria-label="Filtrar galería">
         <button class="filtro activo" data-filtro="todo">Todo</button>
@@ -322,7 +370,11 @@
         </details>
         <details>
           <summary>¿Por qué la Técnica Real Brow requiere valoración?</summary>
-          <p>Porque el valor se determina según el grado de ausencia de vello y las necesidades de cada ceja. En la valoración revisamos tu caso y te doy un precio personalizado.</p>
+          <p>Porque primero revisamos si tu ceja es apta para el procedimiento, y el valor se determina según el grado de ausencia de vello y las necesidades de cada ceja.</p>
+        </details>
+        <details>
+          <summary>¿Cuánto dura la Técnica Real Brow?</summary>
+          <p>Es un procedimiento temporal, con una duración aproximada de 4 a 8 meses. Depende de las características de cada persona y de sus cuidados posteriores.</p>
         </details>
         <details>
           <summary>¿Cuántas sesiones de rehabilitación folicular necesito?</summary>
@@ -459,9 +511,9 @@ const SERVICIOS = [
     ideal: "Ideal si quieres unas cejas más llenas y marcadas.",
     duracion: "1 h 30 min", precio: "$50.000" },
   { nombre: "Técnica Real Brow",
-    descripcion: "Técnica especializada para cejas con ausencia de vello, adaptada a las necesidades de cada ceja.",
-    ideal: "El valor depende del grado de ausencia de vello y de las necesidades de cada ceja, por eso se define en una valoración previa.",
-    duracion: "Requiere valoración", precio: "Precio personalizado", valoracion: true },
+    descripcion: "Fibras biocompatibles que simulan el vello natural para rellenar espacios sin vello y dar mayor densidad y definición.",
+    ideal: "No quirúrgica y temporal. Requiere valoración previa para saber si tu ceja es apta y definir el valor.",
+    duracion: "Dura de 4 a 8 meses aprox.", precio: "Según valoración", valoracion: true },
   { nombre: "Rehabilitación folicular de cejas",
     descripcion: "Tratamiento por sesiones con un plan personalizado según las necesidades de tu ceja.",
     ideal: "Antes de empezar hacemos una valoración para armar tu plan.",
@@ -471,14 +523,15 @@ const SERVICIOS = [
 // Galería: tipo "foto" o "video". Guarda los archivos en "imagenes" o "videos".
 // Mientras "archivo" esté vacío, se muestra un espacio de ejemplo.
 const GALERIA = [
-  { tipo: "foto",  archivo: "", titulo: "Antes y después", tecnica: "Diseño y depilación" },
-  { tipo: "foto",  archivo: "", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado" },
-  { tipo: "video", archivo: "", titulo: "Proceso",         tecnica: "Técnica Real Brow" },
-  { tipo: "foto",  archivo: "", titulo: "Antes y después", tecnica: "Técnica Real Brow" },
-  { tipo: "foto",  archivo: "", titulo: "Evolución",       tecnica: "Rehabilitación folicular" },
-  { tipo: "video", archivo: "", titulo: "Resultado final", tecnica: "Diseño, depilación y sombreado" },
-  { tipo: "foto",  archivo: "", titulo: "Antes y después", tecnica: "Diseño y depilación" },
-  { tipo: "foto",  archivo: "", titulo: "Evolución",       tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow",
+    antesDespues: "lado", ancha: true },
+  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow",
+    antesDespues: "arriba" },
+  // Para agregar más, copia una línea y cambia los datos. Ejemplos:
+  // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Diseño y depilación", antesDespues: "lado" },
+  // { tipo: "video", archivo: "videos/proceso-1.mp4",  titulo: "Proceso",         tecnica: "Técnica Real Brow" },
+  // antesDespues: "lado" (antes a la izquierda) o "arriba" (antes arriba). Bórralo si la foto no es de antes y después.
+  // ancha: true para fotos horizontales.
 ];
 
 /* =====================================================================
@@ -512,6 +565,10 @@ lista.innerHTML = SERVICIOS.map((s, i) => `
   </article>`).join('');
 selector.innerHTML = SERVICIOS.map(s => `<option>${esc(s.nombre)}</option>`).join('')
   + '<option>Aún no sé, quiero una valoración</option>';
+document.getElementById('reservar-real-brow').addEventListener('click', e => {
+  selector.value = e.currentTarget.dataset.servicio;
+  document.getElementById('reservar').scrollIntoView();
+});
 lista.addEventListener('click', e => {
   const b = e.target.closest('.enlace-reserva');
   if (!b) return;
@@ -522,16 +579,25 @@ lista.addEventListener('click', e => {
 
 // Galería
 const rejilla = document.getElementById('rejilla');
+const marcasAD = g => g.antesDespues === 'lado'
+  ? '<span class="marca-ad" style="top:12px;left:12px">Antes</span><span class="marca-ad" style="top:12px;left:calc(50% + 12px)">Después</span>'
+  : g.antesDespues === 'arriba'
+  ? '<span class="marca-ad" style="top:12px;left:12px">Antes</span><span class="marca-ad" style="top:calc(50% + 12px);left:12px">Después</span>'
+  : '';
 rejilla.innerHTML = GALERIA.map((g, i) => {
-  let medio;
-  if (!g.archivo) medio = marcador(g.tipo === 'video' ? 'Tu video aquí' : 'Tu foto aquí');
-  else if (g.tipo === 'video') medio = `<video src="${esc(g.archivo)}" muted playsinline preload="metadata"></video>`;
-  else medio = `<img src="${esc(g.archivo)}" alt="${esc(g.titulo + ' · ' + g.tecnica)}" loading="lazy">`;
-  return `<button class="pieza aparece" data-tipo="${g.tipo}" data-i="${i}" aria-label="Ver ${esc(g.titulo)}, ${esc(g.tecnica)}">
-    ${medio}${g.tipo === 'video' ? '<span class="icono-play"></span>' : ''}
-    <span class="pie"><strong>${esc(g.tecnica)}</strong>${esc(g.titulo)}</span>
+  if (!g.archivo) return '';
+  const medio = g.tipo === 'video'
+    ? `<video src="${esc(g.archivo)}" muted playsinline preload="metadata"></video><span class="icono-play"></span>`
+    : `<img src="${esc(g.archivo)}" alt="${esc(g.titulo + ' · ' + g.tecnica)}" loading="lazy">${marcasAD(g)}`;
+  return `<button class="pieza aparece${g.ancha ? ' ancha' : ''}" data-tipo="${g.tipo}" data-i="${i}" aria-label="Ver ${esc(g.titulo)}, ${esc(g.tecnica)}">
+    ${medio}<span class="pie"><strong>${esc(g.tecnica)}</strong>${esc(g.titulo)}</span>
   </button>`;
-}).join('');
+}).join('') + (ESTUDIO.instagram ? `<a class="pieza mas aparece" href="https://instagram.com/${esc(ESTUDIO.instagram)}" target="_blank" rel="noopener">
+    <span>Más resultados</span><strong>Míralos en mi Instagram</strong><span>@${esc(ESTUDIO.instagram)}</span></a>` : '');
+// Oculta los filtros si todavía no hay fotos y videos a la vez
+const hayVideos = GALERIA.some(g => g.archivo && g.tipo === 'video');
+const hayFotos = GALERIA.some(g => g.archivo && g.tipo === 'foto');
+if (!(hayVideos && hayFotos)) document.querySelector('.filtros').hidden = true;
 
 document.querySelectorAll('.filtro').forEach(f => f.addEventListener('click', () => {
   document.querySelectorAll('.filtro').forEach(x => x.classList.toggle('activo', x === f));
@@ -546,7 +612,7 @@ const visorContenido = document.getElementById('visor-contenido');
 const cerrarVisor = () => { visor.classList.remove('abierto'); visorContenido.innerHTML = ''; };
 rejilla.addEventListener('click', e => {
   const p = e.target.closest('.pieza');
-  if (!p) return;
+  if (!p || !p.dataset.i) return;
   const g = GALERIA[p.dataset.i];
   if (!g.archivo) return;
   visorContenido.innerHTML = g.tipo === 'video'
