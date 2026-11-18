@@ -10,10 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
 <style>
   /* ============ COLORES Y TIPOGRAFÍAS (puedes cambiarlos aquí) ============ */
+  /* Colores Real Brow: negro, gris cemento y blanco hueso */
   :root{
-    --crema:#F8F2EC; --arena:#EFE3D8; --nude:#DCC1AE; --cafe:#4B3227; --cafe-2:#6B4A3B;
-    --texto:#2F231D; --suave:#76625A; --dorado:#A87C4F; --dorado-claro:#DDBA92; --blanco:#FFFCF9;
-    --radio:18px; --sombra:0 12px 34px rgba(75,50,39,.12);
+    --crema:#F2EEE7;        /* blanco hueso: fondo principal */
+    --arena:#DEDBD5;        /* gris cemento claro: fondos de sección */
+    --nude:#C4C0B9;         /* gris cemento: líneas y bordes */
+    --cafe:#141414;         /* negro: títulos, botones y sección de reservas */
+    --cafe-2:#333333;       /* negro suave: botones al pasar el mouse */
+    --texto:#1A1A1A;
+    --suave:#5E5B57;        /* gris para textos secundarios */
+    --dorado:#6F6B65;       /* gris cemento oscuro: acentos */
+    --dorado-claro:#BDB8B0; /* gris cemento claro: acentos sobre negro */
+    --blanco:#FAF8F4;       /* blanco hueso claro: tarjetas */
+    --radio:18px; --sombra:0 12px 34px rgba(20,20,20,.12);
     --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, sans-serif; --firma:'Allura', cursive;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -35,7 +44,7 @@
   .btn-secundario:hover{background:var(--cafe);color:var(--blanco)}
 
   /* ============ CABECERA ============ */
-  .cabecera{position:sticky;top:0;z-index:50;background:rgba(248,242,236,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(75,50,39,.08)}
+  .cabecera{position:sticky;top:0;z-index:50;background:rgba(242,238,231,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -52,7 +61,7 @@
   .boton-menu[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   @media (max-width:860px){
     .boton-menu{display:block}
-    .menu{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--crema);padding:24px 16px 32px;gap:1.3rem;border-bottom:1px solid rgba(75,50,39,.1);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}
+    .menu{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;background:var(--crema);padding:24px 16px 32px;gap:1.3rem;border-bottom:1px solid rgba(20,20,20,.1);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.25s}
     .menu.abierto{opacity:1;visibility:visible;transform:none}
     .menu a{font-size:1.1rem}
   }
@@ -117,19 +126,19 @@
   .pieza:hover img,.pieza:hover video{transform:scale(1.04)}
   .pieza .pie{display:block;padding:.8rem 1rem .9rem;background:var(--blanco);color:var(--suave);font-size:.85rem}
   .pieza .pie strong{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--cafe)}
-  .icono-play{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(255,252,249,.92);display:grid;place-items:center}
+  .icono-play{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(250,248,244,.92);display:grid;place-items:center}
   .icono-play::after{content:"";border-left:12px solid var(--cafe);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
   .pieza[hidden]{display:none}
   .ver-mas{text-align:center;margin-top:24px}
   .ver-mas .btn[hidden]{display:none}
 
-  .marca-ad{position:absolute;padding:.25rem .7rem;border-radius:999px;background:rgba(255,252,249,.9);color:var(--cafe);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
+  .marca-ad{position:absolute;padding:.25rem .7rem;border-radius:999px;background:rgba(250,248,244,.9);color:var(--cafe);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
   .pieza.mas{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.6rem;text-align:center;text-decoration:none;background:var(--cafe);color:var(--crema);padding:1.5rem}
   .pieza.mas strong{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--blanco);line-height:1.15}
   .pieza.mas span{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-claro)}
   .pieza.mas:hover{background:var(--cafe-2)}
 
-  .visor{position:fixed;inset:0;background:rgba(30,22,18,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+  .visor{position:fixed;inset:0;background:rgba(10,10,10,.93);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
   .visor.abierto{display:flex}
   .visor-contenido img,.visor-contenido video{max-height:86vh;max-width:min(900px,100%);width:auto;margin:auto;border-radius:12px}
   .visor-cerrar{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--blanco);font-size:1.7rem;line-height:1;cursor:pointer;color:var(--cafe)}
@@ -197,7 +206,7 @@
   textarea{resize:vertical;min-height:96px}
   .formulario .btn{grid-column:1/-1;justify-content:center;border:0;margin-top:.3rem}
   .nota{grid-column:1/-1;font-size:.85rem;color:var(--suave);text-align:center}
-  .politicas{margin-top:2.2rem;padding:1.4rem 1.5rem;border:1px solid rgba(220,193,174,.3);border-radius:14px}
+  .politicas{margin-top:2.2rem;padding:1.4rem 1.5rem;border:1px solid rgba(196,192,185,.3);border-radius:14px}
   .politicas h3{font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dorado-claro);font-weight:500;margin-bottom:.8rem}
   .politicas ul{list-style:none;display:grid;gap:.45rem;font-size:.95rem}
   .politicas li{padding-left:1.2rem;position:relative}
@@ -207,14 +216,14 @@
   @media (max-width:540px){.formulario{grid-template-columns:1fr;padding:1.5rem}}
 
   /* ============ PIE ============ */
-  .pie-pagina{background:#3A261D;color:var(--nude);padding:40px 0 96px;font-size:.9rem}
+  .pie-pagina{background:#0A0A0A;color:var(--nude);padding:40px 0 96px;font-size:.9rem}
   .pie-pagina .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
   .pie-pagina .logo{color:var(--blanco);font-size:1.5rem}
   .pie-pagina .logo span{color:var(--dorado-claro)}
   .redes{display:flex;gap:1.2rem}
   .redes a{text-decoration:none}
   .redes a:hover{color:var(--blanco)}
-  .flotante{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:.5rem;background:var(--cafe);color:var(--blanco);text-decoration:none;padding:.85rem 1.3rem;border-radius:999px;box-shadow:0 10px 26px rgba(47,35,29,.3);font:500 .92rem var(--sans);letter-spacing:.04em}
+  .flotante{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:.5rem;background:var(--cafe);color:var(--blanco);text-decoration:none;padding:.85rem 1.3rem;border-radius:999px;box-shadow:0 10px 26px rgba(0,0,0,.3);font:500 .92rem var(--sans);letter-spacing:.04em}
   .flotante svg{width:20px;height:20px}
 
   /* Animación suave al hacer scroll */
