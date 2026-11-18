@@ -110,20 +110,19 @@
   .filtros[hidden]{display:none}
   .filtro{padding:.55rem 1.25rem;border-radius:999px;border:1px solid var(--cafe);background:transparent;color:var(--cafe);font:400 .92rem var(--sans);cursor:pointer;transition:.2s}
   .filtro.activo,.filtro:hover{background:var(--cafe);color:var(--blanco)}
-  .rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(240px,100%),1fr));gap:16px}
-  .pieza{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--nude);border:0;padding:0;font:inherit;text-align:left;color:inherit}
-  .pieza img,.pieza video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .rejilla{columns:3 260px;column-gap:16px}
+  .pieza{position:relative;display:block;width:100%;margin:0 0 16px;break-inside:avoid;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--nude);border:0;padding:0;font:inherit;text-align:left;color:inherit}
+  .pieza img,.pieza video{width:100%;height:auto;transition:transform .5s}
+  .pieza .medio{position:relative;display:block;overflow:hidden}
   .pieza:hover img,.pieza:hover video{transform:scale(1.04)}
-  .pieza .pie{position:absolute;inset:auto 0 0 0;padding:2.4rem 1rem .9rem;background:linear-gradient(transparent,rgba(47,35,29,.75));color:#fff;font-size:.85rem}
-  .pieza .pie strong{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500}
+  .pieza .pie{display:block;padding:.8rem 1rem .9rem;background:var(--blanco);color:var(--suave);font-size:.85rem}
+  .pieza .pie strong{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--cafe)}
   .icono-play{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;background:rgba(255,252,249,.92);display:grid;place-items:center}
   .icono-play::after{content:"";border-left:12px solid var(--cafe);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
   .pieza[hidden]{display:none}
-  .pieza.ancha{aspect-ratio:1179/1023}
-  @media (min-width:600px){.pieza.ancha{grid-column:span 2;aspect-ratio:auto}.pieza.ancha img{position:absolute;inset:0;object-position:50% 40%}}
-  @media (max-width:599px){.pieza.mas{aspect-ratio:auto;padding:2.5rem 1.5rem}}
+
   .marca-ad{position:absolute;padding:.25rem .7rem;border-radius:999px;background:rgba(255,252,249,.9);color:var(--cafe);font-size:.68rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase}
-  .pieza.mas{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.6rem;text-align:center;text-decoration:none;background:var(--cafe);color:var(--crema);padding:1.5rem}
+  .pieza.mas{aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.6rem;text-align:center;text-decoration:none;background:var(--cafe);color:var(--crema);padding:1.5rem}
   .pieza.mas strong{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--blanco);line-height:1.15}
   .pieza.mas span{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--dorado-claro)}
   .pieza.mas:hover{background:var(--cafe-2)}
@@ -136,12 +135,16 @@
   /* ============ TÉCNICA DESTACADA ============ */
   .destacada .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
+  .destacada figure.alta{aspect-ratio:9/16;max-height:780px;justify-self:center;width:100%;max-width:440px}
   .destacada figure img{width:100%;height:100%;object-fit:cover}
   .destacada p{color:var(--suave);margin-top:1rem}
   .claves{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
   .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
   .claves strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--cafe);line-height:1.2;margin-bottom:.2rem}
   .importante{border-left:2px solid var(--dorado);padding-left:1rem;font-size:.95rem}
+  .destacada.invertida{background:var(--blanco)}
+  .destacada.invertida .claves li{background:var(--crema)}
+  @media (min-width:861px){.destacada.invertida figure{order:2}}
   @media (max-width:860px){.destacada .contenedor{grid-template-columns:1fr;gap:40px}.destacada figure{max-width:440px}}
   @media (max-width:420px){.claves{grid-template-columns:1fr}}
 
@@ -290,7 +293,33 @@
         </ul>
         <p class="importante">Su aplicación requiere valoración previa para determinar si la ceja es apta para el procedimiento y establecer el valor según el grado de ausencia de vello.</p>
         <div class="acciones" style="margin-top:2rem">
-          <button class="btn btn-principal" data-servicio="Técnica Real Brow" id="reservar-real-brow">Reservar valoración</button>
+          <button class="btn btn-principal reservar-servicio" data-servicio="Técnica Real Brow">Reservar valoración</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REHABILITACIÓN FOLICULAR -->
+  <section class="destacada invertida" id="rehabilitacion-folicular">
+    <div class="contenedor">
+      <figure class="alta aparece">
+        <img src="imagenes/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" loading="lazy">
+      </figure>
+      <div class="aparece">
+        <span class="etiqueta">Recupera tu vello natural</span>
+        <h2>Rehabilitación folicular de cejas</h2>
+        <p>Es un protocolo estético especializado que busca favorecer la recuperación del vello perdido en las cejas, ya sea por malas prácticas de depilación, micropigmentación, tatuajes, pérdida natural del vello o determinadas condiciones médicas.</p>
+        <p>Mediante microneedling con Dermapen se realizan microperforaciones controladas en la piel que activan los mecanismos naturales de reparación y estimulación cutánea, buscando mejorar las condiciones del entorno folicular.</p>
+        <p>El objetivo es favorecer un crecimiento más saludable del vello natural y mejorar progresivamente la apariencia y la densidad de tus cejas.</p>
+        <ul class="claves">
+          <li><strong>Microneedling</strong>Con Dermapen, mediante microperforaciones controladas</li>
+          <li><strong>Activos especializados</strong>Péptidos, vitaminas, factores de crecimiento, exosomas y PDRN, según tu caso</li>
+          <li><strong>Plan por sesiones</strong>Se recomienda un mínimo de 3 sesiones</li>
+          <li><strong>$100.000</strong>Por sesión, previa valoración</li>
+        </ul>
+        <p class="importante">Requiere valoración previa para determinar la viabilidad del protocolo y establecer un plan de sesiones personalizado.</p>
+        <div class="acciones" style="margin-top:2rem">
+          <button class="btn btn-principal reservar-servicio" data-servicio="Rehabilitación folicular de cejas">Reservar valoración</button>
         </div>
       </div>
     </div>
@@ -319,11 +348,7 @@
         <h2>Mis trabajos</h2>
         <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto para verla en grande.</p>
       </div>
-      <div class="filtros" role="group" aria-label="Filtrar galería">
-        <button class="filtro activo" data-filtro="todo">Todo</button>
-        <button class="filtro" data-filtro="foto">Fotos</button>
-        <button class="filtro" data-filtro="video">Videos</button>
-      </div>
+      <div class="filtros" role="group" aria-label="Filtrar galería"></div>
       <div class="rejilla" id="rejilla"></div>
     </div>
   </section>
@@ -378,7 +403,11 @@
         </details>
         <details>
           <summary>¿Cuántas sesiones de rehabilitación folicular necesito?</summary>
-          <p>Se recomienda un mínimo de 3 sesiones. Antes de empezar hacemos una valoración para conocer las necesidades de tu ceja y armar un plan personalizado.</p>
+          <p>Se recomienda un mínimo de 3 sesiones. En la valoración determinamos la viabilidad del protocolo y armamos tu plan de sesiones personalizado.</p>
+        </details>
+        <details>
+          <summary>¿Para quién es la rehabilitación folicular?</summary>
+          <p>Para cejas que perdieron vello por malas prácticas de depilación, micropigmentación, tatuajes, pérdida natural del vello o determinadas condiciones médicas. En la valoración revisamos si el protocolo es viable para ti.</p>
         </details>
         <details>
           <summary>¿Debo pagar un anticipo para reservar?</summary>
@@ -515,23 +544,25 @@ const SERVICIOS = [
     ideal: "No quirúrgica y temporal. Requiere valoración previa para saber si tu ceja es apta y definir el valor.",
     duracion: "Dura de 4 a 8 meses aprox.", precio: "Según valoración", valoracion: true },
   { nombre: "Rehabilitación folicular de cejas",
-    descripcion: "Tratamiento por sesiones con un plan personalizado según las necesidades de tu ceja.",
-    ideal: "Antes de empezar hacemos una valoración para armar tu plan.",
+    descripcion: "Protocolo con microneedling (Dermapen) y activos especializados que busca favorecer la recuperación del vello perdido en las cejas.",
+    ideal: "Requiere valoración previa para definir la viabilidad y tu plan de sesiones personalizado.",
     duracion: "Mínimo 3 sesiones", precio: "$100.000", nota: "por sesión", valoracion: true },
 ];
 
 // Galería: tipo "foto" o "video". Guarda los archivos en "imagenes" o "videos".
 // Mientras "archivo" esté vacío, se muestra un espacio de ejemplo.
 const GALERIA = [
-  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow",
-    antesDespues: "lado", ancha: true },
-  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow",
-    antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "lado" },
+  { tipo: "foto", archivo: "imagenes/rehabilitacion-sesiones.jpg", titulo: "Antes, 1.ª y 2.ª sesión", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-1.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/rehabilitacion-antes-durante-despues.jpg", titulo: "Antes, durante y después", tecnica: "Rehabilitación folicular" },
+  { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-2.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
   // Para agregar más, copia una línea y cambia los datos. Ejemplos:
   // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Diseño y depilación", antesDespues: "lado" },
   // { tipo: "video", archivo: "videos/proceso-1.mp4",  titulo: "Proceso",         tecnica: "Técnica Real Brow" },
-  // antesDespues: "lado" (antes a la izquierda) o "arriba" (antes arriba). Bórralo si la foto no es de antes y después.
-  // ancha: true para fotos horizontales.
+  // antesDespues: "lado" (antes a la izquierda) o "arriba" (antes arriba) agrega las etiquetas.
+  // Bórralo si la foto ya trae sus etiquetas o no es de antes y después.
 ];
 
 /* =====================================================================
@@ -565,10 +596,10 @@ lista.innerHTML = SERVICIOS.map((s, i) => `
   </article>`).join('');
 selector.innerHTML = SERVICIOS.map(s => `<option>${esc(s.nombre)}</option>`).join('')
   + '<option>Aún no sé, quiero una valoración</option>';
-document.getElementById('reservar-real-brow').addEventListener('click', e => {
-  selector.value = e.currentTarget.dataset.servicio;
+document.querySelectorAll('.reservar-servicio').forEach(b => b.addEventListener('click', () => {
+  selector.value = b.dataset.servicio;
   document.getElementById('reservar').scrollIntoView();
-});
+}));
 lista.addEventListener('click', e => {
   const b = e.target.closest('.enlace-reserva');
   if (!b) return;
@@ -589,22 +620,26 @@ rejilla.innerHTML = GALERIA.map((g, i) => {
   const medio = g.tipo === 'video'
     ? `<video src="${esc(g.archivo)}" muted playsinline preload="metadata"></video><span class="icono-play"></span>`
     : `<img src="${esc(g.archivo)}" alt="${esc(g.titulo + ' · ' + g.tecnica)}" loading="lazy">${marcasAD(g)}`;
-  return `<button class="pieza aparece${g.ancha ? ' ancha' : ''}" data-tipo="${g.tipo}" data-i="${i}" aria-label="Ver ${esc(g.titulo)}, ${esc(g.tecnica)}">
-    ${medio}<span class="pie"><strong>${esc(g.tecnica)}</strong>${esc(g.titulo)}</span>
+  return `<button class="pieza aparece" data-tecnica="${esc(g.tecnica)}" data-i="${i}" aria-label="Ver ${esc(g.titulo)}, ${esc(g.tecnica)}">
+    <span class="medio">${medio}</span><span class="pie"><strong>${esc(g.tecnica)}</strong>${esc(g.titulo)}</span>
   </button>`;
 }).join('') + (ESTUDIO.instagram ? `<a class="pieza mas aparece" href="https://instagram.com/${esc(ESTUDIO.instagram)}" target="_blank" rel="noopener">
     <span>Más resultados</span><strong>Míralos en mi Instagram</strong><span>@${esc(ESTUDIO.instagram)}</span></a>` : '');
-// Oculta los filtros si todavía no hay fotos y videos a la vez
-const hayVideos = GALERIA.some(g => g.archivo && g.tipo === 'video');
-const hayFotos = GALERIA.some(g => g.archivo && g.tipo === 'foto');
-if (!(hayVideos && hayFotos)) document.querySelector('.filtros').hidden = true;
+// Filtros por servicio (se crean solos según las fotos que haya)
+const filtros = document.querySelector('.filtros');
+const categorias = [...new Set(GALERIA.filter(g => g.archivo).map(g => g.tecnica))];
+if (categorias.length < 2) filtros.hidden = true;
+filtros.innerHTML = ['Todo', ...categorias].map((c, i) =>
+  `<button class="filtro${i ? '' : ' activo'}" data-filtro="${i ? esc(c) : 'todo'}">${esc(c)}</button>`).join('');
 
-document.querySelectorAll('.filtro').forEach(f => f.addEventListener('click', () => {
-  document.querySelectorAll('.filtro').forEach(x => x.classList.toggle('activo', x === f));
+filtros.addEventListener('click', e => {
+  const f = e.target.closest('.filtro');
+  if (!f) return;
+  filtros.querySelectorAll('.filtro').forEach(x => x.classList.toggle('activo', x === f));
   rejilla.querySelectorAll('.pieza').forEach(p => {
-    p.hidden = f.dataset.filtro !== 'todo' && p.dataset.tipo !== f.dataset.filtro;
+    p.hidden = f.dataset.filtro !== 'todo' && !!p.dataset.tecnica && p.dataset.tecnica !== f.dataset.filtro;
   });
-}));
+});
 
 // Visor (ver en grande)
 const visor = document.getElementById('visor');
