@@ -348,7 +348,7 @@
       <div class="intro aparece">
         <span class="etiqueta">Galería</span>
         <h2>Mis trabajos</h2>
-        <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto para verla en grande.</p>
+        <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto o video para verlo en grande.</p>
       </div>
       <div class="filtros" role="group" aria-label="Filtrar galería"></div>
       <div class="rejilla" id="rejilla"></div>
@@ -557,6 +557,7 @@ const SERVICIOS = [
 const GALERIA = [
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "lado" },
   { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-2.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "video", archivo: "videos/diseno-depilacion-1.mp4", portada: "imagenes/diseno-depilacion-video.jpg", titulo: "Resultado en video", tecnica: "Diseño y depilación" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-sesiones.jpg", titulo: "Antes, 1.ª y 2.ª sesión", tecnica: "Rehabilitación folicular" },
   { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-5.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
@@ -572,7 +573,7 @@ const GALERIA = [
   { tipo: "foto", archivo: "imagenes/sombreado-resultado-2.jpg", titulo: "Resultado", tecnica: "Diseño, depilación y sombreado" },
   // Para agregar más, copia una línea y cambia los datos. Ejemplos:
   // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Diseño y depilación", antesDespues: "lado" },
-  // { tipo: "video", archivo: "videos/proceso-1.mp4",  titulo: "Proceso",         tecnica: "Técnica Real Brow" },
+  // { tipo: "video", archivo: "videos/proceso-1.mp4", portada: "imagenes/proceso-1.jpg", titulo: "Proceso", tecnica: "Técnica Real Brow" },
   // antesDespues: "lado" (antes a la izquierda) o "arriba" (antes arriba) agrega las etiquetas.
   // Bórralo si la foto ya trae sus etiquetas o no es de antes y después.
 ];
@@ -630,7 +631,7 @@ const marcasAD = g => g.antesDespues === 'lado'
 rejilla.innerHTML = GALERIA.map((g, i) => {
   if (!g.archivo) return '';
   const medio = g.tipo === 'video'
-    ? `<video src="${esc(g.archivo)}" muted playsinline preload="metadata"></video><span class="icono-play"></span>`
+    ? `<video src="${esc(g.archivo)}"${g.portada ? ` poster="${esc(g.portada)}"` : ''} muted loop autoplay playsinline preload="metadata"></video><span class="icono-play"></span>`
     : `<img src="${esc(g.archivo)}" alt="${esc(g.titulo + ' · ' + g.tecnica)}" loading="lazy">${marcasAD(g)}`;
   return `<button class="pieza aparece" data-tecnica="${esc(g.tecnica)}" data-i="${i}" aria-label="Ver ${esc(g.titulo)}, ${esc(g.tecnica)}">
     <span class="medio">${medio}</span><span class="pie"><strong>${esc(g.tecnica)}</strong>${esc(g.titulo)}</span>
@@ -665,6 +666,8 @@ filtros.addEventListener('click', e => {
   filtroActual = f.dataset.filtro; mostrarTodo = false; aplicarGaleria();
 });
 verMas.addEventListener('click', () => { mostrarTodo = true; aplicarGaleria(); });
+// Los videos de la galería se reproducen solos, sin sonido
+rejilla.querySelectorAll('video').forEach(v => { v.muted = true; v.play().catch(() => {}); });
 aplicarGaleria();
 
 // Visor (ver en grande)
