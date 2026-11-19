@@ -50,6 +50,7 @@
   .cabecera .logo{transition:opacity .3s}
   .cabecera.transparente{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
   .cabecera.transparente .logo{opacity:0;pointer-events:none}
+  @media (min-width:861px){.cabecera.transparente .logo{display:none}.cabecera.transparente .contenedor{width:calc(100% - 8vw)}.cabecera.transparente .menu{flex:1;justify-content:space-between}}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -77,11 +78,11 @@
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
   .portada{padding:0;position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#AF9E8F}
   .portada-foto,.portada-foto picture,.portada-foto img{position:absolute;inset:0;width:100%;height:100%}
-  .portada-foto img{object-fit:cover;object-position:70% 40%;display:block;transform:scale(1.28);transform-origin:94% 18%}  /* foto más grande a la derecha */
+  .portada-foto img{object-fit:cover;object-position:100% 0%;display:block}  /* foto pegada a la derecha; la izquierda es su misma pared */
   .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:50% 1fr;align-items:center;padding-top:72px}
   .portada-lado{padding:0 24px 0 max(24px,4vw);display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
   .portada-logo{display:block;width:min(36vw,560px,100%);height:auto}
-  .portada-frase{margin-top:clamp(14px,2.4vh,28px);font-family:var(--serif);font-size:clamp(1.9rem,2.6vw,3rem);line-height:1.1;color:var(--cafe)}
+  .portada-frase{margin:clamp(14px,2.4vh,28px) 0 clamp(24px,4vh,40px);font-family:var(--serif);font-size:clamp(1.9rem,2.6vw,3rem);line-height:1.1;color:var(--cafe)}
   .portada-frase em{display:inline;color:var(--suave)}
   .portada-texto{color:var(--texto);opacity:.8;margin:.8rem auto 1.8rem;max-width:460px}
   .portada .acciones{justify-content:center}
@@ -98,7 +99,6 @@
     .portada-logo{width:min(360px,86%)}
     .portada-frase{margin-top:8px}
     .portada-frase em{display:block}
-    .portada-foto img{transform:none}
     .bajar{display:none}
     .portada .acciones .btn{flex:1 1 100%;justify-content:center}
   }
@@ -314,7 +314,6 @@
       <div class="portada-lado">
         <h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
         <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
-        <p class="portada-texto">Henna Brow, Natural Brow, Técnica Real Brow y rehabilitación folicular en Arauca.</p>
         <div class="acciones">
           <a href="#reservar" class="btn btn-principal">Reservar mi cita</a>
           <a href="#galeria" class="btn btn-secundario">Ver mis trabajos</a>
