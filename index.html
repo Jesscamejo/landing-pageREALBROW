@@ -10,20 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   /* ============ COLORES Y TIPOGRAFÍAS (puedes cambiarlos aquí) ============ */
-  /* Colores de marca Real Brow (manual de marca) */
+  /* Colores de marca Real Brow
+     1.º gris cemento (principal) · 2.º negro (secundario) · 3.º blanco hueso */
   :root{
-    --crema:#F4EFE9;        /* blanco hueso: fondo principal */
-    --arena:#D1CDC2;        /* gris cemento: fondos de sección */
-    --nude:#CFC2B2;         /* beige: líneas y bordes */
-    --cafe:#2D2D2D;         /* negro carbón: títulos, botones y reservas */
-    --cafe-2:#4B3626;       /* café de marca: botones al pasar el mouse */
-    --marron:#4B3626;       /* café de marca: sección "Así es tu experiencia" */
-    --beige:#CFC2B2;        /* beige de marca: sección Técnica Real Brow */
+    --crema:#D1CDC2;        /* GRIS CEMENTO: fondo principal */
+    --arena:#D1CDC2;        /* gris cemento: galería */
+    --nude:#ABA69C;         /* gris cemento oscuro: líneas y bordes */
+    --cafe:#2D2D2D;         /* NEGRO: títulos, botones y secciones oscuras */
+    --cafe-2:#4A4A4A;       /* negro suave: botones al pasar el mouse */
     --texto:#2D2D2D;
-    --suave:#5E5B57;        /* gris para textos secundarios */
-    --dorado:#4B3626;       /* café de marca: acentos pequeños */
-    --dorado-claro:#CFC2B2; /* beige: acentos sobre fondo oscuro */
-    --blanco:#FAF7F3;       /* blanco hueso claro: tarjetas */
+    --suave:#57534E;        /* gris oscuro: textos secundarios */
+    --dorado:#57534E;       /* gris oscuro: etiquetas pequeñas */
+    --acento:#6E6A63;       /* gris medio: "tu mirada" del título */
+    --dorado-claro:#D1CDC2; /* gris cemento sobre fondo negro */
+    --blanco:#F4EFE9;       /* BLANCO HUESO: tarjetas y secciones claras */
     --radio:18px; --sombra:0 12px 34px rgba(20,20,20,.12);
     --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, sans-serif;
   }
@@ -46,7 +46,7 @@
   .btn-secundario:hover{background:var(--cafe);color:var(--blanco)}
 
   /* ============ CABECERA ============ */
-  .cabecera{position:sticky;top:0;z-index:50;background:rgba(244,239,233,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
+  .cabecera{position:sticky;top:0;z-index:50;background:rgba(209,205,194,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -74,7 +74,7 @@
   .hero{padding:56px 0 96px}
   .hero .contenedor{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
   .hero h1{font-size:clamp(2.8rem,7vw,5.2rem);margin-bottom:1.4rem}
-  .hero h1 em{color:var(--dorado)}
+  .hero h1 em{color:var(--acento)}
   .hero p{font-size:1.12rem;color:var(--suave);max-width:520px;margin-bottom:2rem}
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
   .hero-visual{position:relative}
@@ -94,9 +94,9 @@
   .marcador small{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
 
   /* ============ TÉCNICAS ============ */
-  .servicios{background:var(--blanco)}
+  .servicios{background:var(--crema)}
   .tarjetas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(440px,100%),1fr));gap:24px}
-  .tarjeta{background:var(--crema);border-radius:var(--radio);padding:2rem;display:flex;flex-direction:column;gap:.85rem;border:1px solid transparent;transition:.25s}
+  .tarjeta{background:var(--blanco);border-radius:var(--radio);padding:2rem;display:flex;flex-direction:column;gap:.85rem;border:1px solid transparent;transition:.25s}
   .tarjeta:hover,.js .tarjeta.visible:hover{border-color:var(--nude);transform:translateY(-4px)}
   .tarjeta .numero{font-family:var(--serif);font-style:italic;color:var(--dorado);font-size:1.15rem}
   .tarjeta h3{font-size:1.85rem}
@@ -110,12 +110,7 @@
   .enlace-reserva:hover{color:var(--dorado)}
 
   /* ============ PROCESO ============ */
-  .proceso{background:var(--marron);color:var(--beige)}
-  .proceso h2,.proceso h3{color:var(--crema)}
-  .proceso .etiqueta{color:var(--beige)}
-  .proceso .paso{border-top-color:rgba(207,194,178,.35)}
-  .proceso .paso::before{color:var(--beige);opacity:.55}
-  .proceso .paso p{color:var(--beige)}
+  .proceso{background:var(--blanco)}
   .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:paso}
   .paso{border-top:1px solid var(--nude);padding-top:1.5rem}
   .paso::before{counter-increment:paso;content:"0" counter(paso);font-family:var(--serif);font-size:3rem;color:var(--nude);display:block;line-height:1;margin-bottom:.8rem}
@@ -154,10 +149,16 @@
   .visor-cerrar{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--blanco);font-size:1.7rem;line-height:1;cursor:pointer;color:var(--cafe)}
 
   /* ============ TÉCNICA DESTACADA ============ */
-  .destacada{background:var(--beige)}
-  .destacada p{color:#45403B}
-  .destacada .etiqueta{color:var(--marron)}
-  .destacada .importante{border-left-color:var(--marron)}
+  /* Técnica Real Brow: sección negra */
+  .destacada{background:var(--cafe);color:var(--crema)}
+  .destacada h2{color:var(--blanco)}
+  .destacada p{color:var(--crema)}
+  .destacada .etiqueta{color:var(--crema)}
+  .destacada .importante{border-left-color:var(--crema)}
+  .destacada .claves li{background:rgba(244,239,233,.07);color:var(--crema)}
+  .destacada .claves strong{color:var(--blanco)}
+  .destacada .btn-principal{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
+  .destacada .btn-principal:hover{background:var(--crema);border-color:var(--crema)}
   .destacada .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
   .destacada figure.alta{aspect-ratio:9/16;max-height:780px;justify-self:center;width:100%;max-width:440px}
@@ -167,9 +168,16 @@
   .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
   .claves strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--cafe);line-height:1.2;margin-bottom:.2rem}
   .importante{border-left:2px solid var(--dorado);padding-left:1rem;font-size:.95rem}
-  .destacada.invertida{background:var(--blanco)}
+  /* Rehabilitación folicular: sección gris cemento */
+  .destacada.invertida{background:var(--crema);color:var(--texto)}
+  .destacada.invertida h2{color:var(--cafe)}
   .destacada.invertida p{color:var(--suave)}
-  .destacada.invertida .claves li{background:var(--crema)}
+  .destacada.invertida .etiqueta{color:var(--dorado)}
+  .destacada.invertida .importante{border-left-color:var(--cafe)}
+  .destacada.invertida .claves strong{color:var(--cafe)}
+  .destacada.invertida .btn-principal{background:var(--cafe);color:var(--blanco);border-color:var(--cafe)}
+  .destacada.invertida .btn-principal:hover{background:var(--cafe-2)}
+  .destacada.invertida .claves li{background:var(--blanco);color:var(--suave)}
   @media (min-width:861px){.destacada.invertida figure{order:2}}
   @media (max-width:860px){.destacada .contenedor{grid-template-columns:1fr;gap:40px}.destacada figure{max-width:440px}}
   @media (max-width:420px){.claves{grid-template-columns:1fr}}
@@ -190,7 +198,8 @@
   @media (max-width:860px){.sobre .contenedor{grid-template-columns:1fr;gap:40px}.retrato{max-width:400px}}
 
   /* ============ PREGUNTAS ============ */
-  .faq{background:var(--blanco)}
+  .sobre{background:var(--blanco)}
+  .faq{background:var(--crema)}
   .preguntas{max-width:780px}
   details{border-bottom:1px solid var(--nude);padding:1.3rem 0}
   summary{cursor:pointer;font-family:var(--serif);font-size:1.45rem;color:var(--cafe);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem}
@@ -205,7 +214,7 @@
   .reserva .etiqueta{color:var(--dorado-claro)}
   .reserva .contenedor{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
   .reserva .intro{margin-bottom:0}
-  .reserva .intro p{color:var(--nude)}
+  .reserva .intro p{color:var(--crema)}
   .info{list-style:none;display:grid;gap:1.3rem;margin-top:2.2rem}
   .info li{display:grid;gap:.1rem}
   .info span{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dorado-claro)}
@@ -221,7 +230,7 @@
   textarea{resize:vertical;min-height:96px}
   .formulario .btn{grid-column:1/-1;justify-content:center;border:0;margin-top:.3rem}
   .nota{grid-column:1/-1;font-size:.85rem;color:var(--suave);text-align:center}
-  .politicas{margin-top:2.2rem;padding:1.4rem 1.5rem;border:1px solid rgba(196,192,185,.3);border-radius:14px}
+  .politicas{margin-top:2.2rem;padding:1.4rem 1.5rem;border:1px solid rgba(209,205,194,.3);border-radius:14px}
   .politicas h3{font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dorado-claro);font-weight:500;margin-bottom:.8rem}
   .politicas ul{list-style:none;display:grid;gap:.45rem;font-size:.95rem}
   .politicas li{padding-left:1.2rem;position:relative}
@@ -231,7 +240,7 @@
   @media (max-width:540px){.formulario{grid-template-columns:1fr;padding:1.5rem}}
 
   /* ============ PIE ============ */
-  .pie-pagina{background:var(--cafe);border-top:1px solid rgba(207,194,178,.18);color:var(--nude);padding:40px 0 96px;font-size:.9rem}
+  .pie-pagina{background:var(--cafe);border-top:1px solid rgba(209,205,194,.15);color:var(--crema);padding:40px 0 96px;font-size:.9rem}
   .pie-pagina .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
   .pie-pagina .logo{color:var(--blanco);font-size:1.5rem}
   .pie-pagina .logo span{color:var(--dorado-claro)}
