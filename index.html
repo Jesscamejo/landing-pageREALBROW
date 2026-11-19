@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Real Brow Studio · Jessica Camejo</title>
-<meta name="description" content="Real Brow Studio by Jessica Camejo: diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular en Arauca, Colombia. Reserva tu cita por WhatsApp.">
+<meta name="description" content="Real Brow Studio by Jessica Camejo en Arauca, Colombia: Henna Brow, Natural Brow (diseño y depilación con cera), Técnica Real Brow y rehabilitación folicular. Reserva tu cita por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -50,6 +50,7 @@
   .cabecera .logo{transition:opacity .3s}
   .cabecera.transparente{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
   .cabecera.transparente .logo{opacity:0;pointer-events:none}
+  @media (min-width:861px){.cabecera.transparente .logo{display:none}.cabecera.transparente .menu{flex:1;justify-content:space-between}}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -73,31 +74,26 @@
     .menu a{font-size:1.1rem}
   }
 
-  /* ============ PORTADA (una foto grande + logo al lado) ============ */
+  /* ============ PORTADA: foto al centro, logo a la izquierda y frase a la derecha ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
-  .portada{padding:0;position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:var(--crema);overflow:hidden}
-  .portada-foto{position:relative;height:100vh;height:100svh;min-height:620px}
+  .portada{padding:0;position:relative;height:100vh;height:100svh;min-height:600px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--crema);overflow:hidden}
+  .portada-foto{height:100%;aspect-ratio:1100/1654;max-width:52vw}
   .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
-  .portada-contenido{position:relative;z-index:1;text-align:center;padding:110px 24px 72px max(24px, calc((100vw - 1120px) / 2))}
-  .portada-logo{display:block;width:min(520px,100%);height:auto;margin:0 auto 1.4rem}
-  .portada-frase{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;color:var(--cafe)}
-  .portada-frase em{color:var(--acento)}
-  .portada-texto{color:var(--suave);margin:.7rem auto 1.8rem;max-width:460px}
-  .portada .acciones{justify-content:center}
-  .bajar{position:absolute;left:25%;bottom:22px;z-index:1;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(45,45,45,.5);border-radius:12px}
-  .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--cafe);transform:translateX(-50%);animation:bajar 1.8s infinite}
-  @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+  .portada-lado{padding:72px 28px 0;min-width:0}
+  .portada-lado.izq{display:flex;justify-content:center}
+  .portada-logo{display:block;width:min(340px,100%);height:auto}
+  .portada-frase{font-family:var(--serif);font-size:clamp(2rem,3.6vw,3.4rem);line-height:1.1;color:var(--cafe)}
+  .portada-frase em{display:block;color:var(--acento)}
   @media (max-width:899px){
-    .portada{grid-template-columns:1fr;min-height:0;align-items:start}
-    .portada-foto{order:-1;height:auto;min-height:0}
+    .portada{grid-template-columns:1fr;height:auto;min-height:0;text-align:center}
+    .portada-foto{order:-1;width:100%;max-width:none;height:auto}
     .portada-foto img{height:auto;aspect-ratio:1100/1654;
-      -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
-    .portada-contenido{padding:0 16px 64px;margin-top:-24px}
-    .portada-logo{width:min(400px,90%)}
-    .bajar{display:none}
+      -webkit-mask-image:linear-gradient(180deg,#000 80%,transparent 100%);mask-image:linear-gradient(180deg,#000 80%,transparent 100%)}
+    .portada-lado{padding:0 16px}
+    .portada-logo{width:min(360px,86%);margin:-12px auto 4px}
+    .portada-lado.der{padding-bottom:56px}
   }
-  @media (max-width:600px){.portada .acciones .btn{flex:1 1 100%;justify-content:center}}
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
   .marcador{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;text-align:center;color:var(--cafe-2);padding:1rem;background:linear-gradient(160deg,var(--arena),var(--nude))}
@@ -112,6 +108,7 @@
   .tarjeta .numero{font-family:var(--serif);font-style:italic;color:var(--dorado);font-size:1.15rem}
   .tarjeta h3{font-size:1.85rem}
   .tarjeta p{color:var(--suave);font-size:.98rem}
+  .tarjeta .sub{font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:var(--dorado);font-weight:500;margin-top:-.3rem}
   .tarjeta .ideal{color:var(--cafe-2);font-size:.92rem;flex:1}
   .datos .precio{text-align:right}
   .datos small{display:block;font-weight:300;color:var(--suave);font-size:.8rem}
@@ -161,44 +158,36 @@
   .visor-contenido img,.visor-contenido video{max-height:86vh;max-width:min(900px,100%);width:auto;margin:auto;border-radius:12px}
   .visor-cerrar{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--blanco);font-size:1.7rem;line-height:1;cursor:pointer;color:var(--cafe)}
 
-  /* ============ TÉCNICA DESTACADA ============ */
-  /* Técnica Real Brow: sección negra */
-  .destacada{background:var(--cafe);color:var(--crema)}
-  .destacada h2{color:var(--blanco)}
-  .destacada p{color:var(--crema)}
-  .destacada .etiqueta{color:var(--crema)}
-  .destacada .importante{border-left-color:var(--crema)}
-  .destacada .claves li{background:rgba(244,239,233,.07);color:var(--crema)}
-  .destacada .claves strong{color:var(--blanco)}
-  .destacada .btn-principal{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
-  .destacada .btn-principal:hover{background:var(--crema);border-color:var(--crema)}
-  .destacada .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
-  .destacada figure.alta{aspect-ratio:9/16;max-height:780px;justify-self:center;width:100%;max-width:440px}
-  .destacada figure img{width:100%;height:100%;object-fit:cover}
-  .destacada figure .inset{position:absolute;right:14px;bottom:14px;width:40%;height:auto;aspect-ratio:3/4;border-radius:12px;border:3px solid var(--blanco);box-shadow:0 10px 26px rgba(0,0,0,.35)}
-  .destacada p{margin-top:1rem}
+  /* ============ SECCIONES DE CADA SERVICIO (foto | texto | foto) ============ */
+  .destacada .contenedor{display:grid;grid-template-columns:.8fr 1.2fr .8fr;grid-template-areas:"a t b";gap:48px;align-items:center}
+  .destacada .foto-a{grid-area:a}.destacada .texto{grid-area:t}.destacada .foto-b{grid-area:b}
+  .destacada figure{margin:0;position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra)}
+  .destacada figure img,.destacada figure video{width:100%;height:auto;display:block}
+  .destacada figure.alto img,.destacada figure.alto video{aspect-ratio:9/16;object-fit:cover}
+  .destacada p{margin-top:1rem;color:var(--suave)}
   .claves{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
   .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
   .claves strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--cafe);line-height:1.2;margin-bottom:.2rem}
-  .importante{border-left:2px solid var(--dorado);padding-left:1rem;font-size:.95rem}
-  /* Rehabilitación folicular: sección gris cemento */
-  .destacada.invertida{background:var(--crema);color:var(--texto)}
-  .destacada.invertida h2{color:var(--cafe)}
-  .destacada.invertida p{color:var(--suave)}
-  .destacada.invertida .etiqueta{color:var(--dorado)}
-  .destacada.invertida .importante{border-left-color:var(--cafe)}
-  .destacada.invertida .claves strong{color:var(--cafe)}
-  .destacada.invertida .btn-principal{background:var(--cafe);color:var(--blanco);border-color:var(--cafe)}
-  .destacada.invertida .btn-principal:hover{background:var(--cafe-2)}
-  .destacada.invertida .claves li{background:var(--blanco);color:var(--suave)}
-  @media (min-width:861px){.destacada.invertida figure{order:2}}
-  @media (max-width:860px){.destacada .contenedor{grid-template-columns:1fr;gap:40px}.destacada figure{max-width:440px}}
+  .importante{border-left:2px solid var(--cafe);padding-left:1rem;font-size:.95rem}
+  .fondo-blanco{background:var(--blanco)} .fondo-blanco .claves li{background:var(--crema)}
+  .fondo-gris{background:var(--crema)}
+  /* Técnica Real Brow: sección negra */
+  .fondo-negro{background:var(--cafe);color:var(--crema)}
+  .fondo-negro h2{color:var(--blanco)}
+  .fondo-negro p,.fondo-negro .etiqueta{color:var(--crema)}
+  .fondo-negro .importante{border-left-color:var(--crema)}
+  .fondo-negro .claves li{background:rgba(244,239,233,.07);color:var(--crema)}
+  .fondo-negro .claves strong{color:var(--blanco)}
+  .fondo-negro .btn-principal{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
+  .fondo-negro .btn-principal:hover{background:var(--crema);border-color:var(--crema)}
+  @media (max-width:1000px){
+    .destacada .contenedor{grid-template-columns:1fr 1fr;grid-template-areas:"t t" "a b";gap:32px 16px;align-items:start}
+  }
   @media (max-width:420px){.claves{grid-template-columns:1fr}}
 
   /* ============ SOBRE MÍ ============ */
   .sobre .contenedor{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
-  .fotos-sobre{position:relative;padding:0 0 48px}
+  .fotos-sobre{position:relative}
   .retrato-mini{position:absolute;right:-20px;bottom:0;width:42%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radio);border:5px solid var(--blanco);box-shadow:var(--sombra)}
   .estudio-fotos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
   .estudio-fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
@@ -302,17 +291,13 @@
 <main>
   <!-- PORTADA -->
   <section class="portada" id="inicio">
-    <div class="portada-contenido">
+    <div class="portada-lado izq aparece">
       <h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
-      <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
-      <p class="portada-texto">Diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular en Arauca.</p>
-      <div class="acciones">
-        <a href="#reservar" class="btn btn-principal">Reservar mi cita</a>
-        <a href="#galeria" class="btn btn-secundario">Ver mis trabajos</a>
-      </div>
     </div>
     <div class="portada-foto" id="foto-portada"></div>
-    <a href="#tecnicas" class="bajar" aria-label="Ver más"></a>
+    <div class="portada-lado der aparece">
+      <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
+    </div>
   </section>
 
   <!-- TÉCNICAS -->
@@ -320,22 +305,74 @@
     <div class="contenedor">
       <div class="intro aparece">
         <span class="etiqueta">Servicios</span>
-        <h2>Servicios para cada ceja</h2>
-        <p>No impongo un diseño: analizo tu rostro y tu ceja para encontrar lo que mejor te va. Precios en pesos colombianos.</p>
+        <h2>Diseñados para cada necesidad</h2>
+        <p>Analizo tu rostro y tus cejas para encontrar la técnica que mejor se adapte a ti.</p>
       </div>
       <div class="tarjetas" id="lista-servicios"></div>
     </div>
   </section>
 
-  <!-- TÉCNICA REAL BROW -->
-  <section class="destacada" id="tecnica-real-brow">
+  <!-- HENNA BROW -->
+  <section class="destacada fondo-blanco" id="henna-brow">
     <div class="contenedor">
-      <figure class="aparece">
-        <img src="imagenes/real-brow-fibras.jpg" alt="Jessica Camejo con las fibras de la Técnica Real Brow" loading="lazy" style="object-position:50% 40%">
-        <img class="inset" src="imagenes/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" loading="lazy">
-        
+      <figure class="foto-a aparece">
+        <img src="imagenes/diseno-pigmentacion-5.jpg" alt="Antes y después de Henna Brow" loading="lazy"><span class="marca-ad" style="top:12px;left:12px">Antes</span><span class="marca-ad" style="top:calc(50% + 12px);left:12px">Después</span>
       </figure>
-      <div class="aparece">
+      <div class="texto aparece">
+        <span class="etiqueta">Diseño · Depilación con cera · Henna</span>
+        <h2>Henna Brow</h2>
+        <p>Diseño de cejas personalizado según la fisonomía de tu rostro, depilación con cera y sombreado con henna.</p>
+        <p>La henna aporta definición y apariencia de mayor densidad. Ideal si quieres unas cejas más llenas y marcadas.</p>
+        <ul class="claves">
+          <li><strong>Diseño a medida</strong>Según tu fisonomía facial</li>
+          <li><strong>Depilación con cera</strong>Para una forma limpia y definida</li>
+          <li><strong>Sombreado con henna</strong>Más definición y densidad</li>
+          <li><strong>$50.000</strong>Duración: 1 h 30 min</li>
+        </ul>
+        <div class="acciones" style="margin-top:2rem">
+          <button class="btn btn-principal reservar-servicio" data-servicio="Henna Brow">Reservar Henna Brow</button>
+        </div>
+      </div>
+      <figure class="foto-b alto aparece">
+        <img src="imagenes/sombreado-diseno.jpg" alt="Diseño de cejas a medida antes del sombreado con henna" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- NATURAL BROW -->
+  <section class="destacada fondo-gris" id="natural-brow">
+    <div class="contenedor">
+      <figure class="foto-a aparece">
+        <img src="imagenes/diseno-depilacion-1.jpg" alt="Antes y después de Natural Brow" loading="lazy"><span class="marca-ad" style="top:12px;left:12px">Antes</span><span class="marca-ad" style="top:calc(50% + 12px);left:12px">Después</span>
+      </figure>
+      <div class="texto aparece">
+        <span class="etiqueta">Diseño · Depilación con cera</span>
+        <h2>Natural Brow</h2>
+        <p>Diseño de cejas personalizado según la fisonomía de tu rostro y depilación con cera para definir una forma limpia y armónica.</p>
+        <p>Respeta tu ceja natural. Ideal para mantener tus cejas definidas y en equilibrio con tus facciones.</p>
+        <ul class="claves">
+          <li><strong>Diseño a medida</strong>Según tu fisonomía facial</li>
+          <li><strong>Depilación con cera</strong>Forma limpia y armónica</li>
+          <li><strong>Resultado natural</strong>Respeta tu ceja</li>
+          <li><strong>$40.000</strong>Duración: 1 h</li>
+        </ul>
+        <div class="acciones" style="margin-top:2rem">
+          <button class="btn btn-principal reservar-servicio" data-servicio="Natural Brow">Reservar Natural Brow</button>
+        </div>
+      </div>
+      <figure class="foto-b alto aparece">
+        <video src="videos/diseno-depilacion-1.mp4" poster="imagenes/diseno-depilacion-video.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Video de resultado de Natural Brow"></video>
+      </figure>
+    </div>
+  </section>
+
+  <!-- TÉCNICA REAL BROW -->
+  <section class="destacada fondo-negro" id="tecnica-real-brow">
+    <div class="contenedor">
+      <figure class="foto-a aparece">
+        <img src="imagenes/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" loading="lazy"><span class="marca-ad" style="top:12px;left:12px">Antes</span><span class="marca-ad" style="top:calc(50% + 12px);left:12px">Después</span>
+      </figure>
+      <div class="texto aparece">
         <span class="etiqueta">Técnica estrella</span>
         <h2>Técnica Real Brow</h2>
         <p>Una técnica de embellecimiento de cejas que aplica fibras biocompatibles que simulan el vello natural, creando un efecto de mayor densidad y definición.</p>
@@ -351,17 +388,19 @@
           <button class="btn btn-principal reservar-servicio" data-servicio="Técnica Real Brow">Reservar valoración</button>
         </div>
       </div>
+      <figure class="foto-b alto aparece">
+        <img src="imagenes/real-brow-fibras.jpg" alt="Jessica Camejo mostrando las fibras de la Técnica Real Brow" loading="lazy" style="object-position:50% 40%">
+      </figure>
     </div>
   </section>
 
   <!-- REHABILITACIÓN FOLICULAR -->
-  <section class="destacada invertida" id="rehabilitacion-folicular">
+  <section class="destacada fondo-gris" id="rehabilitacion-folicular">
     <div class="contenedor">
-      <figure class="alta aparece">
-        <img src="imagenes/rehabilitacion-dermapen.jpg" alt="Rehabilitación folicular con microneedling (Dermapen) en Real Brow Studio" loading="lazy">
-        <img class="inset" src="imagenes/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" loading="lazy" style="aspect-ratio:9/16;width:34%">
+      <figure class="foto-a aparece">
+        <img src="imagenes/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" loading="lazy">
       </figure>
-      <div class="aparece">
+      <div class="texto aparece">
         <span class="etiqueta">Recupera tu vello natural</span>
         <h2>Rehabilitación folicular de cejas</h2>
         <p>Es un protocolo estético especializado que busca favorecer la recuperación del vello perdido en las cejas, ya sea por malas prácticas de depilación, micropigmentación, tatuajes, pérdida natural del vello o determinadas condiciones médicas.</p>
@@ -378,6 +417,9 @@
           <button class="btn btn-principal reservar-servicio" data-servicio="Rehabilitación folicular de cejas">Reservar valoración</button>
         </div>
       </div>
+      <figure class="foto-b alto aparece">
+        <img src="imagenes/rehabilitacion-dermapen.jpg" alt="Rehabilitación folicular con microneedling (Dermapen) en Real Brow Studio" loading="lazy">
+      </figure>
     </div>
   </section>
 
@@ -415,7 +457,6 @@
     <div class="contenedor">
       <div class="fotos-sobre aparece">
         <div class="retrato" id="foto-retrato"></div>
-        <img class="retrato-mini" src="imagenes/jessica-espejo-selfie.jpg" alt="Jessica Camejo en el espejo de Real Brow Studio" loading="lazy" style="object-position:50% 35%">
       </div>
       <div class="aparece">
         <span class="etiqueta">Sobre mí</span>
@@ -427,7 +468,7 @@
         <p class="subtitulo">Formación</p>
         <ul class="formacion">
           <li>Diseño de cejas</li>
-          <li>Depilación y sombreado de cejas</li>
+          <li>Depilación con cera y sombreado de cejas</li>
           <li>Especialización en Técnica Real Brow</li>
           <li>Rehabilitación folicular de cejas</li>
         </ul>
@@ -437,18 +478,6 @@
           <li>Resultados naturales y armónicos</li>
         </ul>
         <img class="firma" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318" loading="lazy">
-      </div>
-    </div>
-    <div class="contenedor estudio">
-      <div class="estudio-titulo aparece">
-        <span class="etiqueta">Real Brow Studio</span>
-        <h2>Un vistazo a mi estudio</h2>
-      </div>
-      <div class="estudio-fotos aparece">
-        <img src="imagenes/estudio-trabajando-perfil.jpg" alt="Jessica Camejo trabajando en el estudio" loading="lazy" style="object-position:50% 40%">
-        <img src="imagenes/portada-estudio-trabajo.jpg" alt="Jessica Camejo trabajando bajo el letrero de Real Brow Studio" loading="lazy" style="object-position:50% 60%">
-        <img src="imagenes/jessica-espejo-ceja.jpg" alt="Jessica Camejo peinando su ceja frente al espejo" loading="lazy" style="object-position:50% 45%">
-        <img src="imagenes/estudio.jpg" alt="Espacio de Real Brow Studio con el letrero de la marca" loading="lazy">
       </div>
     </div>
   </section>
@@ -603,19 +632,19 @@ const FOTOS = {
 
 // Técnicas y precios
 const SERVICIOS = [
-  { nombre: "Diseño y depilación",
-    descripcion: "Diseño personalizado según la fisonomía de tu rostro, con depilación para definir una forma limpia y armónica.",
-    ideal: "Ideal para mantener tus cejas definidas y en equilibrio con tus facciones.",
-    duracion: "1 h", precio: "$40.000" },
-  { nombre: "Diseño, depilación y sombreado",
-    descripcion: "Todo lo del diseño y la depilación, más un sombreado que aporta definición y apariencia de mayor densidad.",
+  { nombre: "Henna Brow", sub: "Diseño, depilación con cera y sombreado con henna",
+    descripcion: "Diseño personalizado según la fisonomía de tu rostro, depilación con cera y sombreado con henna que aporta definición y apariencia de mayor densidad.",
     ideal: "Ideal si quieres unas cejas más llenas y marcadas.",
     duracion: "1 h 30 min", precio: "$50.000" },
-  { nombre: "Técnica Real Brow",
+  { nombre: "Natural Brow", sub: "Diseño y depilación con cera",
+    descripcion: "Diseño personalizado según la fisonomía de tu rostro y depilación con cera para definir una forma limpia y armónica.",
+    ideal: "Ideal para mantener tus cejas definidas y en equilibrio con tus facciones.",
+    duracion: "1 h", precio: "$40.000" },
+  { nombre: "Técnica Real Brow", sub: "Fibras que simulan el vello natural",
     descripcion: "Fibras biocompatibles que simulan el vello natural para rellenar espacios sin vello y dar mayor densidad y definición.",
     ideal: "No quirúrgica y temporal. Requiere valoración previa para saber si tu ceja es apta y definir el valor.",
     duracion: "Dura de 4 a 8 meses aprox.", precio: "Según valoración", valoracion: true },
-  { nombre: "Rehabilitación folicular de cejas",
+  { nombre: "Rehabilitación folicular de cejas", sub: "Microneedling con Dermapen y activos",
     descripcion: "Protocolo con microneedling (Dermapen) y activos especializados que busca favorecer la recuperación del vello perdido en las cejas.",
     ideal: "Requiere valoración previa para definir la viabilidad y tu plan de sesiones personalizado.",
     duracion: "Mínimo 3 sesiones", precio: "$100.000", nota: "por sesión", valoracion: true },
@@ -625,25 +654,25 @@ const SERVICIOS = [
 // Mientras "archivo" esté vacío, se muestra un espacio de ejemplo.
 const GALERIA = [
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-2.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "lado" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-2.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
-  { tipo: "video", archivo: "videos/diseno-depilacion-1.mp4", portada: "imagenes/diseno-depilacion-video.jpg", titulo: "Resultado en video", tecnica: "Diseño y depilación" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-2.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
+  { tipo: "video", archivo: "videos/diseno-depilacion-1.mp4", portada: "imagenes/diseno-depilacion-video.jpg", titulo: "Resultado en video", tecnica: "Natural Brow" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-sesiones.jpg", titulo: "Antes, 1.ª y 2.ª sesión", tecnica: "Rehabilitación folicular" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-5.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-5.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-1.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-3.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-3.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-3.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-1.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-1.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
-  { tipo: "foto", archivo: "imagenes/sombreado-antes-despues.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "lado" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-6.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-1.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/sombreado-antes-despues.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "lado" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-6.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/real-brow-antes-despues-4.jpg", titulo: "Antes y después", tecnica: "Técnica Real Brow", antesDespues: "arriba" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-antes-durante-despues.jpg", titulo: "Antes, durante y después", tecnica: "Rehabilitación folicular" },
-  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-4.jpg", titulo: "Antes y después", tecnica: "Diseño, depilación y sombreado", antesDespues: "arriba" },
-  { tipo: "foto", archivo: "imagenes/sombreado-diseno.jpg", titulo: "Diseño a medida", tecnica: "Diseño, depilación y sombreado" },
-  { tipo: "foto", archivo: "imagenes/diseno-depilacion-1.jpg", titulo: "Resultado", tecnica: "Diseño y depilación" },
+  { tipo: "foto", archivo: "imagenes/diseno-pigmentacion-4.jpg", titulo: "Antes y después", tecnica: "Henna Brow", antesDespues: "arriba" },
+  { tipo: "foto", archivo: "imagenes/sombreado-diseno.jpg", titulo: "Diseño a medida", tecnica: "Henna Brow" },
+  { tipo: "foto", archivo: "imagenes/diseno-depilacion-1.jpg", titulo: "Resultado", tecnica: "Natural Brow" },
   { tipo: "foto", archivo: "imagenes/rehabilitacion-evolucion-2.jpg", titulo: "Evolución por sesiones", tecnica: "Rehabilitación folicular" },
   // Para agregar más, copia una línea y cambia los datos. Ejemplos:
-  // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Diseño y depilación", antesDespues: "lado" },
+  // { tipo: "foto",  archivo: "imagenes/diseno-1.jpg", titulo: "Antes y después", tecnica: "Natural Brow", antesDespues: "lado" },
   // { tipo: "video", archivo: "videos/proceso-1.mp4", portada: "imagenes/proceso-1.jpg", titulo: "Proceso", tecnica: "Técnica Real Brow" },
   // antesDespues: "lado" (antes a la izquierda) o "arriba" (antes arriba) agrega las etiquetas.
   // Bórralo si la foto ya trae sus etiquetas o no es de antes y después.
@@ -672,7 +701,7 @@ const selector = document.getElementById('servicio');
 lista.innerHTML = SERVICIOS.map((s, i) => `
   <article class="tarjeta aparece">
     <span class="numero">${String(i + 1).padStart(2, '0')}</span>
-    <h3>${esc(s.nombre)}</h3>
+    <h3>${esc(s.nombre)}</h3>${s.sub ? `<p class="sub">${esc(s.sub)}</p>` : ''}
     <p>${esc(s.descripcion)}</p>
     <p class="ideal">${esc(s.ideal)}</p>
     <div class="datos"><span>${esc(s.duracion)}</span><span class="precio"><strong>${esc(s.precio)}</strong>${s.nota ? `<small>${esc(s.nota)}</small>` : ''}</span></div>
