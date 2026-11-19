@@ -55,6 +55,9 @@
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
   .logo img{height:50px;width:auto;display:block}
+  /* Cabecera: "REAL BROW STUDIO" con la misma letra del logo */
+  .logo-texto{font-family:var(--sans);font-weight:400;font-size:clamp(1.15rem,1.9vw,1.75rem);letter-spacing:.32em;white-space:nowrap;color:var(--cafe)}
+  @media (max-width:420px){.logo-texto{font-size:1rem;letter-spacing:.24em}}
   .pie-pagina .logo img{height:72px}
   .logo small{font-family:var(--sans);font-size:.62rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--suave);margin-left:.45rem;vertical-align:middle}
   .menu{display:flex;gap:2rem;list-style:none;align-items:center}
@@ -300,7 +303,7 @@
 
 <header class="cabecera">
   <div class="contenedor">
-    <a href="#inicio" class="logo"><img src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></a>
+    <a href="#inicio" class="logo logo-texto" aria-label="Real Brow Studio, ir al inicio">REAL BROW STUDIO</a>
     <button class="boton-menu" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
       <span></span><span></span><span></span>
     </button>
