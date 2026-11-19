@@ -50,9 +50,6 @@
   .cabecera .logo{transition:opacity .3s}
   .cabecera.transparente{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
   .cabecera.transparente .logo{opacity:0;pointer-events:none}
-  .cabecera.transparente .menu a:not(.btn){color:var(--blanco)}
-  .cabecera.transparente .menu .btn{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
-  .cabecera.transparente .boton-menu span{background:var(--blanco)}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -76,33 +73,31 @@
     .menu a{font-size:1.1rem}
   }
 
-  /* ============ PORTADA (foto a pantalla completa) ============ */
+  /* ============ PORTADA (una foto grande + logo al lado) ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
-  .portada{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:120px 16px 64px;overflow:hidden;background:var(--cafe);color:var(--blanco)}
-  .portada-foto{position:absolute;inset:0;display:grid}
-  .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:none;grid-area:1/1}
-  .portada-foto img.principal{display:block}
-  @media (min-width:900px){
-    .portada-foto{grid-template-columns:repeat(3,1fr);gap:3px;background:var(--cafe)}
-    .portada-foto img{display:block;grid-area:auto}
-    .portada::after{background:linear-gradient(180deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,.25) 25%,rgba(20,20,20,.35) 50%,rgba(20,20,20,.8) 80%,rgba(20,20,20,.92) 100%)}
-  }
-  .portada::after{content:"";position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(180deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,0) 22%,rgba(20,20,20,0) 42%,rgba(20,20,20,.7) 72%,rgba(20,20,20,.9) 100%)}
-  .portada-contenido{position:relative;z-index:1;max-width:760px}
-  .portada-logo{display:block;width:min(620px,88vw);height:auto;margin:0 auto 1.2rem}
-  .portada-frase{font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.15;color:var(--blanco)}
-  .portada-frase em{color:var(--crema)}
-  .portada-texto{color:var(--crema);margin:.7rem auto 1.8rem;max-width:540px}
+  .portada{padding:0;position:relative;min-height:100vh;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:var(--crema);overflow:hidden}
+  .portada-foto{position:relative;height:100vh;height:100svh;min-height:620px}
+  .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+  .portada-contenido{position:relative;z-index:1;text-align:center;padding:110px 24px 72px max(24px, calc((100vw - 1120px) / 2))}
+  .portada-logo{display:block;width:min(520px,100%);height:auto;margin:0 auto 1.4rem}
+  .portada-frase{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.15;color:var(--cafe)}
+  .portada-frase em{color:var(--acento)}
+  .portada-texto{color:var(--suave);margin:.7rem auto 1.8rem;max-width:460px}
   .portada .acciones{justify-content:center}
-  .btn-claro{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
-  .btn-claro:hover{background:var(--crema);border-color:var(--crema)}
-  .btn-borde-claro{background:transparent;color:var(--blanco);border-color:rgba(244,239,233,.75)}
-  .btn-borde-claro:hover{background:var(--blanco);color:var(--cafe)}
-  .bajar{position:absolute;left:50%;bottom:18px;z-index:1;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(244,239,233,.7);border-radius:12px}
-  .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--blanco);transform:translateX(-50%);animation:bajar 1.8s infinite}
+  .bajar{position:absolute;left:25%;bottom:22px;z-index:1;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(45,45,45,.5);border-radius:12px}
+  .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--cafe);transform:translateX(-50%);animation:bajar 1.8s infinite}
   @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
-  @media (max-width:600px){.portada{padding-bottom:72px}.portada .acciones .btn{flex:1 1 100%;justify-content:center}}
+  @media (max-width:899px){
+    .portada{grid-template-columns:1fr;min-height:0;align-items:start}
+    .portada-foto{order:-1;height:auto;min-height:0}
+    .portada-foto img{height:auto;aspect-ratio:1100/1654;
+      -webkit-mask-image:linear-gradient(180deg,#000 78%,transparent 100%);mask-image:linear-gradient(180deg,#000 78%,transparent 100%)}
+    .portada-contenido{padding:0 16px 64px;margin-top:-24px}
+    .portada-logo{width:min(400px,90%)}
+    .bajar{display:none}
+  }
+  @media (max-width:600px){.portada .acciones .btn{flex:1 1 100%;justify-content:center}}
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
   .marcador{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;text-align:center;color:var(--cafe-2);padding:1rem;background:linear-gradient(160deg,var(--arena),var(--nude))}
@@ -205,7 +200,7 @@
   .sobre .contenedor{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
   .fotos-sobre{position:relative;padding:0 0 48px}
   .retrato-mini{position:absolute;right:-20px;bottom:0;width:42%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radio);border:5px solid var(--blanco);box-shadow:var(--sombra)}
-  .estudio-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:72px}
+  .estudio-fotos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
   .estudio-fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
   .sobre .contenedor.estudio{display:block}
   .estudio-titulo{margin-top:80px;text-align:center}
@@ -307,16 +302,16 @@
 <main>
   <!-- PORTADA -->
   <section class="portada" id="inicio">
-    <div class="portada-foto" id="foto-portada"></div>
     <div class="portada-contenido">
-      <h1><img class="portada-logo" src="imagenes/logo-real-brow-blanco.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
+      <h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
       <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
       <p class="portada-texto">Diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular en Arauca.</p>
       <div class="acciones">
-        <a href="#reservar" class="btn btn-claro">Reservar mi cita</a>
-        <a href="#galeria" class="btn btn-borde-claro">Ver mis trabajos</a>
+        <a href="#reservar" class="btn btn-principal">Reservar mi cita</a>
+        <a href="#galeria" class="btn btn-secundario">Ver mis trabajos</a>
       </div>
     </div>
+    <div class="portada-foto" id="foto-portada"></div>
     <a href="#tecnicas" class="bajar" aria-label="Ver más"></a>
   </section>
 
@@ -451,8 +446,9 @@
       </div>
       <div class="estudio-fotos aparece">
         <img src="imagenes/estudio-trabajando-perfil.jpg" alt="Jessica Camejo trabajando en el estudio" loading="lazy" style="object-position:50% 40%">
+        <img src="imagenes/portada-estudio-trabajo.jpg" alt="Jessica Camejo trabajando bajo el letrero de Real Brow Studio" loading="lazy" style="object-position:50% 60%">
+        <img src="imagenes/jessica-espejo-ceja.jpg" alt="Jessica Camejo peinando su ceja frente al espejo" loading="lazy" style="object-position:50% 45%">
         <img src="imagenes/estudio.jpg" alt="Espacio de Real Brow Studio con el letrero de la marca" loading="lazy">
-        <img src="imagenes/rehabilitacion-dermapen-2.jpg" alt="Tratamiento en Real Brow Studio" loading="lazy" style="object-position:50% 70%">
       </div>
     </div>
   </section>
@@ -601,8 +597,7 @@ const ESTUDIO = {
 
 // Fotos principales (guárdalas en la carpeta "imagenes")
 const FOTOS = {
-  // Portada: en computadora se ven las 3 fotos lado a lado; en celular solo la del medio
-  portada: ["imagenes/portada-estudio-trabajo.jpg", "imagenes/portada-manos-ceja.jpg", "imagenes/jessica-espejo-ceja.jpg"],
+  portada: "imagenes/portada-real-brow.jpg",   // Foto grande de la portada
   retrato: "imagenes/jessica-camejo.jpg",   // Foto de "Sobre mí": Jessica mirando a la cámara
 };
 
@@ -668,8 +663,7 @@ const ponerFoto = (id, archivo, alt, texto) => {
     ? `<img src="${esc(archivo)}" alt="${esc(alt)}">`
     : marcador(texto);
 };
-document.getElementById('foto-portada').innerHTML = [].concat(FOTOS.portada).map((f, i, todas) =>
-  `<img src="${esc(f)}" alt="Real Brow Studio de Jessica Camejo" class="${i === Math.floor(todas.length / 2) ? 'principal' : ''}">`).join('');
+ponerFoto('foto-portada', FOTOS.portada, 'Jessica Camejo, especialista en la Técnica Real Brow', 'Tu foto de portada aquí');
 ponerFoto('foto-retrato', FOTOS.retrato, 'Jessica Camejo, especialista en cejas y fundadora de Real Brow Studio', 'Tu foto aquí');
 
 // Técnicas
