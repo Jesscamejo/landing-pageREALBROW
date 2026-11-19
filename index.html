@@ -79,8 +79,14 @@
   /* ============ PORTADA (foto a pantalla completa) ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
   .portada{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:120px 16px 64px;overflow:hidden;background:var(--cafe);color:var(--blanco)}
-  .portada-foto{position:absolute;inset:0}
-  .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .portada-foto{position:absolute;inset:0;display:grid}
+  .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:none;grid-area:1/1}
+  .portada-foto img.principal{display:block}
+  @media (min-width:900px){
+    .portada-foto{grid-template-columns:repeat(3,1fr);gap:3px;background:var(--cafe)}
+    .portada-foto img{display:block;grid-area:auto}
+    .portada::after{background:linear-gradient(180deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,.25) 25%,rgba(20,20,20,.35) 50%,rgba(20,20,20,.8) 80%,rgba(20,20,20,.92) 100%)}
+  }
   .portada::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(180deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,0) 22%,rgba(20,20,20,0) 42%,rgba(20,20,20,.7) 72%,rgba(20,20,20,.9) 100%)}
   .portada-contenido{position:relative;z-index:1;max-width:760px}
@@ -96,7 +102,6 @@
   .bajar{position:absolute;left:50%;bottom:18px;z-index:1;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(244,239,233,.7);border-radius:12px}
   .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--blanco);transform:translateX(-50%);animation:bajar 1.8s infinite}
   @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
-  @media (min-aspect-ratio:1/1){.portada-foto img{object-position:50% 46%}}
   @media (max-width:600px){.portada{padding-bottom:72px}.portada .acciones .btn{flex:1 1 100%;justify-content:center}}
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
@@ -124,6 +129,8 @@
   .proceso{background:var(--blanco)}
   .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:paso}
   .paso{border-top:1px solid var(--nude);padding-top:1.5rem}
+  .proceso .paso{border-top:0;padding-top:0;display:flex;flex-direction:column}
+  .paso-foto{order:-1;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radio);margin-bottom:1.4rem;box-shadow:var(--sombra)}
   .paso::before{counter-increment:paso;content:"0" counter(paso);font-family:var(--serif);font-size:3rem;color:var(--nude);display:block;line-height:1;margin-bottom:.8rem}
   .paso h3{font-size:1.55rem;margin-bottom:.5rem}
   .paso p{color:var(--suave)}
@@ -174,6 +181,7 @@
   .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
   .destacada figure.alta{aspect-ratio:9/16;max-height:780px;justify-self:center;width:100%;max-width:440px}
   .destacada figure img{width:100%;height:100%;object-fit:cover}
+  .destacada figure .inset{position:absolute;right:14px;bottom:14px;width:40%;height:auto;aspect-ratio:3/4;border-radius:12px;border:3px solid var(--blanco);box-shadow:0 10px 26px rgba(0,0,0,.35)}
   .destacada p{margin-top:1rem}
   .claves{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
   .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
@@ -195,6 +203,14 @@
 
   /* ============ SOBRE MÍ ============ */
   .sobre .contenedor{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+  .fotos-sobre{position:relative;padding:0 0 48px}
+  .retrato-mini{position:absolute;right:-20px;bottom:0;width:42%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radio);border:5px solid var(--blanco);box-shadow:var(--sombra)}
+  .estudio-fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:72px}
+  .estudio-fotos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:14px}
+  .sobre .contenedor.estudio{display:block}
+  .estudio-titulo{margin-top:80px;text-align:center}
+  .estudio-titulo + .estudio-fotos{margin-top:28px}
+  @media (max-width:700px){.estudio-fotos{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.estudio-fotos img{scroll-snap-align:start}.retrato-mini{right:0}}
   .retrato{aspect-ratio:4/5;border-radius:999px 999px var(--radio) var(--radio);overflow:hidden;box-shadow:var(--sombra)}
   .retrato img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
   .cargo{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe-2);margin-top:.8rem}
@@ -206,7 +222,7 @@
   .firma{display:block;width:240px;height:auto;margin-top:1.8rem}
   .valores{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem;list-style:none}
   .valores li{padding:.45rem 1rem;border:1px solid var(--nude);border-radius:999px;font-size:.88rem;color:var(--cafe)}
-  @media (max-width:860px){.sobre .contenedor{grid-template-columns:1fr;gap:40px}.retrato{max-width:400px}}
+  @media (max-width:860px){.sobre .contenedor{grid-template-columns:1fr;gap:40px}.fotos-sobre{max-width:400px}}
 
   /* ============ PREGUNTAS ============ */
   .sobre{background:var(--blanco)}
@@ -320,9 +336,9 @@
   <section class="destacada" id="tecnica-real-brow">
     <div class="contenedor">
       <figure class="aparece">
-        <img src="imagenes/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" loading="lazy">
-        <span class="marca-ad" style="top:14px;left:14px">Antes</span>
-        <span class="marca-ad" style="top:calc(50% + 14px);left:14px">Después</span>
+        <img src="imagenes/real-brow-fibras.jpg" alt="Jessica Camejo con las fibras de la Técnica Real Brow" loading="lazy" style="object-position:50% 40%">
+        <img class="inset" src="imagenes/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" loading="lazy">
+        
       </figure>
       <div class="aparece">
         <span class="etiqueta">Técnica estrella</span>
@@ -347,7 +363,8 @@
   <section class="destacada invertida" id="rehabilitacion-folicular">
     <div class="contenedor">
       <figure class="alta aparece">
-        <img src="imagenes/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" loading="lazy">
+        <img src="imagenes/rehabilitacion-dermapen.jpg" alt="Rehabilitación folicular con microneedling (Dermapen) en Real Brow Studio" loading="lazy">
+        <img class="inset" src="imagenes/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" loading="lazy" style="aspect-ratio:9/16;width:34%">
       </figure>
       <div class="aparece">
         <span class="etiqueta">Recupera tu vello natural</span>
@@ -377,9 +394,9 @@
         <h2>Así es tu experiencia</h2>
       </div>
       <div class="pasos">
-        <div class="paso aparece"><h3>Valoración</h3><p>Conversamos sobre lo que buscas y revisamos tu ceja para recomendarte el servicio o el plan ideal para ti.</p></div>
-        <div class="paso aparece"><h3>Diseño a medida</h3><p>Medimos y dibujamos la forma según las proporciones de tu rostro. No empezamos hasta que te encante.</p></div>
-        <div class="paso aparece"><h3>Aplicación y cuidados</h3><p>Realizamos el procedimiento con calma, en un espacio pensado para tu comodidad, y te explico los cuidados para cuidar tu resultado.</p></div>
+        <div class="paso aparece"><img class="paso-foto" src="imagenes/jessica-guantes.jpg" alt="Jessica Camejo preparándose para atender" loading="lazy" style="object-position:50% 45%"><h3>Valoración</h3><p>Conversamos sobre lo que buscas y revisamos tu ceja para recomendarte el servicio o el plan ideal para ti.</p></div>
+        <div class="paso aparece"><img class="paso-foto" src="imagenes/proceso-diseno.jpg" alt="Jessica Camejo diseñando las cejas de una clienta" loading="lazy" style="object-position:50% 40%"><h3>Diseño a medida</h3><p>Medimos y dibujamos la forma según las proporciones de tu rostro. No empezamos hasta que te encante.</p></div>
+        <div class="paso aparece"><img class="paso-foto" src="imagenes/proceso-cuidados.jpg" alt="Jessica Camejo terminando el procedimiento de cejas" loading="lazy" style="object-position:50% 35%"><h3>Aplicación y cuidados</h3><p>Realizamos el procedimiento con calma, en un espacio pensado para tu comodidad, y te explico los cuidados para cuidar tu resultado.</p></div>
       </div>
     </div>
   </section>
@@ -401,7 +418,10 @@
   <!-- SOBRE MÍ -->
   <section class="sobre" id="sobre-mi">
     <div class="contenedor">
-      <div class="retrato aparece" id="foto-retrato"></div>
+      <div class="fotos-sobre aparece">
+        <div class="retrato" id="foto-retrato"></div>
+        <img class="retrato-mini" src="imagenes/jessica-espejo-selfie.jpg" alt="Jessica Camejo en el espejo de Real Brow Studio" loading="lazy" style="object-position:50% 35%">
+      </div>
       <div class="aparece">
         <span class="etiqueta">Sobre mí</span>
         <h2>Hola, soy Jessica Camejo</h2>
@@ -422,6 +442,17 @@
           <li>Resultados naturales y armónicos</li>
         </ul>
         <img class="firma" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318" loading="lazy">
+      </div>
+    </div>
+    <div class="contenedor estudio">
+      <div class="estudio-titulo aparece">
+        <span class="etiqueta">Real Brow Studio</span>
+        <h2>Un vistazo a mi estudio</h2>
+      </div>
+      <div class="estudio-fotos aparece">
+        <img src="imagenes/estudio-trabajando-perfil.jpg" alt="Jessica Camejo trabajando en el estudio" loading="lazy" style="object-position:50% 40%">
+        <img src="imagenes/estudio.jpg" alt="Espacio de Real Brow Studio con el letrero de la marca" loading="lazy">
+        <img src="imagenes/rehabilitacion-dermapen-2.jpg" alt="Tratamiento en Real Brow Studio" loading="lazy" style="object-position:50% 70%">
       </div>
     </div>
   </section>
@@ -570,7 +601,8 @@ const ESTUDIO = {
 
 // Fotos principales (guárdalas en la carpeta "imagenes")
 const FOTOS = {
-  portada: "imagenes/portada-clienta.jpg",  // Foto de fondo de la portada (pantalla completa)
+  // Portada: en computadora se ven las 3 fotos lado a lado; en celular solo la del medio
+  portada: ["imagenes/portada-estudio-trabajo.jpg", "imagenes/portada-manos-ceja.jpg", "imagenes/jessica-espejo-ceja.jpg"],
   retrato: "imagenes/jessica-camejo.jpg",   // Foto de "Sobre mí": Jessica mirando a la cámara
 };
 
@@ -636,7 +668,8 @@ const ponerFoto = (id, archivo, alt, texto) => {
     ? `<img src="${esc(archivo)}" alt="${esc(alt)}">`
     : marcador(texto);
 };
-ponerFoto('foto-portada', FOTOS.portada, 'Clienta de Real Brow Studio con cejas diseñadas', 'Tu foto de portada aquí');
+document.getElementById('foto-portada').innerHTML = [].concat(FOTOS.portada).map((f, i, todas) =>
+  `<img src="${esc(f)}" alt="Real Brow Studio de Jessica Camejo" class="${i === Math.floor(todas.length / 2) ? 'principal' : ''}">`).join('');
 ponerFoto('foto-retrato', FOTOS.retrato, 'Jessica Camejo, especialista en cejas y fundadora de Real Brow Studio', 'Tu foto aquí');
 
 // Técnicas
