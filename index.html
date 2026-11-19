@@ -46,7 +46,13 @@
   .btn-secundario:hover{background:var(--cafe);color:var(--blanco)}
 
   /* ============ CABECERA ============ */
-  .cabecera{position:sticky;top:0;z-index:50;background:rgba(209,205,194,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08)}
+  .cabecera{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(209,205,194,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(20,20,20,.08);transition:background .3s,border-color .3s}
+  .cabecera .logo{transition:opacity .3s}
+  .cabecera.transparente{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .cabecera.transparente .logo{opacity:0;pointer-events:none}
+  .cabecera.transparente .menu a:not(.btn){color:var(--blanco)}
+  .cabecera.transparente .menu .btn{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
+  .cabecera.transparente .boton-menu span{background:var(--blanco)}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -70,24 +76,28 @@
     .menu a{font-size:1.1rem}
   }
 
-  /* ============ PORTADA ============ */
-  .hero{padding:56px 0 96px}
-  .hero .contenedor{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-  .hero h1{font-size:clamp(2.8rem,7vw,5.2rem);margin-bottom:1.4rem}
-  .hero h1 em{color:var(--acento)}
-  .hero p{font-size:1.12rem;color:var(--suave);max-width:520px;margin-bottom:2rem}
+  /* ============ PORTADA (foto a pantalla completa) ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
-  .hero-visual{position:relative}
-  .arco{aspect-ratio:4/5;border-radius:160px 160px var(--radio) var(--radio);overflow:hidden;box-shadow:var(--sombra)}
-  .arco img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-  .sello{position:absolute;left:-28px;bottom:44px;background:var(--blanco);padding:1rem 1.3rem;border-radius:14px;box-shadow:var(--sombra);font-size:.9rem;color:var(--suave)}
-  .sello strong{display:block;font-family:var(--serif);font-size:1.35rem;color:var(--cafe);font-weight:500}
-  @media (max-width:860px){
-    .hero .contenedor{grid-template-columns:1fr;gap:40px}
-    .hero-visual{max-width:400px;width:100%;margin-inline:auto}
-    .arco{border-radius:90px 90px var(--radio) var(--radio)}
-    .sello{left:12px;bottom:24px}
-  }
+  .portada{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;justify-content:center;text-align:center;padding:120px 16px 64px;overflow:hidden;background:var(--cafe);color:var(--blanco)}
+  .portada-foto{position:absolute;inset:0}
+  .portada-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .portada::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(180deg,rgba(20,20,20,.55) 0%,rgba(20,20,20,0) 22%,rgba(20,20,20,0) 42%,rgba(20,20,20,.7) 72%,rgba(20,20,20,.9) 100%)}
+  .portada-contenido{position:relative;z-index:1;max-width:760px}
+  .portada-logo{display:block;width:min(620px,88vw);height:auto;margin:0 auto 1.2rem}
+  .portada-frase{font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.15;color:var(--blanco)}
+  .portada-frase em{color:var(--crema)}
+  .portada-texto{color:var(--crema);margin:.7rem auto 1.8rem;max-width:540px}
+  .portada .acciones{justify-content:center}
+  .btn-claro{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
+  .btn-claro:hover{background:var(--crema);border-color:var(--crema)}
+  .btn-borde-claro{background:transparent;color:var(--blanco);border-color:rgba(244,239,233,.75)}
+  .btn-borde-claro:hover{background:var(--blanco);color:var(--cafe)}
+  .bajar{position:absolute;left:50%;bottom:18px;z-index:1;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(244,239,233,.7);border-radius:12px}
+  .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--blanco);transform:translateX(-50%);animation:bajar 1.8s infinite}
+  @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+  @media (min-aspect-ratio:1/1){.portada-foto img{object-position:50% 46%}}
+  @media (max-width:600px){.portada{padding-bottom:72px}.portada .acciones .btn{flex:1 1 100%;justify-content:center}}
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
   .marcador{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;text-align:center;color:var(--cafe-2);padding:1rem;background:linear-gradient(160deg,var(--arena),var(--nude))}
@@ -249,6 +259,8 @@
   .redes a{text-decoration:none}
   .redes a:hover{color:var(--blanco)}
   .flotante{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;align-items:center;gap:.5rem;background:var(--cafe);color:var(--blanco);text-decoration:none;padding:.85rem 1.3rem;border-radius:999px;box-shadow:0 10px 26px rgba(0,0,0,.3);font:500 .92rem var(--sans);letter-spacing:.04em}
+  .flotante{transition:opacity .3s,transform .3s}
+  .flotante.oculto{opacity:0;transform:translateY(16px);pointer-events:none}
   .flotante svg{width:20px;height:20px}
 
   /* Animación suave al hacer scroll */
@@ -278,22 +290,18 @@
 
 <main>
   <!-- PORTADA -->
-  <section class="hero" id="inicio">
-    <div class="contenedor">
-      <div class="aparece">
-        <span class="etiqueta">Real Brow Studio · Arauca</span>
-        <h1>Cejas que enmarcan <em>tu mirada</em></h1>
-        <p>Diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular. Cada ceja es única: encontramos el equilibrio que mejor resalta tus facciones y tu belleza natural.</p>
-        <div class="acciones">
-          <a href="#reservar" class="btn btn-principal">Reservar mi cita</a>
-          <a href="#galeria" class="btn btn-secundario">Ver mis trabajos</a>
-        </div>
-      </div>
-      <div class="hero-visual aparece">
-        <div class="arco" id="foto-portada"></div>
-        <div class="sello"><strong>Diseño a medida</strong>según tu fisonomía facial</div>
+  <section class="portada" id="inicio">
+    <div class="portada-foto" id="foto-portada"></div>
+    <div class="portada-contenido">
+      <h1><img class="portada-logo" src="imagenes/logo-real-brow-blanco.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
+      <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
+      <p class="portada-texto">Diseño de cejas, sombreado, Técnica Real Brow y rehabilitación folicular en Arauca.</p>
+      <div class="acciones">
+        <a href="#reservar" class="btn btn-claro">Reservar mi cita</a>
+        <a href="#galeria" class="btn btn-borde-claro">Ver mis trabajos</a>
       </div>
     </div>
+    <a href="#tecnicas" class="bajar" aria-label="Ver más"></a>
   </section>
 
   <!-- TÉCNICAS -->
@@ -562,7 +570,7 @@ const ESTUDIO = {
 
 // Fotos principales (guárdalas en la carpeta "imagenes")
 const FOTOS = {
-  portada: "imagenes/estudio.jpg",          // Foto de inicio: el estudio
+  portada: "imagenes/portada-clienta.jpg",  // Foto de fondo de la portada (pantalla completa)
   retrato: "imagenes/jessica-camejo.jpg",   // Foto de "Sobre mí": Jessica mirando a la cámara
 };
 
@@ -628,7 +636,7 @@ const ponerFoto = (id, archivo, alt, texto) => {
     ? `<img src="${esc(archivo)}" alt="${esc(alt)}">`
     : marcador(texto);
 };
-ponerFoto('foto-portada', FOTOS.portada, 'Real Brow Studio de Jessica Camejo en Arauca', 'Tu foto de portada aquí');
+ponerFoto('foto-portada', FOTOS.portada, 'Clienta de Real Brow Studio con cejas diseñadas', 'Tu foto de portada aquí');
 ponerFoto('foto-retrato', FOTOS.retrato, 'Jessica Camejo, especialista en cejas y fundadora de Real Brow Studio', 'Tu foto aquí');
 
 // Técnicas
@@ -766,12 +774,24 @@ form.addEventListener('submit', e => {
 // Menú en celular
 const botonMenu = document.querySelector('.boton-menu');
 const menu = document.getElementById('menu');
+const cabecera = document.querySelector('.cabecera');
+// La cabecera es transparente sobre la foto de portada y se vuelve sólida al bajar
+const flotante = document.querySelector('.flotante');
+const actualizarCabecera = () => {
+  const sobreLaFoto = window.scrollY < window.innerHeight * 0.6;
+  cabecera.classList.toggle('transparente', sobreLaFoto && !menu.classList.contains('abierto'));
+  flotante.classList.toggle('oculto', sobreLaFoto);   // el botón flotante aparece al bajar
+};
+addEventListener('scroll', actualizarCabecera, { passive: true });
+addEventListener('resize', actualizarCabecera);
+actualizarCabecera();
 botonMenu.addEventListener('click', () => {
   const abierto = menu.classList.toggle('abierto');
   botonMenu.setAttribute('aria-expanded', abierto);
+  actualizarCabecera();
 });
 menu.addEventListener('click', e => {
-  if (e.target.closest('a')) { menu.classList.remove('abierto'); botonMenu.setAttribute('aria-expanded', false); }
+  if (e.target.closest('a')) { menu.classList.remove('abierto'); botonMenu.setAttribute('aria-expanded', false); actualizarCabecera(); }
 });
 
 // Animación al hacer scroll
