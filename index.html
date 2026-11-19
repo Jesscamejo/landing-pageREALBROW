@@ -197,6 +197,11 @@
   .fondo-negro .btn-principal{background:var(--blanco);color:var(--cafe);border-color:var(--blanco)}
   .fondo-negro .btn-principal:hover{background:var(--crema);border-color:var(--crema)}
   .destacada figure.igual img{aspect-ratio:3/4;object-fit:cover}
+  /* Técnica Real Brow: fotos más grandes, ambas del mismo tamaño */
+  @media (min-width:1001px){
+    #tecnica-real-brow .contenedor{width:min(1440px, 100% - 64px);grid-template-columns:1fr 1fr 1fr;gap:48px}
+    #tecnica-real-brow figure.igual img{aspect-ratio:2/3}
+  }
   .destacada.una-foto .contenedor{grid-template-columns:.85fr 1.15fr;grid-template-areas:"a t";gap:64px}
   .destacada.una-foto.derecha .contenedor{grid-template-columns:1.15fr .85fr;grid-template-areas:"t a"}
   .destacada.una-foto figure{width:100%;max-width:440px;justify-self:center}
