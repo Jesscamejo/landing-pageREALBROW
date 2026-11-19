@@ -16,7 +16,9 @@
     --arena:#D1CDC2;        /* gris cemento: fondos de sección */
     --nude:#CFC2B2;         /* beige: líneas y bordes */
     --cafe:#2D2D2D;         /* negro carbón: títulos, botones y reservas */
-    --cafe-2:#4A4A4A;       /* negro carbón suave: botones al pasar el mouse */
+    --cafe-2:#4B3626;       /* café de marca: botones al pasar el mouse */
+    --marron:#4B3626;       /* café de marca: sección "Así es tu experiencia" */
+    --beige:#CFC2B2;        /* beige de marca: sección Técnica Real Brow */
     --texto:#2D2D2D;
     --suave:#5E5B57;        /* gris para textos secundarios */
     --dorado:#4B3626;       /* café de marca: acentos pequeños */
@@ -108,6 +110,12 @@
   .enlace-reserva:hover{color:var(--dorado)}
 
   /* ============ PROCESO ============ */
+  .proceso{background:var(--marron);color:var(--beige)}
+  .proceso h2,.proceso h3{color:var(--crema)}
+  .proceso .etiqueta{color:var(--beige)}
+  .proceso .paso{border-top-color:rgba(207,194,178,.35)}
+  .proceso .paso::before{color:var(--beige);opacity:.55}
+  .proceso .paso p{color:var(--beige)}
   .pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;counter-reset:paso}
   .paso{border-top:1px solid var(--nude);padding-top:1.5rem}
   .paso::before{counter-increment:paso;content:"0" counter(paso);font-family:var(--serif);font-size:3rem;color:var(--nude);display:block;line-height:1;margin-bottom:.8rem}
@@ -146,16 +154,21 @@
   .visor-cerrar{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;border:0;background:var(--blanco);font-size:1.7rem;line-height:1;cursor:pointer;color:var(--cafe)}
 
   /* ============ TÉCNICA DESTACADA ============ */
+  .destacada{background:var(--beige)}
+  .destacada p{color:#45403B}
+  .destacada .etiqueta{color:var(--marron)}
+  .destacada .importante{border-left-color:var(--marron)}
   .destacada .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .destacada figure{position:relative;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);aspect-ratio:3/4}
   .destacada figure.alta{aspect-ratio:9/16;max-height:780px;justify-self:center;width:100%;max-width:440px}
   .destacada figure img{width:100%;height:100%;object-fit:cover}
-  .destacada p{color:var(--suave);margin-top:1rem}
+  .destacada p{margin-top:1rem}
   .claves{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0}
   .claves li{background:var(--blanco);border-radius:14px;padding:1.1rem 1.2rem;font-size:.92rem;color:var(--suave)}
   .claves strong{display:block;font-family:var(--serif);font-size:1.35rem;font-weight:500;color:var(--cafe);line-height:1.2;margin-bottom:.2rem}
   .importante{border-left:2px solid var(--dorado);padding-left:1rem;font-size:.95rem}
   .destacada.invertida{background:var(--blanco)}
+  .destacada.invertida p{color:var(--suave)}
   .destacada.invertida .claves li{background:var(--crema)}
   @media (min-width:861px){.destacada.invertida figure{order:2}}
   @media (max-width:860px){.destacada .contenedor{grid-template-columns:1fr;gap:40px}.destacada figure{max-width:440px}}
@@ -218,7 +231,7 @@
   @media (max-width:540px){.formulario{grid-template-columns:1fr;padding:1.5rem}}
 
   /* ============ PIE ============ */
-  .pie-pagina{background:#232323;color:var(--nude);padding:40px 0 96px;font-size:.9rem}
+  .pie-pagina{background:var(--cafe);border-top:1px solid rgba(207,194,178,.18);color:var(--nude);padding:40px 0 96px;font-size:.9rem}
   .pie-pagina .contenedor{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;align-items:center}
   .pie-pagina .logo{color:var(--blanco);font-size:1.5rem}
   .pie-pagina .logo span{color:var(--dorado-claro)}
@@ -339,7 +352,7 @@
   </section>
 
   <!-- PROCESO -->
-  <section id="proceso">
+  <section class="proceso" id="proceso">
     <div class="contenedor">
       <div class="intro aparece">
         <span class="etiqueta">Tu cita</span>
