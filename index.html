@@ -61,6 +61,12 @@
   .menu a{text-decoration:none;font-size:.95rem;color:var(--cafe)}
   .menu a:hover{color:var(--dorado)}
   .menu .btn{padding:.6rem 1.25rem;color:var(--blanco)}
+  /* En computadora los enlaces del menú son botones con borde, como "Ver mis trabajos" */
+  @media (min-width:861px){
+    .menu a:not(.btn){display:inline-flex;align-items:center;padding:.6rem 1.4rem;border:1px solid var(--cafe);border-radius:999px;font-weight:500;letter-spacing:.04em;transition:.25s}
+    .menu a:not(.btn):hover{background:var(--cafe);color:var(--blanco)}
+    .menu{gap:1rem}
+  }
   .menu .btn:hover{color:var(--blanco)}
   .boton-menu{display:none;background:none;border:0;cursor:pointer;width:44px;height:44px}
   .boton-menu span{display:block;width:24px;height:2px;background:var(--cafe);margin:5px auto;transition:.3s}
@@ -79,14 +85,14 @@
   .portada{padding:0;position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#AF9E8F}
   .portada-foto,.portada-foto picture,.portada-foto img{position:absolute;inset:0;width:100%;height:100%}
   .portada-foto img{object-fit:cover;object-position:100% 0%;display:block}  /* foto pegada a la derecha; la izquierda es su misma pared */
-  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:50% 1fr;align-items:center;padding-top:72px}
-  .portada-lado{padding:0 24px 0 max(24px,4vw);display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
-  .portada-logo{display:block;width:min(36vw,560px,100%);height:auto}
+  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:52% 1fr;align-items:center;padding-top:72px}
+  .portada-lado{padding:0 3vw;display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+  .portada-logo{display:block;width:min(44vw,760px,100%);height:auto}
   .portada-frase{margin:clamp(14px,2.4vh,28px) 0 clamp(24px,4vh,40px);font-family:var(--serif);font-size:clamp(1.9rem,2.6vw,3rem);line-height:1.1;color:var(--cafe)}
   .portada-frase em{display:inline;color:var(--suave)}
   .portada-texto{color:var(--texto);opacity:.8;margin:.8rem auto 1.8rem;max-width:460px}
   .portada .acciones{justify-content:center}
-  .bajar{position:absolute;left:25%;bottom:22px;z-index:2;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(45,45,45,.55);border-radius:12px}
+  .bajar{position:absolute;left:26%;bottom:22px;z-index:2;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(45,45,45,.55);border-radius:12px}
   .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--cafe);transform:translateX(-50%);animation:bajar 1.8s infinite}
   @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
   @media (max-width:899px){
