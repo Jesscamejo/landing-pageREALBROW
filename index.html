@@ -74,17 +74,16 @@
     .menu a{font-size:1.1rem}
   }
 
-  /* ============ PORTADA: la foto ocupa toda la pantalla, con logo y frase encima ============ */
+  /* ============ PORTADA: foto a la derecha, logo grande y frase a la izquierda ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
   .portada{padding:0;position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#AF9E8F}
   .portada-foto,.portada-foto picture,.portada-foto img{position:absolute;inset:0;width:100%;height:100%}
-  .portada-foto img{object-fit:cover;object-position:50% 40%;display:block}  /* 40% = centrado en cejas, cara y titular */
-  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:start;padding-top:max(96px,24vh)}
-  .portada-lado{padding:0 24px;display:flex;justify-content:center;min-width:0}
-  .portada-logo{display:block;width:min(clamp(260px,22vw,440px),100%);height:auto}
-  .portada::before{content:"";position:absolute;inset:0 0 auto 0;height:140px;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(209,205,194,.75),rgba(209,205,194,0))}
-  .portada-frase{font-family:var(--serif);font-size:clamp(2rem,3vw,3.6rem);line-height:1.1;color:var(--cafe)}
-  .portada-frase em{display:block}
+  .portada-foto img{object-fit:cover;object-position:70% 40%;display:block}  /* mantiene la foto a la derecha */
+  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:47% 1fr;align-items:center;padding-top:72px}
+  .portada-lado{padding:0 24px 0 max(24px,4vw);display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
+  .portada-logo{display:block;width:min(38vw,640px,100%);height:auto}
+  .portada-frase{margin-top:clamp(16px,3vh,36px);font-family:var(--serif);font-size:clamp(2rem,3.2vw,3.8rem);line-height:1.1;color:var(--cafe)}
+  .portada-frase em{display:inline}
   @media (max-width:899px){
     .portada{height:auto;min-height:0;background:var(--crema)}
     .portada-foto{position:relative;width:100%;height:auto}
@@ -94,6 +93,7 @@
     .portada-lado{padding:0}
     .portada-logo{width:min(360px,86%)}
     .portada-frase{margin-top:8px}
+    .portada-frase em{display:block}
   }
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
@@ -300,13 +300,15 @@
     <div class="portada-foto">
       <picture>
         <source media="(max-width: 899px)" srcset="imagenes/portada-real-brow.jpg">
-        <img src="imagenes/portada-completa.jpg" alt="Jessica Camejo, especialista en la Técnica Real Brow">
+        <img src="imagenes/portada-derecha.jpg" alt="Jessica Camejo, especialista en la Técnica Real Brow">
       </picture>
     </div>
     <div class="portada-capa">
-      <div class="portada-lado"><h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1></div>
+      <div class="portada-lado">
+        <h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
+        <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
+      </div>
       <div></div>
-      <div class="portada-lado"><p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p></div>
     </div>
   </section>
 
