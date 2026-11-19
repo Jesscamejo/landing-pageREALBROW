@@ -50,7 +50,6 @@
   .cabecera .logo{transition:opacity .3s}
   .cabecera.transparente{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
   .cabecera.transparente .logo{opacity:0;pointer-events:none}
-  @media (min-width:861px){.cabecera.transparente .logo{display:none}.cabecera.transparente .menu{flex:1;justify-content:space-between}}
   .cabecera .contenedor{display:flex;align-items:center;justify-content:space-between;height:72px}
   .logo{font-family:var(--serif);font-size:1.75rem;font-weight:600;color:var(--cafe);text-decoration:none;letter-spacing:.02em}
   .logo span{font-style:italic;font-weight:500;color:var(--dorado)}
@@ -74,16 +73,21 @@
     .menu a{font-size:1.1rem}
   }
 
-  /* ============ PORTADA: foto a la derecha, logo grande y frase a la izquierda ============ */
+  /* ============ PORTADA: foto a la derecha sobre su misma pared; logo, eslogan y botones a la izquierda ============ */
   .acciones{display:flex;gap:1rem;flex-wrap:wrap}
   .portada{padding:0;position:relative;height:100vh;height:100svh;min-height:560px;overflow:hidden;background:#AF9E8F}
   .portada-foto,.portada-foto picture,.portada-foto img{position:absolute;inset:0;width:100%;height:100%}
-  .portada-foto img{object-fit:cover;object-position:70% 40%;display:block}  /* mantiene la foto a la derecha */
-  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:47% 1fr;align-items:center;padding-top:72px}
+  .portada-foto img{object-fit:cover;object-position:70% 40%;display:block;transform:scale(1.28);transform-origin:94% 18%}  /* foto más grande a la derecha */
+  .portada-capa{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:50% 1fr;align-items:center;padding-top:72px}
   .portada-lado{padding:0 24px 0 max(24px,4vw);display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
-  .portada-logo{display:block;width:min(38vw,640px,100%);height:auto}
-  .portada-frase{margin-top:clamp(16px,3vh,36px);font-family:var(--serif);font-size:clamp(2rem,3.2vw,3.8rem);line-height:1.1;color:var(--cafe)}
-  .portada-frase em{display:inline}
+  .portada-logo{display:block;width:min(36vw,560px,100%);height:auto}
+  .portada-frase{margin-top:clamp(14px,2.4vh,28px);font-family:var(--serif);font-size:clamp(1.9rem,2.6vw,3rem);line-height:1.1;color:var(--cafe)}
+  .portada-frase em{display:inline;color:var(--suave)}
+  .portada-texto{color:var(--texto);opacity:.8;margin:.8rem auto 1.8rem;max-width:460px}
+  .portada .acciones{justify-content:center}
+  .bajar{position:absolute;left:25%;bottom:22px;z-index:2;transform:translateX(-50%);width:22px;height:36px;border:1.5px solid rgba(45,45,45,.55);border-radius:12px}
+  .bajar::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;background:var(--cafe);transform:translateX(-50%);animation:bajar 1.8s infinite}
+  @keyframes bajar{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
   @media (max-width:899px){
     .portada{height:auto;min-height:0;background:var(--crema)}
     .portada-foto{position:relative;width:100%;height:auto}
@@ -94,6 +98,9 @@
     .portada-logo{width:min(360px,86%)}
     .portada-frase{margin-top:8px}
     .portada-frase em{display:block}
+    .portada-foto img{transform:none}
+    .bajar{display:none}
+    .portada .acciones .btn{flex:1 1 100%;justify-content:center}
   }
 
   /* Espacio para foto (se muestra mientras no hay foto real) */
@@ -307,9 +314,15 @@
       <div class="portada-lado">
         <h1><img class="portada-logo" src="imagenes/logo-real-brow.png" alt="Jessica Camejo · Real Brow Studio" width="1000" height="318"></h1>
         <p class="portada-frase">Cejas que enmarcan <em>tu mirada</em></p>
+        <p class="portada-texto">Henna Brow, Natural Brow, Técnica Real Brow y rehabilitación folicular en Arauca.</p>
+        <div class="acciones">
+          <a href="#reservar" class="btn btn-principal">Reservar mi cita</a>
+          <a href="#galeria" class="btn btn-secundario">Ver mis trabajos</a>
+        </div>
       </div>
       <div></div>
     </div>
+    <a href="#tecnicas" class="bajar" aria-label="Ver más"></a>
   </section>
 
   <!-- TÉCNICAS -->
