@@ -852,7 +852,7 @@ form.addEventListener('submit', e => {
     ? new Date(d.get('fecha') + 'T12:00').toLocaleDateString('es', { weekday: 'long', day: 'numeric', month: 'long' })
     : 'A convenir';
   const lineas = [
-    'Hola Jessica ✨ Quiero reservar una cita en Real Brow Studio.',
+    'Hola Jessica, quiero reservar una cita en Real Brow Studio.',
     '',
     `• Nombre: ${d.get('nombre').trim()}`,
     `• Servicio: ${d.get('servicio')}`,
