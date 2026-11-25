@@ -89,9 +89,16 @@ demás experiencias temáticas.
 Estas fechas son datos del ciclo 2026, no reglas permanentes. Las fechas de cada año se
 revisan y se definen con la responsable cuando corresponde.
 
-- Navidad: inicio pendiente de definir · fin martes 29 de diciembre de 2026.
+Fechas aprobadas por la responsable el 25 de noviembre de 2026 (America/Bogota):
+
+- Navidad: del miércoles 25 de noviembre al martes 29 de diciembre de 2026, ambos inclusive.
 - Fin de Año: miércoles 30 y jueves 31 de diciembre de 2026.
-- Año Nuevo: inicio viernes 1 de enero de 2027 · fin pendiente de definir.
+- Año Nuevo: del viernes 1 al miércoles 6 de enero de 2027, ambos inclusive.
+- Regreso al diseño habitual: jueves 7 de enero de 2027, a las 00:00.
+
+Activación de Navidad 2026: debe estar presente desde el 25 de noviembre. El diseño se
+prepara, se presenta y se aprueba antes de activarse; se activa en cuanto esté aprobado y,
+hasta entonces, rige el diseño habitual.
 
 ## Verificación anual
 

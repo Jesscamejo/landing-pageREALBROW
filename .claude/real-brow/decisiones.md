@@ -6,22 +6,22 @@ en este archivo requiere aprobación. Las fechas se registran con la hora de Ame
 
 ## Pendientes
 
-- Autorizar la escritura de los seis archivos de configuración con su contenido aprobado.
-- Autorizar el commit y el push a la rama de trabajo claude/landing-real-brow.
-- Decidir si la configuración del agente se lleva a main, para que las sesiones nuevas la
-  carguen automáticamente.
-- Comprobar, en una sesión nueva, que el agente se activa solo. Si no se activa, aplicar el
-  respaldo acordado: trasladar su identidad a .claude/CLAUDE.md.
 - Comprobar en uso real las reglas de confirmación sobre las herramientas de GitHub, que no
   pudieron probarse en sesiones aisladas.
-- Diseñar y aprobar cada una de las cuatro Skills, una por una. El orden entre ellas no está
-  definido.
-- Realizar la primera misión: la auditoría de la web existente.
-- Ciclo de fin de año 2026: decidir si se realiza, definir la fecha de inicio de Navidad y la
-  fecha de fin de Año Nuevo, y compartir las referencias visuales.
+- Crear las cuatro Skills en enero de 2027, una por una, con aprobación de su diseño. El
+  orden entre ellas no está definido.
 - Verificar las fechas de las celebraciones de 2027.
-- Permitir el acceso a jesscamejo.github.io desde el entorno cuando haga falta verificar la
-  web publicada.
+- Ciclo de fin de año 2026: compartir las referencias visuales y responder las cinco
+  preguntas creativas.
+- Ciclo de fin de año 2026: aprobar la propuesta creativa conjunta de las tres experiencias.
+- Ejecutar el plan de mejoras de la auditoría por etapas, con aprobación de cada etapa antes
+  de implementarla y antes de publicarla.
+- Decidir qué hacer con la referencia «2026» de la foto de portada antes del 1 de enero
+  de 2027.
+- Decidir si el enlace de Facebook se completa o se retira.
+- Confirmar el horario de atención en los festivos del ciclo: 24, 25 y 31 de diciembre y
+  1 de enero.
+- Probar el paso de Instagram a WhatsApp en un iPhone y en un Android reales.
 
 ## Arquitectura del agente
 
@@ -124,6 +124,13 @@ en este archivo requiere aprobación. Las fechas se registran con la hora de Ame
 - Todas las fechas se gestionan con la zona horaria America/Bogota.
 - No se inventan fechas ni se agregan promociones, descuentos o campañas comerciales sin
   autorización.
+- Ciclo de fin de año 2026 aprobado el 25 de noviembre de 2026: Navidad del 25 de noviembre
+  al 29 de diciembre de 2026; Fin de Año el 30 y 31 de diciembre de 2026; Año Nuevo del 1 al
+  6 de enero de 2027, ambos inclusive. El 7 de enero de 2027 la página regresa a su diseño
+  habitual. Las fechas detalladas están en calendario-temporadas.md.
+- Navidad 2026 debe estar presente desde el 25 de noviembre. Su diseño se prepara, se
+  presenta y se aprueba antes de activarse; se activa en cuanto esté aprobado y, hasta
+  entonces, rige el diseño habitual.
 
 ## Proceso de trabajo
 
@@ -140,6 +147,14 @@ en este archivo requiere aprobación. Las fechas se registran con la hora de Ame
 - Las vistas previas funcionales se preparan en local, fuera del repositorio, y se muestran
   con capturas y grabaciones. Cualquier vista previa alojada en un servicio externo requiere
   aprobación.
+- A main solo se llevan los archivos de la web: index.html, imagenes/, videos/, README.md y,
+  cuando existan, temporadas/ y los demás recursos del sitio. La configuración de .claude/
+  se mantiene separada y no se lleva a main.
+- Antes de cada publicación se verifica técnicamente su alcance exacto: qué archivos cambian
+  respecto de main y que ninguno pertenece a .claude/. Esa verificación se presenta a la
+  responsable junto con la solicitud de aprobación.
+- Como main no contiene .claude/, las sesiones se inician desde la rama
+  claude/landing-real-brow para cargar el agente.
 
 ## Autorizaciones y seguridad
 
@@ -161,11 +176,12 @@ en este archivo requiere aprobación. Las fechas se registran con la hora de Ame
 ## Orden de trabajo
 
 1. Construir el agente principal: revisar y aprobar el contenido de los seis archivos, y
-   después autorizar su implementación.
-2. Crear las cuatro Skills, una por una, revisando y aprobando cada una.
-3. Realizar la auditoría de la web existente, sin modificar archivos.
-4. Trabajar la experiencia navideña con las referencias visuales que comparta la
-   responsable.
+   después autorizar su implementación. Hecho: los seis archivos están en la rama de trabajo.
+2. Realizar la auditoría de la web existente, sin modificar archivos. Hecho el 25 de
+   noviembre de 2026.
+3. Ejecutar el ciclo de fin de año 2026, con las referencias visuales que comparta la
+   responsable, y las etapas del plan de mejoras de la auditoría en el orden aprobado.
+4. Crear las cuatro Skills en enero de 2027, una por una, revisando y aprobando cada una.
 
 ## Hechos comprobados durante la configuración
 
@@ -173,7 +189,14 @@ No son decisiones, sino datos verificados que sirven de contexto.
 - GitHub Pages publica la web desde la rama main. Llevar cambios a main equivale a publicar.
 - El repositorio es público.
 - Los commits figuran con un autor genérico, sin datos personales.
-- Desde el entorno en la nube no hay acceso a jesscamejo.github.io.
+- Desde el 25 de noviembre de 2026 la web publicada es accesible desde el entorno en la
+  nube, y su index.html coincide con el de main. El acceso puede variar entre sesiones: se
+  comprueba cada vez.
+- Los sitios web de las marcas de referencia están bloqueados por la red del entorno. La
+  investigación se apoya en buscadores y fuentes secundarias, que se citan.
+- Los seis archivos de configuración están en la rama de trabajo (commit d001a1a).
+- El agente se activa como agente principal mediante la clave "agent" de
+  .claude/settings.json (verificado el 25 de noviembre de 2026).
 - Las reglas de permisos configuradas fueron reconocidas por Claude Code durante la
   validación. No constituyen una garantía absoluta y deben complementarse con las reglas de
   autorización del proyecto.
@@ -187,3 +210,19 @@ No son decisiones, sino datos verificados que sirven de contexto.
 - Orden de trabajo: agente principal, Skills una por una, auditoría y experiencia navideña.
 - Se detiene la implementación para revisar uno por uno el contenido de los seis archivos.
 - Se aprueban los contenidos definitivos de los archivos 1 a 5.
+
+### 2026-11-25
+- Se verifica que la sesión carga la configuración de .claude/ y que
+  landing-page-creative-director funciona como agente principal.
+- Se realiza la primera misión: auditoría completa de la web publicada, empezando por el
+  celular, sin modificar archivos. Se hizo antes de crear las Skills.
+- Se aprueba el plan de mejoras de la auditoría en el orden propuesto: urgente, mayor valor
+  y puede esperar. Con el ciclo aprobado, la estructura de temporadas pasa a urgente.
+- Se aprueba realizar el ciclo de fin de año 2026, con las fechas indicadas en «Calendario
+  de temporadas». Navidad debe estar presente desde el 25 de noviembre, con su diseño
+  aprobado antes de activarse.
+- Se decide mantener separada la configuración de Claude Code: a main solo se llevan los
+  archivos de la web, previa verificación técnica del alcance de cada publicación.
+- Se pospone la creación de las cuatro Skills hasta enero de 2027. Mientras tanto se trabaja
+  con el agente principal.
+- Se autoriza actualizar este registro y calendario-temporadas.md con las fechas del ciclo.
