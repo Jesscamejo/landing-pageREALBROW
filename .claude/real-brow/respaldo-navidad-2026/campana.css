@@ -1,0 +1,383 @@
+/* =====================================================================
+   VISTA PREVIA LOCAL · Campaña de Navidad 2026 · Real Brow Studio
+   «Edición de Navidad»: campaña editorial de belleza.
+   No es código del repositorio. Capa sobre la web actual, sin tocar sus datos.
+   ===================================================================== */
+.campana{
+  --vino:#4A0E19; --borgona:#6B1626; --rojo:#8C1C2E;
+  --marfil:#F4EFE9; --crema:#EADFCF; --perla:#FBF7F1;
+  --champan:#C9AE7C; --champan-claro:#E6D3AE; --champan-osc:#8A6A38;
+  --guion:'Pinyon Script', 'Cormorant Garamond', cursive;
+  --rayas:repeating-linear-gradient(90deg,var(--rojo) 0 11px,var(--perla) 11px 22px);
+}
+.campana body{background:var(--marfil)}
+.campana .contenedor{position:relative;z-index:2}
+
+/* Fondos de campaña: damasco tonal (se genera en campana.js) */
+.c-vino{background-color:var(--vino);background-image:radial-gradient(110% 70% at 80% 0%,rgba(140,28,46,.45),transparent 60%),var(--damasco-vino);color:var(--marfil)}
+.c-crema{background-color:var(--crema);background-image:var(--damasco-crema)}
+
+/* Tipografía de campaña */
+.c-pre{display:inline-block;font:500 .74rem/1.3 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--champan)}
+.c-pre.oscuro{color:var(--champan-osc)}
+.c-guion{font-family:var(--guion);font-weight:400;line-height:.85;color:var(--champan-claro)}
+.c-num{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(3.4rem,9vw,5.6rem);line-height:.9;color:transparent;-webkit-text-stroke:1px var(--champan);margin-bottom:.6rem}
+
+/* ---------- Cabecera ---------- */
+.campana .cabecera.transparente .logo{opacity:1;pointer-events:auto}
+.campana .cabecera.transparente .logo-texto{color:var(--marfil)}
+.campana .cabecera.transparente .boton-menu span{background:var(--marfil)}
+.campana .cabecera:not(.transparente){background:rgba(251,247,241,.96);border-bottom:1px solid rgba(201,174,124,.5)}
+.campana .menu .btn{background:var(--vino);border-color:var(--vino)}
+@media (min-width:861px){
+  .campana .cabecera.transparente .menu a:not(.btn){color:var(--marfil);border-color:rgba(244,239,233,.45)}
+  .campana .cabecera.transparente .menu a:not(.btn):hover{background:var(--marfil);color:var(--vino)}
+  .campana .cabecera.transparente .menu .btn{background:var(--marfil);color:var(--vino);border-color:var(--marfil)}
+}
+
+/* ---------- Botones ---------- */
+.campana .btn-principal{background:var(--vino);border-color:var(--vino);color:var(--marfil)}
+.campana .btn-principal:hover{background:var(--borgona)}
+.campana .btn-secundario{color:var(--vino);border-color:var(--vino)}
+.campana .btn-secundario:hover{background:var(--vino);color:var(--marfil)}
+.campana .c-vino .btn-principal{background:var(--marfil);color:var(--vino);border-color:var(--marfil)}
+.campana .c-vino .btn-principal:hover{background:var(--champan-claro)}
+.campana .btn .wa{width:18px;height:18px;flex:none}
+.campana .flotante{background:var(--vino);box-shadow:0 10px 28px rgba(74,14,25,.35)}
+.c-enlace{display:inline-flex;align-items:center;min-height:44px;padding:0 .2rem;color:inherit;font:500 .92rem var(--sans);letter-spacing:.04em;text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--champan)}
+
+/* =====================================================================
+   PORTADA · la fotografía de campaña es la protagonista
+   ===================================================================== */
+.campana .portada{height:auto;min-height:0;padding:0;overflow:hidden;background-color:var(--vino);background-image:radial-gradient(90% 60% at 20% 100%,rgba(140,28,46,.35),transparent 60%),var(--damasco-vino)}
+.c-hero{color:var(--marfil)}
+.campana .c-hero .btn-principal{background:var(--marfil);color:var(--vino);border-color:var(--marfil)}
+.campana .c-hero .btn-principal:hover{background:var(--champan-claro)}
+.campana .portada > .portada-foto,.campana .portada > .portada-capa,.campana .portada > .bajar{display:none}
+.c-hero{position:relative;overflow:hidden;padding-bottom:64px}
+.c-foto{position:relative;height:58svh;min-height:330px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 62%,transparent 100%)}
+.c-foto-fondo{position:absolute;inset:0;background:radial-gradient(42% 38% at 58% 40%,rgba(222,160,150,.30),transparent 70%),radial-gradient(70% 60% at 60% 45%,rgba(120,26,42,.9),transparent 75%),linear-gradient(180deg,#5A1220,#3B0A14);animation:respira-foto 18s ease-in-out infinite alternate}
+.c-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:respira-foto 18s ease-in-out infinite alternate}
+@keyframes respira-foto{from{transform:scale(1)}to{transform:scale(1.045)}}
+.c-marcas i{position:absolute;width:26px;height:26px;border-color:rgba(230,211,174,.7);border-style:solid;border-width:0}
+.c-marcas i:nth-child(1){top:84px;left:18px;border-top-width:1px;border-left-width:1px}
+.c-marcas i:nth-child(2){top:84px;right:18px;border-top-width:1px;border-right-width:1px}
+.c-marcas i:nth-child(3){bottom:34%;left:18px;border-bottom-width:1px;border-left-width:1px}
+.c-marcas i:nth-child(4){bottom:34%;right:18px;border-bottom-width:1px;border-right-width:1px}
+.c-guia{position:absolute;left:0;right:0;top:40%;transform:translateY(-50%);text-align:center;display:grid;gap:.5rem;padding:0 2.2rem;color:var(--champan-claro)}
+.c-guia b{font:500 .68rem/1.3 var(--sans);letter-spacing:.3em;text-transform:uppercase}
+.c-guia span{font-family:var(--serif);font-style:italic;font-size:1.08rem;line-height:1.35;color:rgba(244,239,233,.78)}
+.c-sello{position:absolute;z-index:4;width:92px;right:18px;top:calc(58svh - 128px);filter:drop-shadow(0 10px 16px rgba(20,3,7,.45));animation:sello-entra 1.2s cubic-bezier(.2,.8,.2,1) .4s both;pointer-events:none}
+.c-sello svg{display:block;width:100%;height:auto}
+@keyframes sello-entra{from{opacity:0;transform:translateY(-14px) rotate(-14deg) scale(1.12)}to{opacity:1;transform:rotate(-6deg)}}
+.c-texto{position:relative;z-index:3;margin-top:-92px;padding:0 20px}
+.c-hero h1{font-family:var(--serif);font-weight:500;color:var(--marfil);line-height:1.02;margin:.7rem 0 0}
+.c-hero h1 .c-t{display:block;font-size:clamp(2.15rem,9.4vw,4.9rem)}
+.c-hero h1 .c-guion{display:block;font-size:clamp(3.9rem,17vw,9rem);margin:-.06em 0 0 .5em;color:var(--champan-claro)}
+.c-sub{font-family:var(--serif);font-style:italic;font-size:1.2rem;color:rgba(244,239,233,.82);margin:.9rem 0 1.4rem}
+.c-acciones{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1.4rem}
+.c-mastil{display:none}
+.c-pausa{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:0 .85rem;border-radius:999px;border:1px solid rgba(201,174,124,.45);background:transparent;color:rgba(244,239,233,.72);font:400 .76rem var(--sans);letter-spacing:.08em;cursor:pointer}
+.c-pausa svg{width:10px;height:10px}
+.c-hero .c-pausa{position:absolute;right:16px;bottom:12px;z-index:5}
+.c-pausado *{animation-play-state:paused!important}
+
+@media (min-width:900px){
+  .c-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:0}
+  .c-foto{position:absolute;top:0;right:0;bottom:0;width:58%;height:auto;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%);mask-image:linear-gradient(90deg,transparent 0,#000 26%)}
+  .c-marcas i:nth-child(1),.c-marcas i:nth-child(3){left:28%}
+  .c-marcas i:nth-child(3),.c-marcas i:nth-child(4){bottom:96px}
+  .c-guia{left:22%;top:50%}
+  .c-texto{margin:0;padding:120px 0 120px 6vw;width:52%}
+  .c-hero h1 .c-t{font-size:clamp(3rem,4.6vw,5rem)}
+  .c-hero h1 .c-guion{font-size:clamp(5.4rem,8.6vw,9.5rem);margin-left:1.4em}
+  .c-sub{font-size:1.45rem}
+  .c-acciones .btn{padding:1.1rem 2.1rem;font-size:1.02rem}
+  .c-sello{width:128px;right:auto;left:calc(42% - 64px);top:15%;bottom:auto}
+  .c-mastil{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:22px;position:absolute;left:6vw;right:6vw;bottom:30px;z-index:3;font:500 .7rem var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--champan)}
+  .c-mastil span:nth-child(odd){text-align:center}
+  .c-mastil i{width:1px;height:16px;background:rgba(201,174,124,.5)}
+  .c-hero .c-pausa{right:auto;left:6vw;bottom:70px}
+}
+
+/* =====================================================================
+   MANIFIESTO · tipográfico, sin iconos
+   ===================================================================== */
+.c-manifiesto{padding:72px 0}
+.c-manifiesto .contenedor{display:grid;gap:36px}
+.c-manifiesto h2{font-size:clamp(2.3rem,8vw,3.8rem);color:var(--vino)}
+.c-manifiesto h2 .c-guion{color:var(--borgona);font-size:1.45em;display:inline-block;margin-left:.08em;line-height:.6}
+.c-lista{list-style:none;counter-reset:c}
+.c-lista li{counter-increment:c;display:grid;grid-template-columns:3.2rem 1fr;align-items:baseline;padding:1rem 0;border-top:1px solid rgba(138,106,56,.35);font-family:var(--serif);font-size:1.45rem;color:var(--tinta,#2D2D2D)}
+.c-lista li:last-child{border-bottom:1px solid rgba(138,106,56,.35)}
+.c-lista li::before{content:counter(c,decimal-leading-zero);font:500 .8rem var(--sans);letter-spacing:.2em;color:var(--champan-osc)}
+@media (min-width:900px){.c-manifiesto{padding:110px 0}.c-manifiesto .contenedor{grid-template-columns:1.1fr .9fr;gap:80px;align-items:center}}
+
+/* =====================================================================
+   SERVICIOS · panel envuelto como un regalo (rayas de campaña)
+   ===================================================================== */
+.campana .servicios{background:var(--marfil)}
+.campana .servicios .intro h2{color:var(--vino)}
+.campana .tarjetas{gap:0;border:14px solid transparent;border-image:var(--rayas) 14;background:var(--perla);box-shadow:inset 0 0 0 10px var(--perla),inset 0 0 0 11px rgba(201,174,124,.8);padding:14px;grid-template-columns:1fr}
+.campana .tarjeta{background:transparent;border:0;border-radius:0;padding:1.8rem 1rem;transform:none!important}
+.campana .tarjeta + .tarjeta{border-top:1px solid rgba(201,174,124,.55)}
+.campana .tarjeta .numero{font-family:var(--serif);font-style:normal;font-size:1.05rem;letter-spacing:.2em;color:var(--champan-osc)}
+.campana .tarjeta h3{color:var(--vino)}
+.campana .tarjeta .datos{border-top-color:rgba(201,174,124,.55);align-items:center}
+.campana .datos .precio strong{display:inline-block;background:var(--vino);color:var(--marfil);font-weight:500;padding:.38rem .9rem .38rem 1.35rem;clip-path:polygon(11px 0,100% 0,100% 100%,11px 100%,0 50%);position:relative}
+.campana .datos .precio strong::before{content:"";position:absolute;left:8px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--perla)}
+.campana .enlace-reserva{color:var(--vino);padding:.8rem 0;min-height:44px}
+@media (min-width:1001px){
+  .campana .tarjetas{grid-template-columns:repeat(4,1fr);border-width:18px}
+  .campana .tarjeta{padding:2.2rem 1.6rem}
+  .campana .tarjeta + .tarjeta{border-top:0;border-left:1px solid rgba(201,174,124,.55)}
+}
+
+/* =====================================================================
+   SECCIONES DE SERVICIO · fotografía grande a sangre, sin recuadros
+   ===================================================================== */
+.campana section.destacada{padding:0}
+.campana .destacada .contenedor{width:100%;max-width:none;gap:0}
+.campana .destacada figure{border-radius:0;box-shadow:none;margin:0;max-width:none!important;width:100%}
+.campana .destacada .texto{padding:44px 20px 76px}
+.campana .destacada .claves li{background:transparent!important;border-radius:0;border-top:1px solid rgba(138,106,56,.35);padding:.9rem 0;color:var(--suave)}
+.campana .destacada .claves{gap:0 1.6rem}
+.campana .destacada h2{color:var(--vino)}
+.campana #henna-brow,.campana #rehabilitacion-folicular{background-color:var(--crema);background-image:var(--damasco-crema)}
+.campana #natural-brow{background:var(--marfil)}
+@media (max-width:1000px){
+  .campana .destacada.una-foto .contenedor,.campana .destacada.una-foto.derecha .contenedor{grid-template-areas:"a" "t"}
+  .campana #tecnica-real-brow .contenedor{grid-template-columns:1fr;grid-template-areas:"b" "t" "a"}
+  .campana #tecnica-real-brow figure.foto-b img{aspect-ratio:4/5;object-position:50% 30%!important}
+  .campana #tecnica-real-brow figure.foto-a img{aspect-ratio:auto}
+}
+@media (min-width:1001px){
+  .campana .destacada.una-foto .contenedor{grid-template-columns:minmax(0,38vw) 1fr;align-items:center}
+  .campana .destacada.una-foto.derecha .contenedor{grid-template-columns:1fr minmax(0,38vw)}
+  .campana .destacada .texto{padding:96px 7vw}
+  .campana #tecnica-real-brow .contenedor{width:100%;grid-template-columns:30vw 1fr 30vw;gap:0;align-items:stretch}
+  .campana #tecnica-real-brow figure{align-self:stretch}
+  .campana #tecnica-real-brow figure.foto-b img{height:100%;aspect-ratio:auto;object-fit:cover}
+  .campana #tecnica-real-brow figure.foto-a{background:var(--vino);display:flex;align-items:center}
+  .campana #tecnica-real-brow figure.foto-a img{aspect-ratio:auto}
+  .campana #tecnica-real-brow .texto{align-self:center}
+}
+/* Técnica Real Brow: el capítulo central de la campaña */
+.campana #tecnica-real-brow{background-color:var(--vino);background-image:radial-gradient(110% 70% at 50% 0%,rgba(140,28,46,.4),transparent 60%),var(--damasco-vino)}
+.campana #tecnica-real-brow h2{color:var(--marfil);font-size:clamp(2.6rem,6vw,4rem)}
+.campana #tecnica-real-brow .etiqueta{color:var(--champan)}
+.campana #tecnica-real-brow p{color:rgba(244,239,233,.86)}
+.campana #tecnica-real-brow .claves li{border-top-color:rgba(201,174,124,.35);color:rgba(244,239,233,.8)}
+.campana #tecnica-real-brow .claves strong{color:var(--marfil)}
+.campana #tecnica-real-brow .importante{border-left-color:var(--champan)}
+.campana #tecnica-real-brow .btn-principal{background:var(--marfil);color:var(--vino);border-color:var(--marfil)}
+.campana #tecnica-real-brow .btn-principal:hover{background:var(--champan-claro)}
+
+/* Proceso: tres capítulos numerados */
+.campana .proceso{background:var(--marfil)}
+.campana .proceso h2{color:var(--vino)}
+.campana .paso-foto{border-radius:999px 999px 0 0;box-shadow:none;aspect-ratio:3/4}
+.campana .paso::before{font-size:4rem;color:transparent;-webkit-text-stroke:1px var(--champan)}
+.campana .paso h3{color:var(--vino)}
+
+/* =====================================================================
+   NOTA DE JESSICA (antes del bloque de galería)
+   ===================================================================== */
+.c-nota{text-align:center;padding:96px 0 104px}
+.c-nota .contenedor{max-width:760px}
+.c-nota blockquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.7rem,6vw,2.6rem);line-height:1.25;color:var(--vino);margin:1.2rem 0 1.8rem}
+.c-nota .c-firma{display:flex;align-items:center;justify-content:center;gap:16px}
+.c-nota .c-firma img.r{width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:50% 20%;box-shadow:0 0 0 3px var(--perla),0 0 0 4px var(--champan)}
+.c-nota .c-firma img.f{width:190px;height:auto}
+
+/* =====================================================================
+   GALERÍA · fotografías impresas sobre terciopelo
+   ===================================================================== */
+.campana .galeria{background-color:var(--vino);background-image:radial-gradient(100% 60% at 50% 0%,rgba(140,28,46,.4),transparent 60%),var(--damasco-vino)}
+.campana .galeria h2{color:var(--marfil)}
+.campana .galeria .etiqueta{color:var(--champan)}
+.campana .galeria .intro p{color:rgba(244,239,233,.82)}
+.campana .filtro{border-color:rgba(244,239,233,.6);color:var(--marfil);min-height:44px}
+.campana .filtro.activo,.campana .filtro:hover{background:var(--marfil);color:var(--vino)}
+.campana .rejilla{columns:2 150px;column-gap:18px}
+.campana .pieza{background:var(--perla);padding:8px 8px 0;border-radius:2px;rotate:var(--r,0deg);box-shadow:0 18px 32px rgba(10,1,3,.42);margin-bottom:22px;overflow:visible}
+.campana .pieza .medio{border-radius:0}
+.campana .pieza .pie{background:transparent;padding:.55rem .2rem .75rem;font-size:.78rem}
+.campana .pieza .pie strong{font-style:italic;font-size:1.08rem;color:var(--vino)}
+.campana .pieza.mas{background:var(--borgona);padding:1.2rem .9rem}
+.campana .pieza.mas strong{font-size:1.35rem}
+.campana .pieza.mas span{font-size:.62rem;letter-spacing:.06em;overflow-wrap:anywhere;max-width:100%}
+.campana .ver-mas .btn-secundario{color:var(--marfil);border-color:var(--marfil)}
+@media (min-width:900px){.campana .rejilla{columns:4 220px;column-gap:28px}}
+
+/* Sobre mí */
+.campana .sobre{background:var(--marfil)}
+.campana .sobre h2{color:var(--vino)}
+.campana .retrato{border-radius:999px 999px 0 0;box-shadow:none}
+.campana .formacion{display:block}
+.campana .formacion li{background:none;color:var(--tinta,#2D2D2D);border-radius:0;border-top:1px solid rgba(138,106,56,.35);padding:.65rem 0;font-weight:400}
+.campana .valores{display:none}
+
+/* Preguntas */
+.campana .faq{background-color:var(--crema);background-image:var(--damasco-crema)}
+.campana .faq h2,.campana summary{color:var(--vino)}
+.campana details{border-bottom-color:rgba(138,106,56,.35)}
+.campana summary{min-height:44px}
+
+/* =====================================================================
+   RESERVAS · la tarjeta de regalo
+   ===================================================================== */
+.campana .reserva{background-color:var(--vino);background-image:radial-gradient(100% 60% at 80% 0%,rgba(140,28,46,.45),transparent 60%),var(--damasco-vino)}
+.campana .reserva h2{color:var(--marfil)}
+.campana .reserva .etiqueta,.campana .reserva .info span,.campana .politicas h3{color:var(--champan)}
+.campana .reserva .intro p{color:rgba(244,239,233,.86)}
+.campana .politicas{border-color:rgba(201,174,124,.35);border-radius:0}
+.campana .politicas li::before{background:var(--champan)}
+.campana .info a{min-height:44px;display:inline-flex;align-items:center}
+.campana .formulario{background:var(--perla);border-radius:3px;position:relative;padding-top:3rem;box-shadow:0 30px 70px rgba(10,1,3,.45);overflow:visible}
+.campana .formulario::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;background:var(--rayas)}
+.campana .formulario h3{color:var(--vino)}
+.campana .formulario input,.campana .formulario select,.campana .formulario textarea{background:#fff;border-color:rgba(138,106,56,.4);border-radius:4px}
+.campana .formulario .btn{background:var(--vino);color:var(--marfil)}
+.c-sello-form{position:absolute;right:18px;top:-34px;width:76px;rotate:8deg;filter:drop-shadow(0 8px 12px rgba(20,3,7,.35));pointer-events:none;z-index:3}
+
+/* Pie */
+.campana .pie-pagina{background:#330A12}
+.c-pie-mastil{width:100%;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font:500 .68rem var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--champan);padding-top:18px;border-top:1px solid rgba(201,174,124,.25)}
+
+/* =====================================================================
+   PORTADA v2 · fotografía aprobada integrada + «Temporada Navideña»
+   ===================================================================== */
+.campana{--fondo-foto:#5A0F1D}
+.campana .portada{background-color:var(--fondo-foto);background-image:radial-gradient(80% 60% at 0% 100%,rgba(30,4,10,.55),transparent 65%),var(--damasco-vino)}
+/* Logo original recoloreado con máscara (no se redibuja) */
+.c-logo{display:block;aspect-ratio:1000/318;background:var(--champan-claro);-webkit-mask:url(imagenes/logo-real-brow-blanco.png) center/contain no-repeat;mask:url(imagenes/logo-real-brow-blanco.png) center/contain no-repeat}
+.c-logo.vino{background:var(--vino);width:200px}
+.campana .cabecera .logo-texto{font-size:0;letter-spacing:0;width:138px;height:44px;background:var(--champan-claro);-webkit-mask:url(imagenes/logo-real-brow-blanco.png) left center/contain no-repeat;mask:url(imagenes/logo-real-brow-blanco.png) left center/contain no-repeat;transition:background .3s}
+.campana .cabecera:not(.transparente) .logo-texto{background:var(--vino)}
+.campana .firma{background:var(--vino);object-position:-9999px 0;-webkit-mask:url(imagenes/logo-real-brow.png) center/contain no-repeat;mask:url(imagenes/logo-real-brow.png) center/contain no-repeat}
+.campana .pie-pagina .logo img{background:var(--champan-claro);object-position:-9999px 0;-webkit-mask:url(imagenes/logo-real-brow-blanco.png) center/contain no-repeat;mask:url(imagenes/logo-real-brow-blanco.png) center/contain no-repeat}
+
+/* Fotografía: a sangre, fundida con el fondo; sin marcos */
+.c-foto{margin-top:64px;height:min(360px,51svh);min-height:0;-webkit-mask-image:linear-gradient(180deg,#000 68%,transparent 100%);mask-image:linear-gradient(180deg,#000 68%,transparent 100%)}
+.c-foto img{object-fit:cover;object-position:50% 0%;animation:none}
+.c-foto-fondo{background:radial-gradient(45% 40% at 55% 40%,rgba(222,160,150,.22),transparent 70%),var(--fondo-foto);animation:none}
+.c-guia{top:50%}
+.c-texto{margin-top:-44px;padding:0 20px}
+.c-logo:first-child{width:min(190px,50%);margin-bottom:.6rem}
+.c-hero .c-logo:first-child{display:none}
+.c-titulo{margin:0;line-height:1}
+.c-titulo .c-mayus{display:block;font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(2.35rem,11.2vw,6.4rem);color:var(--marfil);line-height:1}
+.c-titulo .c-guion{display:block;font-family:var(--guion);font-size:clamp(4rem,19vw,10.5rem);color:var(--champan-claro);line-height:.8;margin:-.2em 0 0 .9em;text-shadow:0 2px 18px rgba(20,3,7,.35)}
+.c-regla{display:block;width:72px;height:1px;background:var(--champan);margin:1.1rem 0 .9rem}
+.c-mensaje{font-family:var(--serif);font-style:italic;font-size:1.28rem;line-height:1.35;color:rgba(244,239,233,.88);margin:0 0 1.2rem;max-width:30ch}
+.c-mensaje em{color:var(--champan-claro)}
+@media (min-width:900px){
+  .c-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center}
+  .c-foto{position:absolute;margin:0;top:0;right:0;bottom:0;left:auto;height:auto;width:auto;aspect-ratio:1206/1305;max-width:64%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%);mask-image:linear-gradient(90deg,transparent 0,#000 8%)}
+  .c-foto img{object-position:50% 0%}
+  .c-texto{margin:0;padding:110px 0 110px 6vw;width:44%}
+  .c-hero .c-logo:first-child{display:block;width:min(260px,62%);margin-bottom:1.6rem}
+  .c-titulo .c-mayus{font-size:clamp(3rem,5.2vw,6rem)}
+  .c-titulo .c-guion{font-size:clamp(5.4rem,9.4vw,10.5rem);margin-left:1.3em}
+  .c-mensaje{font-size:1.5rem}
+  .c-mastil{left:6vw;right:auto;width:36%;grid-template-columns:auto auto auto auto auto;justify-content:start}
+}
+
+/* =====================================================================
+   PORTADA v3 · fotografía de campaña a sangre (1536 × 1024)
+   Celular: encuadre vertical que conserva rostro, ceja, spoolie, ambas manos y brazos.
+   Tableta: fotografía completa a todo el ancho.
+   Computador: fotografía de lado a lado; textos sobre el árbol, lejos del rostro.
+   ===================================================================== */
+.campana{--velo:36,5,11}
+.c-foto{position:relative;margin:0;height:min(400px,60svh);overflow:hidden;
+  -webkit-mask-image:linear-gradient(180deg,#000 74%,transparent 100%);mask-image:linear-gradient(180deg,#000 74%,transparent 100%)}
+.c-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:78% 0%;animation:none}
+.c-velo{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(var(--velo),.55) 0%,rgba(var(--velo),0) 24%)}
+.c-texto{margin-top:-58px}
+@media (min-width:600px) and (max-width:899px){
+  .c-foto{height:auto;aspect-ratio:1536/1024}
+  .c-foto img{object-position:50% 50%}
+  .c-texto{margin-top:-70px;padding:0 6vw}
+  .c-titulo .c-mayus{font-size:4.3rem}
+  .c-titulo .c-guion{font-size:7.4rem}
+}
+@media (min-width:900px){
+  .c-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center}
+  .c-foto{position:absolute;inset:0;width:100%;height:100%;max-width:none;aspect-ratio:auto;-webkit-mask-image:none;mask-image:none}
+  .c-foto img{object-position:70% 20%}
+  .c-velo{background:
+    linear-gradient(90deg,rgba(var(--velo),.86) 0%,rgba(var(--velo),.7) 26%,rgba(var(--velo),.28) 46%,rgba(var(--velo),0) 58%),
+    linear-gradient(180deg,rgba(var(--velo),.5) 0%,rgba(var(--velo),0) 16%),
+    linear-gradient(0deg,rgba(var(--velo),.55) 0%,rgba(var(--velo),0) 30%)}
+  .c-texto{position:relative;z-index:3;margin:0;padding:96px 0 72px 6vw;width:44%}
+  .c-titulo .c-mayus{font-size:clamp(2.8rem,4.7vw,5.6rem)}
+  .c-titulo .c-guion{font-size:clamp(4.8rem,8.2vw,10rem);margin-left:1.1em}
+  .c-mastil{display:none}
+}
+
+/* =====================================================================
+   PAPEL RASGADO · solo en cuatro transiciones claro ↔ vino
+   ===================================================================== */
+/* Grano de papel en las secciones claras */
+.campana .c-crema,.campana #henna-brow,.campana #rehabilitacion-folicular,.campana .faq{background-image:var(--damasco-crema),var(--grano)}
+.campana .servicios,.campana #natural-brow,.campana .proceso,.campana .sobre{background-image:var(--grano)}
+.campana .c-con-rasgado{position:relative}
+.campana{
+  --papel-tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .34 0 0 0 0 .26 0 0 0 .34 0'/%3E%3C/filter%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.03' numOctaves='2' seed='9'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .42 0 0 0 0 .32 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23m)'/%3E%3Crect width='260' height='260' filter='url(%23p)'/%3E%3C/svg%3E");
+  --papel-tex-claro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='6'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .85 0 0 0 0 .85 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23p)'/%3E%3C/svg%3E");
+}
+/* Papel rasgado v2: sombra de contacto · fibras · núcleo · papel · textura */
+.c-rasgado{position:absolute;left:0;right:0;top:-1px;height:96px;z-index:4;pointer-events:none;filter:drop-shadow(0 7px 9px rgba(20,3,7,.3));clip-path:inset(0 0 -60px 0)}
+.c-rasgado i{position:absolute;inset:0;-webkit-mask-size:1440px 100%;mask-size:1440px 100%;-webkit-mask-repeat:repeat-x;mask-repeat:repeat-x;-webkit-mask-position:left top;mask-position:left top}
+.c-rasgado .sombra-w{filter:blur(2.2px)}
+.c-rasgado .sombra{background:linear-gradient(180deg,transparent 0%,transparent 30%,rgba(16,2,6,.62) 55%)}
+.c-rasgado .hilos{background:rgba(255,252,244,.7)}
+.c-rasgado .nucleo{background:linear-gradient(180deg,#FFFDF8 40%,#F6EEDF 100%)}
+.c-rasgado .textura-w{opacity:.55;-webkit-mask-image:linear-gradient(180deg,transparent 0%,transparent 25%,#000 80%);mask-image:linear-gradient(180deg,transparent 0%,transparent 25%,#000 80%);-webkit-mask-size:100% 100%;mask-size:100% 100%}
+/* En celular el mismo borde se comprime en horizontal: más dentado y con más carácter */
+@media (max-width:899px){.c-rasgado i{-webkit-mask-size:760px 100%;mask-size:760px 100%}.c-rasgado .textura-w{-webkit-mask-size:100% 100%;mask-size:100% 100%}}
+.c-rasgado .textura{background-image:var(--papel-tex)}
+.c-rasgado.marfil .papel{background-color:var(--marfil);background-image:var(--grano)}
+.c-rasgado.crema .papel{background-color:var(--crema);background-image:var(--damasco-crema),var(--grano)}
+/* Variante vino: el papel oscuro se rasga sobre el claro y deja ver su núcleo rosado */
+.c-rasgado.vino{filter:drop-shadow(0 6px 8px rgba(40,6,12,.3))}
+.c-rasgado.vino .sombra{background:linear-gradient(180deg,transparent 0%,transparent 30%,rgba(40,8,14,.5) 55%)}
+.c-rasgado.vino .hilos{background:rgba(186,108,122,.42)}
+.c-rasgado.vino .nucleo{background:linear-gradient(180deg,#A4495B 20%,#7A2838 100%)}
+.c-rasgado.vino .papel{background-color:var(--vino);background-image:var(--damasco-vino)}
+.c-rasgado.vino .textura{background-image:var(--papel-tex-claro)}
+@media (min-width:900px){.c-rasgado{height:120px}}
+/* Espacio para que el rasgado nunca tape fotos, etiquetas ni textos */
+.campana #tecnica-real-brow.rasgado-arriba,.campana #rehabilitacion-folicular.rasgado-arriba{padding-top:96px}
+.campana #galeria.rasgado-arriba,.campana #reservar.rasgado-arriba{padding-top:160px}
+@media (min-width:900px){
+  .campana #tecnica-real-brow.rasgado-arriba,.campana #rehabilitacion-folicular.rasgado-arriba{padding-top:120px}
+  .campana #galeria.rasgado-arriba,.campana #reservar.rasgado-arriba{padding-top:190px}
+}
+
+/* =====================================================================
+   TIPOGRAFÍA DE CAMPAÑA EN TITULARES
+   serif en versalitas espaciadas + caligrafía protagonista + Jost
+   ===================================================================== */
+.c-titular{line-height:1}
+.c-titular .c-mayus-s{display:block;font-family:var(--serif);font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:clamp(1.5rem,5.4vw,2.5rem);line-height:1}
+.c-titular .c-guion-s{display:block;font-family:var(--guion);font-weight:400;font-size:clamp(3.6rem,15.5vw,7.4rem);line-height:.92;margin:-.1em 0 0 .55em;color:var(--champan-claro);text-transform:none;letter-spacing:0}
+.campana #tecnica-real-brow .c-titular,.campana #galeria .c-titular,.campana #reservar .c-titular{color:var(--marfil);font-size:inherit}
+@media (min-width:1001px){
+  /* La foto de antes y después mide lo que mide: las etiquetas quedan siempre sobre ella */
+  .campana #tecnica-real-brow figure.foto-a{align-self:center;display:block;background:none}
+  .campana #tecnica-real-brow .c-titular .c-guion-s{font-size:clamp(3.8rem,5.6vw,6.2rem);white-space:nowrap;margin-left:.35em}
+}
+.campana .galeria .intro{text-align:center;margin-inline:auto}
+.campana .galeria .c-titular .c-guion-s{margin:.02em 0 0}
+.campana .galeria .filtros{justify-content:center}
+
+@media (prefers-reduced-motion:reduce){
+  .campana *{animation:none!important}
+  .c-pausa{display:none!important}
+}
