@@ -1,0 +1,7 @@
+/* PROPUESTA · Logo de portada más grande y centrado sobre «TEMPORADA» (vista previa local) */
+.c-hero .c-logo:first-child{display:block;width:var(--logo-w,240px);margin:0 0 1.1rem var(--logo-x,0)}
+/* En celular el logo pasa de la cabecera a la portada: se oculta en la cabecera mientras está sobre la foto */
+@media (max-width:899px){
+  .campana .cabecera.transparente .logo-texto{visibility:hidden}
+  .c-hero .c-logo:first-child{margin-bottom:.55rem}
+}

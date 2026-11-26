@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Técnicas · fotos integradas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* VISTA PREVIA LOCAL · Campaña de Navidad 2026 con copos grabados · Real Brow Studio
+   Fuera del repositorio. Textos de la web actual. */
+:root{
+  --rojo:#752120; --marfil:#F4EFE9; --crema:#EADFCF; --perla:#FBF7F1;
+  --champan:#D6BD8E; --champan-claro:#E6D3AE; --texto-rojo:#E8DCD8;
+  --tinta:#2D2D2D; --suave:#4A4642; --oro-osc:#76592C;
+  --tinta-carta:#2E2116; --sepia:#5A3D24; --linea:rgba(90,61,36,.45);
+  --serif:'Cormorant Garamond', Georgia, serif; --guion:'Pinyon Script', cursive; --sans:'Jost', system-ui, sans-serif;
+  --t-mayus: clamp(2.2rem, 1.5rem + 2.9vw, 3.9rem);
+  --t-guion: clamp(4.2rem, 2.8rem + 5.6vw, 7.6rem);
+  --t-num:   clamp(3.6rem, 2.6rem + 3.6vw, 5.6rem);
+  --t-h3:    clamp(1.5rem, 1.25rem + .8vw, 2rem);
+  --t-p:     clamp(1.0625rem, 1rem + .2vw, 1.1875rem);
+  --t-etq:   clamp(.75rem, .72rem + .1vw, .8125rem);
+  --t-btn:   clamp(.95rem, .9rem + .15vw, 1.0625rem);
+  --carta-w: min(340px, calc(100vw - 64px)); --rollo: 50px; --sello: 112px; --lado: 22px;
+}
+@media (min-width:900px){ :root{ --carta-w:580px; --rollo:68px; --sello:170px; --lado:56px } }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--marfil);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.contenedor{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* ---------- Fondos y capa de copos ---------- */
+.seccion{position:relative;overflow:hidden}
+.seccion > *{position:relative;z-index:1}
+/* Copos fijos a la pantalla, recortados al área de cada sección */
+.seccion{clip-path:inset(0)}
+.seccion > .copos{position:fixed;left:0;top:0;z-index:0;pointer-events:none}
+.rojo{background:var(--rojo) url(../tipografia/assets/grano.webp) 0 0/256px;color:var(--marfil)}
+.marfil{background:var(--marfil) url(../tipografia/assets/grano.webp) 60px 20px/256px}
+.crema{background:var(--crema) url(../tipografia/assets/grano.webp) 30px 140px/256px}
+
+/* ---------- Sistema tipográfico aprobado ---------- */
+.etiqueta{display:block;font:500 var(--t-etq)/1.4 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--oro-osc)}
+.rojo .etiqueta{color:var(--champan)}
+.num{display:block;font:500 var(--t-num)/1.1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--oro-osc);font-variant-numeric:oldstyle-nums;margin:-.12em 0 .5rem}
+.rojo .num{-webkit-text-stroke-color:var(--champan)}
+.titular{font-weight:inherit;line-height:1;margin:.9rem 0 1.5rem}
+.titular .mayus{display:block;font:500 var(--t-mayus)/1 var(--serif);letter-spacing:.18em;margin-right:-.18em;text-transform:uppercase;color:var(--tinta)}
+.titular .guion{display:block;font:400 var(--t-guion)/1.05 var(--guion);white-space:nowrap;color:var(--rojo);margin:-.15em 0 0 var(--sangria,.55em)}
+.titular .guion .l2{display:block;margin:-.32em 0 0 .75em}
+.rojo .titular .mayus{color:var(--marfil)}
+.rojo .titular .guion{color:var(--champan-claro)}
+.titular.centrado{text-align:center;--sangria:.7em}
+p{font-size:var(--t-p);line-height:1.75;max-width:58ch;color:var(--suave)}
+.rojo p{color:var(--texto-rojo)}
+p + p{margin-top:1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:1rem 1.9rem;border-radius:999px;font:500 var(--t-btn)/1.2 var(--sans);letter-spacing:.04em;text-decoration:none;border:0;background:var(--rojo);color:var(--marfil);cursor:pointer}
+.rojo .btn{background:var(--marfil);color:var(--rojo)}
+.btn svg{width:18px;height:18px;flex:none}
+.claves{list-style:none;display:grid;gap:0 1.8rem;margin:1.8rem 0 2.2rem}
+.claves li{border-top:1px solid rgba(118,89,44,.3);padding:.9rem 0;font-size:calc(var(--t-p) * .9);line-height:1.5;color:var(--suave)}
+.claves strong{display:block;font-weight:500;color:var(--tinta)}
+.rojo .claves li{border-top-color:rgba(214,189,142,.35);color:var(--texto-rojo)}
+.rojo .claves strong{color:var(--marfil)}
+
+/* ---------- Secciones de servicio ---------- */
+.servicio .texto{padding:72px 20px 56px}
+.servicio figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+.tecnica .titular{--sangria:.85em}
+
+/* ---------- Galería ---------- */
+.galeria{padding:88px 0 92px;text-align:center}
+.galeria .intro p{margin-inline:auto}
+.filtros{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:2rem 0 2.6rem}
+.filtro{min-height:44px;padding:0 1.15rem;border-radius:999px;border:1px solid rgba(244,239,233,.55);background:transparent;font:400 calc(var(--t-btn) * .92) var(--sans);color:var(--marfil)}
+.filtro.activo{background:var(--marfil);border-color:var(--marfil);color:var(--rojo)}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:26px 16px;text-align:left}
+.pieza{background:var(--perla);padding:7px 7px 0;rotate:var(--r);box-shadow:0 16px 30px rgba(20,3,4,.38)}
+.pieza img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pieza .pie{padding:.6rem .15rem .75rem}
+.pieza .pie strong{display:block;font:500 italic calc(var(--t-p) * 1.02)/1.2 var(--serif);color:var(--rojo)}
+.pieza .pie span{display:block;margin-top:.25rem;font:500 .66rem/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--oro-osc)}
+
+/* ---------- Preguntas ---------- */
+.faq{padding:88px 0 96px}
+.faq .intro{text-align:center}
+details{border-bottom:1px solid rgba(118,89,44,.35);max-width:760px;margin-inline:auto}
+summary{list-style:none;cursor:pointer;min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;font:500 var(--t-h3)/1.25 var(--serif);color:var(--rojo)}
+summary::after{content:"+";font:300 1.6rem var(--sans);color:var(--oro-osc)}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 1.2rem}
+
+/* ---------- Reservas: carta con el sello RB ---------- */
+.reserva{padding:72px 0 80px}
+.reserva .intro{text-align:center}
+.reserva .intro p{margin-inline:auto}
+.politicas{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid rgba(214,189,142,.35)}
+.politicas h3{font:500 var(--t-h3)/1.15 var(--serif);color:var(--champan-claro);margin-bottom:.8rem}
+.politicas ul{list-style:none;display:grid;gap:.5rem}
+.politicas li{position:relative;padding-left:1.2rem;font-size:calc(var(--t-p) * .94);line-height:1.6;color:var(--texto-rojo)}
+.politicas li::before{content:"";position:absolute;left:0;top:.78em;width:6px;height:1px;background:var(--champan)}
+.info{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 1.6rem;margin-top:2rem}
+.info li{font-size:calc(var(--t-p) * .92);line-height:1.5;color:var(--texto-rojo)}
+.info span{display:block;font:500 var(--t-etq)/1.4 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--champan);margin-bottom:.2rem}
+.info a{color:var(--marfil);text-decoration:none;display:inline-block;min-height:44px;line-height:44px}
+.carta{position:relative;width:var(--carta-w);margin:calc(var(--sello) * .45 + 40px) auto 0;color:var(--tinta-carta);align-self:center}
+.carta::before{content:"";position:absolute;inset:-28px;background:url(../carta/assets/papel-v2-movil.webp) 0 0/100% 100% no-repeat;pointer-events:none}
+@media (min-width:900px){ .carta::before{background-image:url(../carta/assets/papel-v2-escritorio.webp)} }
+.sello{position:absolute;left:50%;top:calc(var(--rollo) * .5 - var(--sello) * .47);width:var(--sello);height:auto;translate:-50% 0;rotate:-5deg;z-index:3;pointer-events:none;
+  filter:drop-shadow(0 1.5px 1px rgba(45,22,6,.55)) drop-shadow(2px 5px 4px rgba(45,18,6,.35)) drop-shadow(5px 12px 14px rgba(40,12,6,.3))}
+.contenido{position:relative;z-index:2;padding:calc(var(--rollo) + var(--sello) * .5 + 14px) var(--lado) 52px}
+.carta h3{font:400 clamp(2.6rem, 2.1rem + 2.2vw, 3.9rem)/1.15 var(--guion);color:var(--rojo);text-align:center;margin:-.2rem 0 1.1rem}
+.campos{display:grid;gap:1.15rem}
+.carta label{display:block;font:500 calc(var(--t-p) * .8)/1.3 var(--sans);letter-spacing:.04em;color:var(--sepia);margin-bottom:.3rem}
+.carta input,.carta select,.carta textarea{width:100%;min-height:46px;padding:.55rem .25rem;font:400 max(16px, calc(var(--t-p) * .95))/1.4 var(--sans);color:var(--tinta-carta);
+  background:rgba(255,250,236,.38);border:0;border-bottom:1px solid var(--linea);border-radius:2px 2px 0 0;-webkit-appearance:none;appearance:none}
+.carta select{padding-right:1.8rem;background:rgba(255,250,236,.38) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%235A3D24' stroke-width='1.4'/%3E%3C/svg%3E") right .4rem center/12px no-repeat}
+.carta ::placeholder{color:rgba(90,61,36,.62)}
+.carta textarea{min-height:110px;resize:vertical;line-height:2rem;padding-top:.1rem;background:rgba(255,250,236,.3) repeating-linear-gradient(180deg,transparent 0 calc(2rem - 1px),rgba(90,61,36,.22) calc(2rem - 1px) 2rem)}
+.carta .btn{display:flex;width:100%;margin-top:1.6rem;background:var(--rojo);color:var(--marfil);box-shadow:0 6px 14px rgba(60,10,10,.22)}
+.aviso{margin-top:1rem;padding:.7rem .9rem;border-left:2px solid var(--rojo);background:rgba(117,33,32,.07);color:var(--rojo);font-size:.95rem}
+.nota{margin-top:.8rem;text-align:center;font-size:calc(var(--t-p) * .82);color:var(--sepia)!important;max-width:none}
+@media (max-width:899px){
+  .reserva .rejilla{display:flex;flex-direction:column}
+  .reserva .rejilla > div:first-child{display:contents}
+  .reserva .intro{order:1} .carta{order:2} .lado{order:3;margin-top:3.6rem}
+  .campos{gap:.9rem}
+  .carta label{font-size:.8rem;margin-bottom:.2rem}
+  .carta input,.carta select,.carta textarea{min-height:44px;padding:.45rem .2rem}
+  .carta textarea{min-height:92px}
+  .carta .btn{font-size:.9rem;padding:.9rem 1rem;margin-top:1.3rem;min-height:48px}
+  .contenido{padding-bottom:40px}
+}
+
+/* =========================== COMPUTADOR =========================== */
+@media (min-width:900px){
+  .servicio .dos{display:grid;grid-template-columns:1fr 40vw;min-height:820px}
+  .servicio.derecha .dos{grid-template-columns:40vw 1fr}
+  .servicio.derecha figure{order:-1}
+  .servicio .texto{padding:110px 6vw 100px max(20px,(100vw - 1180px)/2 + 20px);align-self:center}
+  .servicio.derecha .texto{padding:110px max(20px,(100vw - 1180px)/2 + 20px) 100px 6vw}
+  .servicio figure{position:relative}
+  .servicio figure img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:50% 25%}
+  .claves{grid-template-columns:1fr 1fr}
+  .galeria,.faq{padding:120px 0}
+  .rejilla{grid-template-columns:repeat(4,1fr);gap:30px}
+  .reserva{padding:110px 0 120px}
+  .reserva .rejilla{display:grid;grid-template-columns:1fr var(--carta-w);gap:6vw;align-items:start}
+  .reserva .intro{text-align:left}
+  .reserva .intro p{margin-inline:0}
+  .reserva .titular.centrado{text-align:left;--sangria:1.1em}
+  .carta{margin-top:calc(var(--sello) * .45)}
+  .campos{grid-template-columns:1fr 1fr;gap:1.3rem 1.6rem}
+  .completo{grid-column:1/-1}
+}
+</style>
+<style>
+/* ===== Fotos de las técnicas: completas, sin recortes (las de antes y después nunca se recortan) ===== */
+.servicio figure{position:relative;margin:0}
+.servicio figure img{position:static!important;width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:fill!important}
+.marca-ad{position:absolute;left:12px;padding:.28rem .75rem;border-radius:999px;background:rgba(251,247,241,.92);color:var(--rojo);font:500 .66rem/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.servicio .claves + .btn{margin-top:0}
+/* Técnica Real Brow: antes y después + fibras */
+.tecnica figure.fibras img{aspect-ratio:4/5!important;object-fit:cover!important;object-position:50% 38%}
+@media (min-width:900px){
+  .servicio .dos{min-height:0;align-items:center}
+  .servicio .dos > figure{align-self:stretch;display:flex;align-items:center;background:inherit}
+  .tecnica .tres{display:grid;grid-template-columns:32vw 1fr 24vw;align-items:stretch}
+  .tecnica .tres .texto{padding:110px 4.5vw;align-self:center}
+  .tecnica figure.ad{align-self:center;padding:0 0 0 4vw}
+  .tecnica figure.ad img{box-shadow:0 22px 44px rgba(20,3,4,.45)}
+  .tecnica figure.ad .marca-ad{left:calc(4vw + 12px)}
+  .tecnica figure.fibras{position:relative}
+  .tecnica figure.fibras img{position:absolute!important;inset:0;height:100%!important;aspect-ratio:auto!important}
+}
+@media (max-width:899px){
+  .tecnica figure.ad{padding:0 20px;margin-top:-8px}
+  .tecnica figure.ad img{box-shadow:0 18px 36px rgba(20,3,4,.4)}
+  .tecnica figure.ad .marca-ad{left:32px}
+  .tecnica .tres{display:flex;flex-direction:column}
+  .tecnica .tres .texto{order:1} .tecnica figure.ad{order:2} .tecnica figure.fibras{order:3;margin-top:40px}
+}
+/* Palabra larga: mismo tamaño que los demás títulos, con menos espacio entre letras para que quepa */
+.titular .mayus.largo{letter-spacing:.05em;margin-right:-.05em}
+@media (min-width:900px){ .titular .mayus.largo{letter-spacing:.13em;margin-right:-.13em} }
+/* ===== Fotos enmarcadas: esquinas redondeadas, margen con el fondo a la vista y sombra suave ===== */
+.servicio figure img{border-radius:22px}
+.rojo .servicio figure img,.servicio.rojo figure img{box-shadow:0 22px 44px rgba(20,3,4,.42)}
+.servicio:not(.rojo) figure img{box-shadow:0 18px 40px rgba(74,30,20,.18),0 2px 6px rgba(74,30,20,.08)}
+.servicio figure .marca-ad{top:14px}
+.servicio figure .marca-ad + .marca-ad{top:calc(50% + 14px)}
+@media (max-width:899px){
+  .servicio .dos > figure{padding:0 20px 64px}
+  .servicio .dos > figure .marca-ad{left:34px}
+  .servicio .dos > figure img{max-width:360px;margin-inline:auto}
+  .tecnica figure.ad{padding:0 20px}
+  .tecnica figure.fibras{padding:0 20px 64px;margin-top:28px}
+  .tecnica figure.ad img,.tecnica figure.fibras img{max-width:360px;margin-inline:auto}
+}
+@media (min-width:900px){
+  .servicio .dos{grid-template-columns:1fr 36vw}
+  .servicio.derecha .dos{grid-template-columns:36vw 1fr}
+  .servicio .dos > figure{background:none;padding:96px 6vw 96px 2vw;justify-content:center}
+  .servicio.derecha .dos > figure{padding:96px 2vw 96px 6vw}
+  .servicio .dos > figure img{max-width:400px}
+  .servicio .dos > figure .marca-ad{left:auto;margin-left:14px}
+  .servicio .dos > figure{position:relative}
+  .tecnica .tres{grid-template-columns:30vw 1fr 26vw}
+  .tecnica figure.fibras{padding:96px 5vw 96px 0;display:flex;align-items:center}
+  .tecnica figure.fibras img{position:static!important;height:auto!important;aspect-ratio:9/14!important;max-width:340px}
+}
+/* Etiquetas fijadas a la foto */
+.marco{position:relative;display:block;width:100%;max-width:400px;margin-inline:auto}
+.marco .marca-ad{left:14px!important;margin:0!important;top:14px}
+.marco .marca-ad[data-d]{top:calc(50% + 14px)}
+.tecnica figure.ad .marco{max-width:none}
+</style>
+</head>
+<body>
+
+<!-- 01 · HENNA BROW · crema · foto a la izquierda -->
+<section class="servicio crema seccion derecha" id="henna-brow" data-copos="claro">
+  <div class="dos">
+    <div class="texto">
+      <span class="num" aria-hidden="true">01</span>
+      <span class="etiqueta">Diseño · Depilación con cera · Henna</span>
+      <h2 class="titular" aria-label="Henna Brow"><span class="mayus">Henna</span><span class="guion">Brow</span></h2>
+      <p>Diseño de cejas personalizado según la fisonomía de tu rostro, depilación con cera y sombreado con henna.</p>
+      <p>La henna aporta definición y apariencia de mayor densidad. Ideal si quieres unas cejas más llenas y marcadas.</p>
+      <ul class="claves">
+        <li><strong>Diseño a medida</strong>Según tu fisonomía facial</li>
+        <li><strong>Depilación con cera</strong>Para una forma limpia y definida</li>
+        <li><strong>Sombreado con henna</strong>Más definición y densidad</li>
+        <li><strong>$50.000</strong>Duración: 1 h 30 min</li>
+      </ul>
+      <a class="btn" href="#">Reservar Henna Brow</a>
+    </div>
+    <figure><span class="marco"><img src="assets/diseno-pigmentacion-5.jpg" alt="Antes y después de Henna Brow" width="899" height="1600"><span class="marca-ad">Antes</span><span class="marca-ad" data-d>Después</span></span></figure>
+  </div>
+</section>
+
+<!-- 02 · NATURAL BROW · marfil · foto a la derecha -->
+<section class="servicio marfil seccion" id="natural-brow" data-copos="claro">
+  <div class="dos">
+    <div class="texto">
+      <span class="num" aria-hidden="true">02</span>
+      <span class="etiqueta">Diseño · Depilación con cera</span>
+      <h2 class="titular" aria-label="Natural Brow"><span class="mayus">Natural</span><span class="guion">Brow</span></h2>
+      <p>Diseño de cejas personalizado según la fisonomía de tu rostro y depilación con cera para definir una forma limpia y armónica.</p>
+      <p>Respeta tu ceja natural. Ideal para mantener tus cejas definidas y en equilibrio con tus facciones.</p>
+      <ul class="claves">
+        <li><strong>Diseño a medida</strong>Según tu fisonomía facial</li>
+        <li><strong>Depilación con cera</strong>Forma limpia y armónica</li>
+        <li><strong>Resultado natural</strong>Respeta tu ceja</li>
+        <li><strong>$40.000</strong>Duración: 1 h</li>
+      </ul>
+      <a class="btn" href="#">Reservar Natural Brow</a>
+    </div>
+    <figure><span class="marco"><img src="assets/diseno-depilacion-1.jpg" alt="Antes y después de Natural Brow" width="900" height="1599"><span class="marca-ad">Antes</span><span class="marca-ad" data-d>Después</span></span></figure>
+  </div>
+</section>
+
+<!-- 03 · TÉCNICA REAL BROW · rojo · antes y después + fibras -->
+<section class="servicio tecnica rojo seccion" id="tecnica" data-copos="rojo">
+  <div class="tres">
+    <figure class="ad"><span class="marco"><img src="assets/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow" width="1125" height="1500"><span class="marca-ad">Antes</span><span class="marca-ad" data-d>Después</span></span></figure>
+    <div class="texto">
+      <span class="num" aria-hidden="true">03</span>
+      <span class="etiqueta">Técnica estrella</span>
+      <h2 class="titular" aria-label="Técnica Real Brow"><span class="mayus">Técnica</span><span class="guion">Real<span class="l2">Brow</span></span></h2>
+      <p>Una técnica de embellecimiento de cejas que aplica fibras biocompatibles que simulan el vello natural, creando un efecto de mayor densidad y definición.</p>
+      <p>Está diseñada para rellenar espacios con ausencia de vello y reconstruir visualmente la forma de tus cejas, con un resultado natural y armónico que respeta las facciones de tu rostro.</p>
+      <ul class="claves">
+        <li><strong>Efecto natural</strong>Fibras que simulan el vello</li>
+        <li><strong>No quirúrgico</strong>Procedimiento personalizado</li>
+        <li><strong>4 a 8 meses</strong>Duración aproximada, según cada persona y sus cuidados</li>
+        <li><strong>Con valoración</strong>Para saber si tu ceja es apta y definir el valor</li>
+      </ul>
+      <a class="btn" href="#">Reservar valoración</a>
+    </div>
+    <figure class="fibras"><img src="assets/real-brow-fibras.jpg" alt="Jessica Camejo mostrando las fibras de la Técnica Real Brow" width="901" height="1600"></figure>
+  </div>
+</section>
+
+<!-- 04 · REHABILITACIÓN FOLICULAR · crema · foto a la izquierda -->
+<section class="servicio crema seccion derecha" id="rehabilitacion" data-copos="claro">
+  <div class="dos">
+    <div class="texto">
+      <span class="num" aria-hidden="true">04</span>
+      <span class="etiqueta">Recupera tu vello natural</span>
+      <h2 class="titular" aria-label="Rehabilitación folicular de cejas"><span class="mayus largo">Rehabilitación</span><span class="guion">folicular</span></h2>
+      <p>Es un protocolo estético especializado que busca favorecer la recuperación del vello perdido en las cejas, ya sea por malas prácticas de depilación, micropigmentación, tatuajes, pérdida natural del vello o determinadas condiciones médicas.</p>
+      <ul class="claves">
+        <li><strong>Microneedling</strong>Con Dermapen, mediante microperforaciones controladas</li>
+        <li><strong>Activos especializados</strong>Péptidos, vitaminas, factores de crecimiento, exosomas y PDRN, según tu caso</li>
+        <li><strong>Plan por sesiones</strong>Se recomienda un mínimo de 3 sesiones</li>
+        <li><strong>$100.000</strong>Por sesión, previa valoración</li>
+      </ul>
+      <a class="btn" href="#">Reservar valoración</a>
+    </div>
+    <figure><span class="marco"><img src="assets/rehabilitacion-sesiones.jpg" alt="Evolución de cejas con rehabilitación folicular: antes, primera y segunda sesión" width="844" height="1500"></span></figure>
+  </div>
+</section>
+
+<script src="copos.js"></script>
+</body>
+</html>

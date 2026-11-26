@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tipografía de Navidad v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* VISTA PREVIA LOCAL v2 · Sistema tipográfico único · Navidad 2026 · Real Brow Studio
+   Base: la composición de la sesión anterior (Galería y Reservas sobre rojo).
+   Fuera del repositorio. Todos los textos están tomados de la web actual. */
+:root{
+  --rojo:#752120; --perla:#FBF7F1; --marfil:#F4EFE9;
+  --champan:#D6BD8E; --champan-claro:#E6D3AE; --texto-rojo:#E8DCD8;
+  --tinta:#2D2D2D; --suave:#4A4642; --oro-osc:#76592C;
+  --rayas:repeating-linear-gradient(90deg,var(--rojo) 0 11px,var(--perla) 11px 22px);
+
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --guion:'Pinyon Script', cursive;
+  --sans:'Jost', system-ui, sans-serif;
+
+  /* ---------- ESCALA PROPORCIONAL ÚNICA ----------
+     Crece con el ancho de pantalla entre un mínimo (celular) y un máximo (computador). */
+  --t-mayus: clamp(2.2rem, 1.5rem + 2.9vw, 3.9rem);   /* TÍTULO EN MAYÚSCULAS   */
+  --t-guion: clamp(4.2rem, 2.8rem + 5.6vw, 7.6rem);     /* palabra caligráfica      */
+  --t-num:   clamp(3.6rem, 2.6rem + 3.6vw, 5.6rem);     /* número de capítulo       */
+  --t-h3:    clamp(1.5rem, 1.25rem + .8vw, 2rem);       /* subtítulos               */
+  --t-p:     clamp(1.0625rem, 1rem + .2vw, 1.1875rem);  /* párrafos                 */
+  --t-etq:   clamp(.75rem, .72rem + .1vw, .8125rem);    /* etiquetas                */
+  --t-btn:   clamp(.95rem, .9rem + .15vw, 1.0625rem);   /* botones y filtros        */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--marfil);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%}
+.contenedor{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* ---------- Fondo rojo común ---------- */
+.rojo{position:relative;background:var(--rojo) url(assets/grano.webp) 0 0/256px;color:var(--marfil);overflow:hidden}
+/* Damasco: solo como marco arriba y abajo, nunca detrás de los textos */
+.rojo::before{content:"";position:absolute;inset:0;background:url(assets/damasco.svg) 0 0/150px;opacity:.07;pointer-events:none;
+  -webkit-mask:linear-gradient(180deg,#000 0,transparent 190px,transparent calc(100% - 150px),#000 100%);
+          mask:linear-gradient(180deg,#000 0,transparent 190px,transparent calc(100% - 150px),#000 100%)}
+.rojo > *{position:relative}
+
+/* ---------- SISTEMA DE TÍTULOS (idéntico en toda la campaña, como en la portada) ---------- */
+.etiqueta{display:block;font:500 var(--t-etq)/1.4 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--champan)}
+.titular{font-weight:inherit;margin:.9rem 0 1.5rem;line-height:1}
+.titular .mayus{display:block;font:500 var(--t-mayus)/1 var(--serif);letter-spacing:.18em;margin-right:-.18em;text-transform:uppercase;color:var(--marfil)}
+/* La caligrafía sube y se entrelaza con la línea de mayúsculas, sin tocar sus letras */
+.titular .guion{display:block;font:400 var(--t-guion)/1.05 var(--guion);white-space:nowrap;color:var(--champan-claro);
+  margin:var(--sube,-.15em) 0 0 var(--sangria,.55em)}
+.num{display:block;font:500 var(--t-num)/1.1 var(--serif);color:transparent;-webkit-text-stroke:1px var(--champan);font-variant-numeric:oldstyle-nums;margin:-.12em 0 .5rem}
+h3{font:500 var(--t-h3)/1.15 var(--serif)}
+p{font-size:var(--t-p);line-height:1.75;max-width:58ch;color:var(--texto-rojo)}
+p + p{margin-top:1rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:50px;padding:1rem 1.9rem;border-radius:999px;font:500 var(--t-btn)/1 var(--sans);letter-spacing:.04em;text-decoration:none;border:1px solid var(--marfil);background:var(--marfil);color:var(--rojo);cursor:pointer}
+.btn svg{width:18px;height:18px}
+
+/* =========================== 1 · TÉCNICA REAL BROW =========================== */
+.tecnica .texto{padding:72px 20px 56px}
+.tecnica .titular{--sangria:.85em}  /* la «l» de Real sube por fuera de la «A» */
+.titular .guion .l2{display:block;margin:-.32em 0 0 .75em}  /* «Real / Brow» en dos líneas, como en la sesión anterior */
+.claves{list-style:none;display:grid;gap:0 1.8rem;margin:1.8rem 0 2.2rem}
+.claves li{border-top:1px solid rgba(214,189,142,.35);padding:.9rem 0;font-size:calc(var(--t-p) * .9);line-height:1.5;color:var(--texto-rojo)}
+.claves strong{display:block;font-weight:500;color:var(--marfil)}
+.tecnica figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%}
+
+/* =========================== 2 · GALERÍA =========================== */
+.galeria{padding:88px 0 92px;text-align:center}
+/* Títulos centrados (Galería y Reservas): mayúsculas al centro y caligrafía con un leve desfase */
+.titular.centrado{text-align:center;--sangria:.7em}
+.reserva .intro .titular.centrado{margin-inline:auto}
+.reserva .intro > .etiqueta{text-align:center}
+.galeria .intro p{margin-inline:auto}
+.filtros{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin:2rem 0 2.6rem}
+.filtro{min-height:44px;padding:0 1.15rem;border-radius:999px;border:1px solid rgba(244,239,233,.55);background:transparent;font:400 calc(var(--t-btn) * .92) var(--sans);letter-spacing:.02em;color:var(--marfil)}
+.filtro.activo{background:var(--marfil);border-color:var(--marfil);color:var(--rojo)}
+.rejilla{display:grid;grid-template-columns:1fr 1fr;gap:26px 16px;text-align:left}
+.pieza{background:var(--perla);padding:7px 7px 0;rotate:var(--r);box-shadow:0 16px 30px rgba(20,3,4,.38)}
+.pieza img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pieza .pie{padding:.6rem .15rem .75rem}
+.pieza .pie strong{display:block;font:500 italic calc(var(--t-p) * 1.02)/1.2 var(--serif);color:var(--rojo)}
+.pieza .pie span{display:block;margin-top:.25rem;font:500 .66rem/1.3 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--oro-osc)}
+
+/* =========================== 3 · RESERVAS =========================== */
+.reserva{padding:88px 0 96px}
+.politicas{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid rgba(214,189,142,.35)}
+.politicas h3{color:var(--champan-claro);margin-bottom:.9rem}
+.politicas ul{list-style:none;display:grid;gap:.55rem}
+.politicas li{position:relative;padding-left:1.2rem;font-size:calc(var(--t-p) * .94);line-height:1.6;color:var(--texto-rojo)}
+.politicas li::before{content:"";position:absolute;left:0;top:.75em;width:6px;height:1px;background:var(--champan)}
+.formulario{position:relative;margin-top:2.6rem;padding:2.6rem 1.3rem 1.6rem;background:var(--perla);border-radius:3px;box-shadow:0 26px 60px rgba(20,3,4,.4);color:var(--tinta)}
+.formulario::before{content:"";position:absolute;left:0;right:0;top:0;height:12px;background:var(--rayas)}
+.formulario h3{color:var(--rojo);margin-bottom:1.3rem}
+.campos{display:grid;gap:1rem}
+label{display:block;font:500 calc(var(--t-p) * .8)/1.3 var(--sans);letter-spacing:.03em;color:var(--tinta);margin-bottom:.4rem}
+input,select,textarea{width:100%;min-height:48px;padding:.75rem .9rem;font:300 max(16px, calc(var(--t-p) * .95))/1.4 var(--sans);color:var(--tinta);background:#fff;border:1px solid rgba(118,89,44,.35);border-radius:4px}
+textarea{min-height:96px}
+.formulario .btn{width:100%;margin-top:1.4rem;background:var(--rojo);border-color:var(--rojo);color:var(--marfil)}
+.nota{margin-top:.8rem;font-size:calc(var(--t-p) * .8);line-height:1.5;color:var(--suave);text-align:center;max-width:none}
+
+/* =========================== COMPUTADOR =========================== */
+@media (min-width:900px){
+  .tec-rejilla{display:grid;grid-template-columns:1fr 40vw;min-height:860px}
+  .tecnica .texto{padding:120px 6vw 110px max(20px,(100vw - 1180px)/2 + 20px);align-self:center}
+  .tecnica figure{position:relative}
+  .tecnica figure img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:50% 25%}
+  .claves{grid-template-columns:1fr 1fr}
+  .galeria{padding:120px 0}
+  .rejilla{grid-template-columns:repeat(4,1fr);gap:30px}
+  .reserva{padding:120px 0}
+  .reserva .contenedor{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:start}
+  .formulario{margin-top:0;padding:3rem 2.4rem 2.2rem}
+  .campos{grid-template-columns:1fr 1fr}
+  .campos .completo{grid-column:1/-1}
+}
+
+/* Modos de prueba (los usa el script de verificación; no forman parte del diseño) */
+.solo-guion .seccion *:not(.guion){visibility:hidden} .solo-guion .seccion .guion{visibility:visible}
+.solo-mayus .seccion *:not(.mayus){visibility:hidden} .solo-mayus .seccion .mayus{visibility:visible}
+.solo-num .seccion *:not(.num){visibility:hidden}     .solo-num .seccion .num{visibility:visible}
+.sin-guion .guion{visibility:hidden} .sin-num .num{visibility:hidden}
+.vacio .seccion *{visibility:hidden}
+</style>
+</head>
+<body>
+
+<!-- 1 · TÉCNICA REAL BROW -->
+<section class="tecnica rojo seccion" id="tecnica">
+  <div class="tec-rejilla">
+    <div class="texto">
+      <span class="num" aria-hidden="true">03</span>
+      <span class="etiqueta">Técnica estrella</span>
+      <h2 class="titular" aria-label="Técnica Real Brow"><span class="mayus">Técnica</span><span class="guion">Real<span class="l2">Brow</span></span></h2>
+      <p>Una técnica de embellecimiento de cejas que aplica fibras biocompatibles que simulan el vello natural, creando un efecto de mayor densidad y definición.</p>
+      <p>Está diseñada para rellenar espacios con ausencia de vello y reconstruir visualmente la forma de tus cejas, con un resultado natural y armónico que respeta las facciones de tu rostro.</p>
+      <ul class="claves">
+        <li><strong>Efecto natural</strong>Fibras que simulan el vello</li>
+        <li><strong>No quirúrgico</strong>Procedimiento personalizado</li>
+        <li><strong>4 a 8 meses</strong>Duración aproximada, según cada persona y sus cuidados</li>
+        <li><strong>Con valoración</strong>Para saber si tu ceja es apta y definir el valor</li>
+      </ul>
+      <a class="btn" href="#">Reservar valoración</a>
+    </div>
+    <figure><img src="assets/real-brow-fibras.jpg" alt="Jessica Camejo mostrando las fibras de la Técnica Real Brow"></figure>
+  </div>
+</section>
+
+<!-- 2 · GALERÍA -->
+<section class="galeria rojo seccion" id="galeria">
+  <div class="contenedor">
+    <div class="intro">
+      <span class="etiqueta">Galería</span>
+      <h2 class="titular centrado" aria-label="Mis trabajos"><span class="mayus">Mis</span><span class="guion">trabajos</span></h2>
+      <p>Resultados reales de clientas de Real Brow Studio. Toca cualquier foto o video para verlo en grande.</p>
+    </div>
+    <div class="filtros">
+      <button class="filtro activo">Todo</button><button class="filtro">Técnica Real Brow</button><button class="filtro">Henna Brow</button><button class="filtro">Natural Brow</button><button class="filtro">Rehabilitación folicular</button>
+    </div>
+    <div class="rejilla">
+      <figure class="pieza" style="--r:-1.6deg"><img src="assets/real-brow-antes-despues-1.jpg" alt="Antes y después de la Técnica Real Brow"><figcaption class="pie"><strong>Antes y después</strong><span>Técnica Real Brow</span></figcaption></figure>
+      <figure class="pieza" style="--r:1.2deg"><img src="assets/diseno-pigmentacion-2.jpg" alt="Antes y después de Henna Brow"><figcaption class="pie"><strong>Antes y después</strong><span>Henna Brow</span></figcaption></figure>
+      <figure class="pieza" style="--r:-.8deg"><img src="assets/rehabilitacion-evolucion-1.jpg" alt="Evolución por sesiones de rehabilitación folicular"><figcaption class="pie"><strong>Evolución por sesiones</strong><span>Rehabilitación folicular</span></figcaption></figure>
+      <figure class="pieza" style="--r:1.8deg"><img src="assets/sombreado-diseno.jpg" alt="Diseño a medida de Henna Brow"><figcaption class="pie"><strong>Diseño a medida</strong><span>Henna Brow</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · RESERVAS -->
+<section class="reserva rojo seccion" id="reservar">
+  <div class="contenedor">
+    <div class="intro">
+      <span class="etiqueta">Reservas</span>
+      <h2 class="titular centrado" aria-label="Reserva tu cita"><span class="mayus">Reserva</span><span class="guion">tu cita</span></h2>
+      <p>Cuéntame qué servicio te interesa y cuándo te viene bien. Te confirmo la disponibilidad por WhatsApp.</p>
+      <div class="politicas">
+        <h3>Antes de reservar</h3>
+        <ul>
+          <li>No se cobra anticipo para separar la cita.</li>
+          <li>Pagos en efectivo o por transferencia.</li>
+          <li>Si no puedes asistir, avisa con 24 horas de anticipación.</li>
+          <li>Pasados 15 minutos sin llegar, la cita se cancela.</li>
+        </ul>
+      </div>
+    </div>
+    <form class="formulario" onsubmit="return false">
+      <h3>Solicitar cita</h3>
+      <div class="campos">
+        <div class="completo"><label for="nombre">Tu nombre</label><input id="nombre" placeholder="¿Cómo te llamas?"></div>
+        <div class="completo"><label for="servicio">Servicio</label><select id="servicio"><option>Técnica Real Brow</option></select></div>
+        <div><label for="fecha">Fecha preferida</label><input id="fecha" type="date"></div>
+        <div><label for="horario">Horario</label><select id="horario"><option>Mañana</option></select></div>
+        <div class="completo"><label for="mensaje">Comentarios (opcional)</label><textarea id="mensaje" placeholder="Cuéntame qué te gustaría lograr con tus cejas"></textarea></div>
+      </div>
+      <button class="btn" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.2A8.5 8.5 0 1 1 20.5 11.6z"/><path d="M9 8.6c0 3.3 2.9 6.3 6.3 6.3l1.1-1.4-2-1-1 .9c-1.2-.5-2.3-1.5-2.8-2.8l.9-1-1-2z"/></svg>Enviar solicitud por WhatsApp</button>
+      <p class="nota">Se abrirá WhatsApp con tu mensaje listo para enviar.</p>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>

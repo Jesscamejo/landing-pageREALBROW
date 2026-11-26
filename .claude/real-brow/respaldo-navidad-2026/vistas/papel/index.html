@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papel rasgado · propuesta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* VISTA PREVIA LOCAL · Propuesta de papel rasgado · Navidad 2026 · Real Brow Studio
+   Fuera del repositorio. Textos tomados de la web actual. */
+:root{
+  --vino:#752120; --borgona:#6B1626; --marfil:#F4EFE9; --crema:#EADFCF; --perla:#FBF7F1;
+  --champan:#C9AE7C; --champan-osc:#8A6A38; --tinta:#2D2D2D; --suave:#57534E;
+  --serif:'Cormorant Garamond', Georgia, serif; --sans:'Jost', system-ui, sans-serif;
+  /* Alto de la franja de rotura: proporcional al ancho (misma proporción que la imagen) */
+  --h:calc(100vw * 150 / 430);
+}
+@media (min-width:700px){ :root{ --h:calc(100vw * 190 / 1440) } }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);font-weight:300;color:var(--tinta);background:var(--marfil);-webkit-font-smoothing:antialiased}
+h2{font-family:var(--serif);font-weight:500;line-height:1.05;font-size:clamp(2.4rem,9vw,3.6rem);margin:.5rem 0 1.1rem}
+p{font-size:1.02rem;line-height:1.7;max-width:58ch}
+.etiqueta{display:inline-block;font:500 .74rem/1.3 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--champan-osc)}
+.claves{list-style:none;margin:1.6rem 0 0;display:grid;gap:0 1.6rem}
+.claves li{border-top:1px solid rgba(138,106,56,.35);padding:.85rem 0;font-size:.95rem;color:var(--suave)}
+.claves strong{display:block;font-weight:500;color:var(--tinta)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.9rem 1.8rem;border-radius:999px;font:500 .95rem var(--sans);letter-spacing:.04em;border:1px solid var(--vino);background:var(--vino);color:var(--marfil);text-decoration:none;margin-top:1.8rem}
+.contenedor{width:min(1180px,100% - 40px);margin-inline:auto}
+
+/* Fondos de papel: color + grano continuo */
+.marfil{background:var(--marfil) url(assets/grano.webp) 0 0/256px}
+.crema{background:var(--crema) url(assets/grano.webp) 37px 91px/256px}
+.vino{background:var(--vino) url(assets/grano.webp) 120px 40px/256px;color:var(--marfil)}
+.vino .etiqueta{color:var(--champan)}
+.vino p{color:rgba(244,239,233,.86)}
+
+/* =====================================================================
+   PAPEL RASGADO
+   La sección de arriba ES el papel: su borde inferior se recorta con una
+   máscara, así que todo lo que contiene (también las fotos) se rompe con ella.
+   Debajo, en la sección siguiente, quedan el alma fibrosa y la sombra.
+   ===================================================================== */
+.rompe{position:relative;z-index:2;margin-bottom:calc(-1 * var(--h));
+  -webkit-mask:linear-gradient(#000,#000) top/100% calc(100% - var(--h) * .92) no-repeat, var(--m) bottom/100% var(--h) no-repeat;
+          mask:linear-gradient(#000,#000) top/100% calc(100% - var(--h) * .92) no-repeat, var(--m) bottom/100% var(--h) no-repeat}
+.rompe::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--h);background:var(--l) bottom/100% 100% no-repeat;pointer-events:none;z-index:5}
+.recibe{position:relative;z-index:1}
+.recibe > .alma{position:absolute;left:0;right:0;top:0;height:var(--h);pointer-events:none;z-index:5}
+/* dos capas: la sombra (todo el ancho) y el filo del papel (solo donde el papel no lleva foto) */
+.recibe > .alma::before,.recibe > .alma::after{content:"";position:absolute;inset:0;background:top/100% 100% no-repeat}
+.recibe > .alma::before{background-image:var(--s)}
+.recibe > .alma::after{background-image:var(--a)}
+/* Donde la sección de arriba termina en una foto, el borde de la foto es la rotura: sin filo de color */
+#rehab > .alma::after{display:none}
+@media (min-width:700px){ #rehab > .alma::after{display:block;clip-path:inset(0 42vw 0 0)} }
+
+.t1{--s:url(assets/marfil-vino-movil-sombra.webp);--m:url(assets/marfil-vino-movil-mascara.webp);--l:url(assets/marfil-vino-movil-labio.webp);--a:url(assets/marfil-vino-movil-alma.webp)}
+.t2{--s:url(assets/vino-crema-movil-sombra.webp);--m:url(assets/vino-crema-movil-mascara.webp);--l:url(assets/vino-crema-movil-labio.webp);--a:url(assets/vino-crema-movil-alma.webp)}
+@media (min-width:700px){
+  .t1{--s:url(assets/marfil-vino-escritorio-sombra.webp);--m:url(assets/marfil-vino-escritorio-mascara.webp);--l:url(assets/marfil-vino-escritorio-labio.webp);--a:url(assets/marfil-vino-escritorio-alma.webp)}
+  .t2{--s:url(assets/vino-crema-escritorio-sombra.webp);--m:url(assets/vino-crema-escritorio-mascara.webp);--l:url(assets/vino-crema-escritorio-labio.webp);--a:url(assets/vino-crema-escritorio-alma.webp)}
+}
+
+/* Orden de apilado: el papel de arriba siempre queda encima del siguiente */
+#natural{z-index:3}#tecnica{z-index:2}#rehab{z-index:1}
+
+/* ---------- Composición de la maqueta ---------- */
+#natural{padding:64px 0 calc(var(--h) + 40px)}
+#tecnica{padding-top:calc(var(--h) - 20px)}
+#tecnica .texto{padding-bottom:40px}
+#tecnica figure{margin:0}
+#tecnica figure img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:50% 0%}
+#rehab{padding:calc(var(--h) + 18px) 0 72px}
+
+@media (min-width:700px){
+  h2{font-size:clamp(3rem,4.4vw,4.2rem)}
+  .claves{grid-template-columns:1fr 1fr}
+  #natural .contenedor,#rehab .contenedor{display:grid;grid-template-columns:5fr 6fr;gap:7vw;align-items:start}
+  #natural{padding-top:110px}
+  #tecnica{padding-top:0}
+  #tecnica .rejilla{display:grid;grid-template-columns:1fr 42vw;min-height:880px}
+  #tecnica .texto{padding:calc(var(--h) + 40px) 6vw calc(var(--h) + 60px) max(20px,(100vw - 1180px)/2)}
+  #tecnica figure{position:relative}
+  #tecnica figure img{position:absolute;inset:0;height:100%;aspect-ratio:auto;object-position:50% 62%}
+  #rehab{padding-top:calc(var(--h) + 40px)}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 · MARFIL (Natural Brow) — se rompe sobre el vino -->
+<section class="marfil rompe t1" id="natural">
+  <div class="contenedor">
+    <div>
+      <span class="etiqueta">Diseño · Depilación con cera</span>
+      <h2>Natural Brow</h2>
+      <p>Diseño de cejas personalizado según la fisonomía de tu rostro y depilación con cera para definir una forma limpia y armónica.</p>
+    </div>
+    <div>
+      <p>Respeta tu ceja natural. Ideal para mantener tus cejas definidas y en equilibrio con tus facciones.</p>
+      <ul class="claves">
+        <li><strong>Diseño a medida</strong>Según tu fisonomía facial</li>
+        <li><strong>Depilación con cera</strong>Forma limpia y armónica</li>
+        <li><strong>Resultado natural</strong>Respeta tu ceja</li>
+        <li><strong>$40.000</strong>Duración: 1 h</li>
+      </ul>
+      <a class="btn" href="#">Reservar Natural Brow</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · VINO (Técnica Real Brow) — recibe el marfil y se rompe, con su foto, sobre el crema -->
+<section class="vino recibe rompe t2" id="tecnica">
+  <div class="alma t1" aria-hidden="true"></div>
+  <div class="rejilla">
+    <div class="texto contenedor">
+      <span class="etiqueta">Técnica estrella</span>
+      <h2>Técnica Real Brow</h2>
+      <p>Una técnica de embellecimiento de cejas que aplica fibras biocompatibles que simulan el vello natural, creando un efecto de mayor densidad y definición.</p>
+      <ul class="claves" style="--x:0">
+        <li style="border-color:rgba(201,174,124,.35);color:rgba(244,239,233,.75)"><strong style="color:var(--marfil)">Efecto natural</strong>Fibras que simulan el vello</li>
+        <li style="border-color:rgba(201,174,124,.35);color:rgba(244,239,233,.75)"><strong style="color:var(--marfil)">No quirúrgico</strong>Procedimiento personalizado</li>
+      </ul>
+      <a class="btn" href="#" style="background:var(--marfil);color:var(--vino);border-color:var(--marfil)">Reservar valoración</a>
+    </div>
+    <figure>
+      <img src="assets/real-brow-fibras.jpg" alt="Jessica Camejo mostrando las fibras de la Técnica Real Brow">
+    </figure>
+  </div>
+</section>
+
+<!-- 3 · CREMA (Rehabilitación folicular) — recibe el vino -->
+<section class="crema recibe" id="rehab">
+  <div class="alma t2" aria-hidden="true"></div>
+  <div class="contenedor">
+    <div>
+      <span class="etiqueta">Recupera tu vello natural</span>
+      <h2>Rehabilitación folicular de cejas</h2>
+    </div>
+    <div>
+      <p>Es un protocolo estético especializado que busca favorecer la recuperación del vello perdido en las cejas, ya sea por malas prácticas de depilación, micropigmentación, tatuajes, pérdida natural del vello o determinadas condiciones médicas.</p>
+      <ul class="claves">
+        <li><strong>Microneedling</strong>Con Dermapen, mediante microperforaciones controladas</li>
+        <li><strong>Plan por sesiones</strong>Se recomienda un mínimo de 3 sesiones</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

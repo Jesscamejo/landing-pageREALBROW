@@ -5,6 +5,93 @@ Redactado el 25 de noviembre de 2026 (America/Bogota). No sustituye a decisiones
 decisiones de diseño de este informe aún no están registradas allí y hacerlo requiere
 aprobación de la responsable.
 
+## 0. Actualización del 26 de noviembre de 2026 (prevalece sobre los apartados 1 a 10)
+
+### Estado
+- main y la web publicada siguen sin cambios (59195ec). Navidad sigue sin activar.
+- Todo lo de este apartado está aprobado por la responsable en vista previa local. Nada está
+  implementado todavía en index.html ni en temporadas/.
+- Pendiente de aprobación aparte: registrar estas decisiones en decisiones.md.
+
+### Aprobado el 26-11-2026
+1. Rojo de campaña #752120 en toda la campaña, portada incluida (sustituye al vino #4A0E19
+   como color de fondo; el vino oscuro solo queda en el velo de la portada en computador).
+2. Papel rasgado en las transiciones entre bloques de color: contorno orgánico y asimétrico,
+   generado a la medida de cada ancho (no repetido), borde del MISMO color que el papel (sin
+   alma blanca), filo apenas más oscuro, sombra neutra mínima. Donde la sección de arriba
+   termina en una foto, la foto es la rotura: sin filo de color. Sustituye al papel v1/v2.
+   Referencia: vistas/papel/ y generadores/rasgar.py + transiciones.json.
+3. Sistema tipográfico único: título = MAYÚSCULAS en Cormorant Garamond 500 (espaciado .18em)
+   + palabra en Pinyon Script entrelazada debajo, sin tocarse. Todos los títulos con el mismo
+   tamaño: mayúsculas clamp(2.2rem, 1.5rem + 2.9vw, 3.9rem) y caligrafía
+   clamp(4.2rem, 2.8rem + 5.6vw, 7.6rem). Párrafos Jost 300 de 17 a 19 px. «Real / Brow» en dos
+   líneas. «MIS trabajos» y «RESERVA tu cita» centrados. Palabras largas (REHABILITACIÓN): mismo
+   tamaño con menos espaciado. Números de capítulo 01–04 = orden de los servicios.
+4. Técnicas: fotos enmarcadas dentro de la sección (esquinas de 22 px, sombra suave, fondo a la
+   vista alrededor), máx. 400 px de ancho en computador. Antes y después SIEMPRE completos, sin
+   recorte, con etiquetas «Antes»/«Después» fijadas a la foto. Técnica Real Brow en tres
+   columnas: antes y después | texto | foto de las fibras. Referencia: vistas/completa/tecnicas.html.
+5. Galería: mismo estilo de fotos redondeadas que las técnicas (se descartan las copias
+   impresas giradas). Aún sin maquetar.
+6. Reservas: el pergamino lleva SOLO el formulario («Solicitar cita» en Pinyon Script rojo,
+   campos, botón de WhatsApp y nota). Título, texto, contacto y «Antes de reservar» van sobre el
+   rojo. Carta centrada en celular (326 px, 32 px de rojo a cada lado). Sello: la imagen
+   entregada por la responsable (fotos/sello-rb-original.webp), sin modificar, sobre el pliegue
+   con sombras. Esto cambia la decisión anterior de no usar monograma. Referencia: vistas/carta/v2.html.
+7. Copos de nieve: delgados, originales (código), repartidos por todo el fondo también detrás de
+   los textos, FIJOS a la pantalla (el contenido se desplaza, los copos no), blancos tenues en
+   rojo y rojo tenue en marfil/crema, sin animación propia. En todas las secciones salvo la
+   portada. Referencia: vistas/completa/copos.js.
+8. Portada: foto fotos/campana-portada.webp (1536×1024). La responsable declara tener derechos de
+   uso; se usa solo como imagen de campaña, nunca como resultado del estudio. Computador: velo
+   vino oscuro original (valores del apartado 5) y logo grande centrado sobre «TEMPORADA» (88 %
+   de su ancho). Celular: foto sin velo con corte breve al rojo, logo al 66 % y todo el bloque
+   centrado; el logo de la cabecera se oculta sobre la portada. Sin copos.
+   Referencia: vistas/portada/ (se aplica encima de campana.css y campana.js).
+
+### Descartado el 26-11-2026
+- Papel rasgado con alma blanca o rosada y sombra de color vino (halo rojizo).
+- Copos gruesos con relieve (inspirados en un paquete de Canva Pro, que no se copia).
+- Copos impresos fijos en cada sección (sustituidos por copos fijos a la pantalla).
+- Portada con velo rojo #752120 o sin ningún velo en computador; opciones A, B y C de lectura.
+- Fotos de técnicas a sangre a toda la altura.
+- Políticas y título dentro del pergamino; sello RB generado por código.
+
+### Contenido de esta carpeta
+- vistas/completa/: index.html (técnicas, galería, preguntas y reservas con copos),
+  tecnicas.html (las cuatro técnicas aprobadas), copos.js.
+- vistas/carta/: v2.html + assets (pergamino en dos medidas y sello a 440 px).
+- vistas/tipografia/: v2.html + assets (grano de papel y damasco).
+- vistas/papel/: index.html + assets (capas del papel rasgado).
+- vistas/portada/: ajuste-logo.css, ajuste-logo.js, ajuste-color.css.
+- fotos/: campana-portada.webp y sello-rb-original.webp.
+- generadores/: rasgar.py (papel rasgado), carta.py (pergamino), grano.py (grano), transiciones.json.
+- capturas/: referencia visual de lo aprobado.
+
+### Cómo volver a montar las vistas
+1. Copiar esta carpeta a una carpeta temporal fuera del repositorio.
+2. Las fotos de clientas no se duplican aquí: copiar desde imagenes/ a vistas/completa/assets/
+   (diseno-pigmentacion-5, diseno-depilacion-1, real-brow-antes-despues-1, real-brow-fibras,
+   rehabilitacion-sesiones) y a vistas/tipografia/assets/ (real-brow-fibras,
+   real-brow-antes-despues-1, diseno-pigmentacion-2, rehabilitacion-evolucion-1,
+   sombreado-diseno). Copiar real-brow-fibras.jpg también a vistas/papel/assets/.
+3. Portada: montar como en el apartado 3 y añadir, después de campana.css, ajuste-logo.css y
+   ajuste-color.css, y después de campana.js, ajuste-logo.js. Copiar fotos/campana-portada.webp
+   como imagenes/campana-portada.webp y vistas/tipografia/assets/grano.webp como imagenes/grano.webp.
+4. Servir la carpeta con un servidor local (no abrir como file://).
+
+### Pendiente
+1. Propuesta de implementación en claude/landing-real-brow: estructura temporadas/navidad/ con
+   activación por fechas en hora de Bogotá y vuelta automática al diseño habitual; retirar de
+   campana.css y campana.js el papel v2, el sello generado, el damasco de fondo y el código
+   sobrante; aplicar todo lo aprobado; optimizar la foto de portada para celular sin alterarla.
+2. Maquetar la galería con fotos redondeadas.
+3. Guiño a las Velitas (7 de diciembre) sin velas: sin definir.
+4. Confirmar horario de festivos (24, 25 y 31 de diciembre y 1 de enero).
+5. Probar el paso de Instagram a WhatsApp y los copos fijos en iPhone y Android reales.
+6. Diseñar Fin de Año y Año Nuevo, aprobados antes del 30 de diciembre.
+7. Registrar estas decisiones en decisiones.md (requiere aprobación).
+
 ## 1. Estado general
 
 - La web publicada y la rama main no han cambiado: main sigue en el commit 59195ec y la web

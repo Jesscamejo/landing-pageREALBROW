@@ -1,0 +1,218 @@
+[
+ {
+  "nombre": "marfil-vino-escritorio",
+  "semilla": 20261201,
+  "ancho": 1440,
+  "alto": 190,
+  "base": 0.36,
+  "deriva": 18,
+  "deriva_periodo": 1300,
+  "medio": 26,
+  "medio_periodo": 260,
+  "pequeno": 5.5,
+  "pequeno_periodo": 58,
+  "calma": 520,
+  "torsion": 46,
+  "labios": 0.1,
+  "labio_periodo": 210,
+  "alma_min": 1.3,
+  "alma_max": 3.6,
+  "halo": 0.8,
+  "fibras": 0.35,
+  "alma": [
+   232,
+   226,
+   218
+  ],
+  "alma_tinte": [
+   232,
+   226,
+   218
+  ],
+  "tinte_px": 0.5,
+  "color_sombra": [
+   58,
+   12,
+   12
+  ],
+  "sombra": [
+   0.26,
+   0.14
+  ],
+  "deshilado": 0.0,
+  "relieve": 0.0,
+  "bajo_labio": 0.0,
+  "grumo": 0.7,
+  "contacto": [
+   2.2,
+   1.8
+  ],
+  "ambiente": [
+   9,
+   6
+  ],
+  "sombra_aparte": true
+ },
+ {
+  "nombre": "marfil-vino-movil",
+  "semilla": 7140391,
+  "ancho": 430,
+  "alto": 150,
+  "base": 0.34,
+  "deriva": 9,
+  "deriva_periodo": 800,
+  "medio": 16,
+  "medio_periodo": 190,
+  "pequeno": 4.5,
+  "pequeno_periodo": 50,
+  "calma": 360,
+  "torsion": 34,
+  "labios": 0.1,
+  "labio_periodo": 170,
+  "alma_min": 1.3,
+  "alma_max": 3.6,
+  "halo": 0.8,
+  "fibras": 0.35,
+  "alma": [
+   232,
+   226,
+   218
+  ],
+  "alma_tinte": [
+   232,
+   226,
+   218
+  ],
+  "tinte_px": 0.5,
+  "color_sombra": [
+   58,
+   12,
+   12
+  ],
+  "sombra": [
+   0.26,
+   0.14
+  ],
+  "deshilado": 0.0,
+  "relieve": 0.0,
+  "bajo_labio": 0.0,
+  "grumo": 0.7,
+  "contacto": [
+   2.2,
+   1.8
+  ],
+  "ambiente": [
+   9,
+   6
+  ],
+  "sombra_aparte": true
+ },
+ {
+  "nombre": "vino-crema-escritorio",
+  "semilla": 88412077,
+  "ancho": 1440,
+  "alto": 190,
+  "base": 0.38,
+  "deriva": 26,
+  "deriva_periodo": 1500,
+  "medio": 34,
+  "medio_periodo": 290,
+  "pequeno": 7,
+  "pequeno_periodo": 64,
+  "calma": 480,
+  "torsion": 52,
+  "labios": 0.08,
+  "labio_periodo": 240,
+  "alma_min": 1.3,
+  "alma_max": 3.6,
+  "halo": 0.8,
+  "fibras": 0.35,
+  "alma": [
+   105,
+   25,
+   25
+  ],
+  "alma_tinte": [
+   105,
+   25,
+   25
+  ],
+  "tinte_px": 0.5,
+  "color_sombra": [
+   96,
+   84,
+   74
+  ],
+  "sombra": [
+   0.22,
+   0.11
+  ],
+  "deshilado": 0.0,
+  "relieve": 0.0,
+  "bajo_labio": 0.0,
+  "grumo": 0.7,
+  "contacto": [
+   1.8,
+   0.3
+  ],
+  "ambiente": [
+   8,
+   4
+  ],
+  "sombra_aparte": true
+ },
+ {
+  "nombre": "vino-crema-movil",
+  "semilla": 3389021,
+  "ancho": 430,
+  "alto": 150,
+  "base": 0.34,
+  "deriva": 10,
+  "deriva_periodo": 900,
+  "medio": 17,
+  "medio_periodo": 200,
+  "pequeno": 4.8,
+  "pequeno_periodo": 52,
+  "calma": 340,
+  "torsion": 38,
+  "labios": 0.08,
+  "labio_periodo": 180,
+  "alma_min": 1.3,
+  "alma_max": 3.6,
+  "halo": 0.8,
+  "fibras": 0.35,
+  "alma": [
+   105,
+   25,
+   25
+  ],
+  "alma_tinte": [
+   105,
+   25,
+   25
+  ],
+  "tinte_px": 0.5,
+  "color_sombra": [
+   96,
+   84,
+   74
+  ],
+  "sombra": [
+   0.22,
+   0.11
+  ],
+  "deshilado": 0.0,
+  "relieve": 0.0,
+  "bajo_labio": 0.0,
+  "grumo": 0.7,
+  "contacto": [
+   1.8,
+   0.3
+  ],
+  "ambiente": [
+   8,
+   4
+  ],
+  "sombra_aparte": true
+ }
+]
