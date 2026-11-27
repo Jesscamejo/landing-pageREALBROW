@@ -241,14 +241,6 @@ document.fonts.ready.then(ajustarLogo); addEventListener('resize', ajustarLogo);
 // Año del pie
 document.getElementById('anio').textContent = new Date().getFullYear();
 
-// Aviso de fin de temporada: desde el 30-12-2026 a las 00:00 en Bogotá (05:00 UTC)
-const FIN_TEMPORADA = Date.UTC(2026, 11, 30, 5, 0, 0);
-const finAviso = document.getElementById('fin-temporada');
-if (Date.now() >= FIN_TEMPORADA || new URLSearchParams(location.search).has('probar-aviso')) {
-  finAviso.hidden = false;
-  finAviso.querySelector('.fin-cerrar').addEventListener('click', () => { finAviso.hidden = true; });
-}
-
 /* =====================================================================
    COPOS DE NIEVE · delgados, fijos a la pantalla, sin animación
    Blancos tenues sobre rojo; rojo tenue sobre marfil y crema.
