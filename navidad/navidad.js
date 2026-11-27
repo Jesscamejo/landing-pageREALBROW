@@ -79,18 +79,8 @@ const RAIZ = '../';   // las fotos y videos se toman de la página principal, si
 const ruta = a => RAIZ + a;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-// Servicios
-const lista = document.getElementById('lista-servicios');
+// Servicios: opciones del formulario de reserva
 const selector = document.getElementById('servicio');
-lista.innerHTML = SERVICIOS.map((s, i) => `
-  <article class="tarjeta">
-    <span class="num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
-    <h3>${esc(s.nombre)}</h3>${s.sub ? `<p class="sub">${esc(s.sub)}</p>` : ''}
-    <p>${esc(s.descripcion)}</p>
-    <p class="ideal">${esc(s.ideal)}</p>
-    <div class="datos"><span>${esc(s.duracion)}</span><span class="precio"><strong>${esc(s.precio)}</strong>${s.nota ? `<small>${esc(s.nota)}</small>` : ''}</span></div>
-    <button class="enlace-reserva" data-servicio="${esc(s.nombre)}">${s.valoracion ? 'Reservar valoración' : 'Reservar este servicio'}</button>
-  </article>`).join('');
 selector.innerHTML = SERVICIOS.map(s => `<option>${esc(s.nombre)}</option>`).join('')
   + '<option>Aún no sé, quiero una valoración</option>';
 const irAReservar = servicio => {
